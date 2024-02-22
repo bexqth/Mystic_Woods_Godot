@@ -13,7 +13,9 @@ public partial class Player : CharacterBody2D
 	private bool canGetHit;
 	private bool attackCooldownTurnOn;
 	private Timer attackCooldownTimer;
+	private Timer giveAttackCoolDownTimer;
 	private string enemyType;
+	private bool canAttack;
 	
 	private AnimatedSprite2D animator;
 	public override void _Ready()
@@ -22,14 +24,17 @@ public partial class Player : CharacterBody2D
 		setRunning(false);
 		health = 100;
 		canGetHit = false;
+		canAttack = true;
 		attackCooldownTurnOn = false;
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
+		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		keyboardControl();
+		mouseControl();
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
@@ -62,6 +67,23 @@ public partial class Player : CharacterBody2D
 		animator.Scale = scale;
 		MoveAndSlide();
 	}
+
+	public void mouseControl() {
+		if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack) {
+			GD.Print("u are attacking");
+			isAttacking = true;
+			canAttack = false;
+			animator.Play("attack");
+			giveAttackCoolDownTimer.Start();
+		}
+	}
+
+	private void _on_give_attack_cooldown_timeout()
+	{
+		GD.Print("u can attack again");
+		canAttack = true;
+		isAttacking = false;
+	}
 	
 
 	public void setRunning(bool value) {
@@ -74,6 +96,8 @@ public partial class Player : CharacterBody2D
 			animator.Play("run");
 		} else if (isIdle) {
 			animator.Play("idle");
+		} else if (isAttacking) {
+			animator.Play("attack");
 		}
 	}
 
@@ -127,9 +151,3 @@ public partial class Player : CharacterBody2D
 		animator.Play("die");
 	}
 }
-
-
-
-
-
-
