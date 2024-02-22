@@ -16,16 +16,19 @@ public partial class Player : CharacterBody2D
 	private Timer giveAttackCoolDownTimer;
 	private string enemyType;
 	private bool canAttack;
+	private int damage;
 	
 	private AnimatedSprite2D animator;
 	public override void _Ready()
 	{
 		base._Ready();
-		setRunning(false);
 		health = 100;
+		damage = 20;
 		canGetHit = false;
+		isRunning = false;
 		canAttack = true;
 		attackCooldownTurnOn = false;
+		isAttacking = false;
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
@@ -38,10 +41,13 @@ public partial class Player : CharacterBody2D
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
+		GD.Print("is idle  " + isIdle);
 	}
 
 	public void keyboardControl() {
-		setRunning(false);
+		if(!isAttacking) {
+			setRunning(false);
+		}
 		Vector2 position = Position;
 		Vector2 scale = animator.Scale;
 
@@ -54,11 +60,9 @@ public partial class Player : CharacterBody2D
 			scale.X = 1;
 			setRunning(true);
 		} else if (Input.IsKeyPressed(Key.W)) {
-			
 			position.Y -= speed;
 			setRunning(true);
 		} else if(Input.IsKeyPressed(Key.S)) {
-			
 			position.Y += speed;	
 			setRunning(true);
 		}
@@ -69,25 +73,36 @@ public partial class Player : CharacterBody2D
 	}
 
 	public void mouseControl() {
-		if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack) {
-			GD.Print("u are attacking");
-			isAttacking = true;
+		if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack && !isAttacking) {
+			setAttacking(true);
+			//GD.Print("u are attacking");
 			canAttack = false;
-			animator.Play("attack");
 			giveAttackCoolDownTimer.Start();
 		}
 	}
 
 	private void _on_give_attack_cooldown_timeout()
 	{
-		GD.Print("u can attack again");
+		//GD.Print("u can attack again");
+		setAttacking(false);
 		canAttack = true;
-		isAttacking = false;
 	}
 	
+	public bool getAttacking() {
+		return this.isAttacking; 
+	}
+
+	public int getDamage() {
+		return this.damage;
+	}
 
 	public void setRunning(bool value) {
 		isRunning = value;
+		isIdle = !value;
+	}
+
+	public void setAttacking(bool value) {
+		isAttacking = value;
 		isIdle = !value;
 	}
 

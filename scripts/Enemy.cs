@@ -9,6 +9,7 @@ public partial class Enemy : CharacterBody2D
 	private Area2D detectionArea;
 	private AnimatedSprite2D animator;
 	private int damage = 20;
+	private int health = 100;
 
 	public override void _Ready()
 	{
@@ -44,6 +45,9 @@ public partial class Enemy : CharacterBody2D
 		chasePlayer = true;
 	}
 
+	public void dealDamage(int damage) {
+		this.health -= damage;
+	}
 
 	public void _on_area_2d_body_exited(Node2D body) {
 		player = null;

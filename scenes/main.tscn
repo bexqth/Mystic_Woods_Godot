@@ -604,8 +604,8 @@ script = ExtResource("6_u2qtk")
 position = Vector2(0, -6.33332)
 sprite_frames = SubResource("SpriteFrames_w31n5")
 animation = &"attack"
-frame = 1
-frame_progress = 0.012624
+frame = 2
+frame_progress = 0.016792
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -627,7 +627,7 @@ wait_time = 0.315
 [node name="deal_attack_cooldown" type="Timer" parent="Player"]
 
 [node name="give_attack_cooldown" type="Timer" parent="Player"]
-wait_time = 3.017
+wait_time = 0.3
 
 [node name="SlimeEnemy" type="CharacterBody2D" parent="."]
 position = Vector2(845, 447)
