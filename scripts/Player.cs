@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 
 public partial class Player : CharacterBody2D
 {
@@ -41,7 +42,7 @@ public partial class Player : CharacterBody2D
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
-		GD.Print("is idle  " + isIdle);
+		//GD.Print("is idle  " + isIdle);
 	}
 
 	public void keyboardControl() {
@@ -164,5 +165,6 @@ public partial class Player : CharacterBody2D
 	public void die() {
 		canGetHit = false;
 		animator.Play("die");
+		Free();
 	}
 }
