@@ -427,7 +427,7 @@ animations = [{
 size = Vector2(34, 9.99998)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7x1s"]
-radius = 12.671
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28axj"]
 radius = 7.66666
@@ -604,8 +604,8 @@ script = ExtResource("6_u2qtk")
 position = Vector2(0, -6.33332)
 sprite_frames = SubResource("SpriteFrames_w31n5")
 animation = &"attack"
-frame = 2
-frame_progress = 0.016792
+frame = 3
+frame_progress = 0.88777
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -618,7 +618,7 @@ debug_color = Color(0, 0.552941, 0.760784, 0.419608)
 [node name="player_hitbox" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/player_hitbox"]
-position = Vector2(2.66666, 1.33333)
+position = Vector2(3.33786e-06, 0.666663)
 shape = SubResource("CircleShape2D_v7x1s")
 
 [node name="take_attack_cooldown" type="Timer" parent="Player"]
@@ -630,20 +630,19 @@ wait_time = 0.315
 wait_time = 0.3
 
 [node name="SlimeEnemy" type="CharacterBody2D" parent="."]
-position = Vector2(845, 447)
+position = Vector2(796, 446)
 scale = Vector2(3, 3)
 script = ExtResource("8_nod51")
 metadata/NodeName = "SlimeEnemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeEnemy"]
-position = Vector2(0, -1.33333)
+position = Vector2(-2.28882e-05, 3.36766e-06)
 shape = SubResource("CircleShape2D_28axj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SlimeEnemy" groups=["enemyGroup"]]
-position = Vector2(0, -3)
+position = Vector2(-2.28882e-05, -2.66667)
 sprite_frames = SubResource("SpriteFrames_mc76p")
-animation = &"idle"
-frame_progress = 0.8797
+animation = &"die"
 speed_scale = 1.2
 
 [node name="Area2D" type="Area2D" parent="SlimeEnemy"]
@@ -661,9 +660,13 @@ visible = false
 position = Vector2(-0.333344, -1)
 shape = SubResource("CircleShape2D_j3qgn")
 
+[node name="take_attack_cooldown" type="Timer" parent="SlimeEnemy"]
+wait_time = 0.3
+
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="Player/take_attack_cooldown" to="Player" method="_on_take_attack_cooldown_timeout"]
 [connection signal="timeout" from="Player/give_attack_cooldown" to="Player" method="_on_give_attack_cooldown_timeout"]
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="SlimeEnemy/take_attack_cooldown" to="SlimeEnemy" method="_on_take_attack_cooldown_timeout"]

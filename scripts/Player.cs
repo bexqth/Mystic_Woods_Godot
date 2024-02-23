@@ -35,8 +35,7 @@ public partial class Player : CharacterBody2D
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
+	public override void _PhysicsProcess(double delta) {
 		keyboardControl();
 		mouseControl();
 		setAnimation();
@@ -70,21 +69,18 @@ public partial class Player : CharacterBody2D
 
 		Position = position;
 		animator.Scale = scale;
-		MoveAndSlide();
+		//MoveAndSlide();
 	}
 
 	public void mouseControl() {
 		if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack && !isAttacking) {
 			setAttacking(true);
-			//GD.Print("u are attacking");
 			canAttack = false;
 			giveAttackCoolDownTimer.Start();
 		}
 	}
 
-	private void _on_give_attack_cooldown_timeout()
-	{
-		//GD.Print("u can attack again");
+	private void _on_give_attack_cooldown_timeout(){
 		setAttacking(false);
 		canAttack = true;
 	}
@@ -108,12 +104,12 @@ public partial class Player : CharacterBody2D
 	}
 
 	public void setAnimation(){
-		if(isRunning) {
-			animator.Play("run");
+		if(isAttacking) {
+			animator.Play("attack");
 		} else if (isIdle) {
 			animator.Play("idle");
-		} else if (isAttacking) {
-			animator.Play("attack");
+		} else if (isRunning) {
+			animator.Play("run");
 		}
 	}
 
@@ -147,7 +143,8 @@ public partial class Player : CharacterBody2D
 		if (canGetHit) {
 			switch(enemyType){
 				case "SlimeEnemy":
-					dealDamage(new Enemy().getAttackDamage());
+					//dealDamage(new Enemy().getAttackDamage());
+					//GD.Print("Player health is " + this.health);
 				break;
 			}		
 		}

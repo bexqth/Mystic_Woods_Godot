@@ -5,20 +5,25 @@ public partial class Enemy : CharacterBody2D
 {
 	private const float speed = 50;
 	private bool chasePlayer;
-	private Node2D player;
+	private Player player;
 	private Area2D detectionArea;
 	private AnimatedSprite2D animator;
-	private int damage = 20;
+	private int damage = 10;
 	private int health = 100;
+	private String enemyType; 
+	private bool attackCooldownTurnOn;
+	private Timer attackCooldownTimer;
 
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		base._Ready();
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
 	}
 
 	public override void _PhysicsProcess(double delta) {
 		movement();
+		checkForBeingHit();
+		checkHealth();
 	}
 
 	public void movement() {
@@ -40,13 +45,24 @@ public partial class Enemy : CharacterBody2D
 	}
 
 
-	public void _on_area_2d_body_entered(Node2D body) {
+	public void _on_area_2d_body_entered(Player body) {
 		player = body;
 		chasePlayer = true;
+		enemyType = body.Name;
+		//GD.Print(enemyType);
 	}
 
 	public void dealDamage(int damage) {
-		this.health -= damage;
+		if (!attackCooldownTurnOn) {
+			health -= damage;
+			attackCooldownTurnOn = true;
+			attackCooldownTimer.Start();
+			//GD.Print(health);
+		}
+	}
+
+	private void _on_take_attack_cooldown_timeout(){
+		attackCooldownTurnOn = false;
 	}
 
 	public void _on_area_2d_body_exited(Node2D body) {
@@ -54,12 +70,31 @@ public partial class Enemy : CharacterBody2D
 		chasePlayer = false;
  	}
 
-	public void attackPlayer() {
-
-	}
-
 	public int getAttackDamage() {
 		return damage;
+	}
+
+	public void checkForBeingHit() {
+		switch(enemyType){
+			case "Player":
+				if(player.getAttacking()) {
+					dealDamage(player.getDamage());
+					GD.Print("Enemy health is " + this.health);
+					checkHealth();
+				}	
+			break;
+		}		
+	}
+
+	public void checkHealth() {
+		if(this.health <= 0) {
+			this.die();
+		}
+	}
+
+	public void die() {
+		animator.Play("die");
+		 Free();
 	}
 }
 
