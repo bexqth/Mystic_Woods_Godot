@@ -634,6 +634,15 @@ zoom = Vector2(3, 3)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
+[node name="healthbar" type="ProgressBar" parent="Player"]
+modulate = Color(0.458824, 0.792157, 0.654902, 1)
+offset_left = -6.66667
+offset_top = -14.6667
+offset_right = 136.333
+offset_bottom = 12.3333
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
 [node name="SlimeEnemy" type="CharacterBody2D" parent="."]
 position = Vector2(796, 446)
 scale = Vector2(3, 3)
@@ -667,6 +676,15 @@ shape = SubResource("CircleShape2D_j3qgn")
 
 [node name="take_attack_cooldown" type="Timer" parent="SlimeEnemy"]
 wait_time = 0.3
+
+[node name="enemy_healthbar" type="ProgressBar" parent="SlimeEnemy"]
+top_level = true
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 140.0
+offset_bottom = 16.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_exited"]

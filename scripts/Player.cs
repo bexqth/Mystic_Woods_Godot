@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public partial class Player : CharacterBody2D
 {
@@ -18,6 +20,7 @@ public partial class Player : CharacterBody2D
 	private string enemyType;
 	private bool canAttack;
 	private int damage;
+	private ProgressBar healthbar;
 	
 	private AnimatedSprite2D animator;
 	public override void _Ready()
@@ -33,6 +36,7 @@ public partial class Player : CharacterBody2D
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
+		healthbar = GetNode<ProgressBar>("healthbar");
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -41,6 +45,7 @@ public partial class Player : CharacterBody2D
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
+		manageHealthBar();
 		//GD.Print("is idle  " + isIdle);
 	}
 
@@ -152,9 +157,29 @@ public partial class Player : CharacterBody2D
 	private void _on_take_attack_cooldown_timeout() {
 		attackCooldownTurnOn = false;
 	}
+
 	public void checkHealth() {
 		if(health <= 0) {
 			die();
+		}
+	}
+
+	public void manageHealthBar() {
+		healthbar.Value = health;
+		GD.Print(healthbar.Value);
+
+		/*if(health >= 100) {
+			healthbar.Visible = false;
+		} else {
+			healthbar.Visible = true;
+		}*/
+
+		if(health >= 100) {
+			healthbar.Modulate = new Color("#75caa7");
+		} else if (health <= 70 && health >= 30) {
+			healthbar.Modulate = new Color("#e1aa6a");
+		} else {
+			healthbar.Modulate = new Color("#fe9296");
 		}
 	}
 

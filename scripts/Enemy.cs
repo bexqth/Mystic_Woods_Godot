@@ -13,17 +13,20 @@ public partial class Enemy : CharacterBody2D
 	private String enemyType; 
 	private bool attackCooldownTurnOn;
 	private Timer attackCooldownTimer;
+	private ProgressBar enemyHealthbar;
 
 	public override void _Ready() {
 		base._Ready();
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
+		enemyHealthbar = GetNode<ProgressBar>("enemy_healthbar");
 	}
 
 	public override void _PhysicsProcess(double delta) {
 		movement();
 		checkForBeingHit();
 		checkHealth();
+		manageHealthBar();
 	}
 
 	public void movement() {
@@ -84,6 +87,19 @@ public partial class Enemy : CharacterBody2D
 				}	
 			break;
 		}		
+	}
+
+	public void manageHealthBar() {
+		enemyHealthbar.Value = health;
+		GD.Print(enemyHealthbar.Value);
+
+		if(health >= 100) {
+			enemyHealthbar.SelfModulate = new Color("#75caa7");
+		} else if (health <= 70 && health >= 30) {
+			enemyHealthbar.SelfModulate = new Color("#e1aa6a");
+		} else {
+			enemyHealthbar.SelfModulate = new Color("#fe9296");
+		}
 	}
 
 	public void checkHealth() {
