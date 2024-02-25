@@ -82,7 +82,7 @@ public partial class Enemy : CharacterBody2D
 			case "Player":
 				if(player.getAttacking()) {
 					dealDamage(player.getDamage());
-					GD.Print("Enemy health is " + this.health);
+					//GD.Print("Enemy health is " + this.health);
 					checkHealth();
 				}	
 			break;
@@ -91,14 +91,14 @@ public partial class Enemy : CharacterBody2D
 
 	public void manageHealthBar() {
 		enemyHealthbar.Value = health;
-		GD.Print(enemyHealthbar.Value);
+		//GD.Print(enemyHealthbar.Value);
 
 		if(health >= 100) {
-			enemyHealthbar.SelfModulate = new Color("#75caa7");
+			enemyHealthbar.Modulate = new Color("#75caa7");
 		} else if (health <= 70 && health >= 30) {
-			enemyHealthbar.SelfModulate = new Color("#e1aa6a");
+			enemyHealthbar.Modulate = new Color("#e1aa6a");
 		} else {
-			enemyHealthbar.SelfModulate = new Color("#fe9296");
+			enemyHealthbar.Modulate = new Color("#fe9296");
 		}
 	}
 

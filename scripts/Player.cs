@@ -23,6 +23,9 @@ public partial class Player : CharacterBody2D
 	private ProgressBar healthbar;
 	
 	private AnimatedSprite2D animator;
+
+	[Export]
+	public Inventory inventory;
 	public override void _Ready()
 	{
 		base._Ready();
@@ -139,9 +142,17 @@ public partial class Player : CharacterBody2D
 			health -= damage;
 			attackCooldownTurnOn = true;
 			attackCooldownTimer.Start();
-			GD.Print(health);
+			//GD.Print(health);
 		}
 
+	}
+
+	public void checkCollisionInventory(InventoryItem item) {
+		switch(item.Name) {
+			case "apple":
+				inventory.addItem(item);
+			break;
+		}
 	}
 
 	public void checkForBeingHit() {
@@ -166,7 +177,7 @@ public partial class Player : CharacterBody2D
 
 	public void manageHealthBar() {
 		healthbar.Value = health;
-		GD.Print(healthbar.Value);
+		//GD.Print(healthbar.Value);
 
 		/*if(health >= 100) {
 			healthbar.Visible = false;
@@ -187,6 +198,6 @@ public partial class Player : CharacterBody2D
 	public void die() {
 		canGetHit = false;
 		animator.Play("die");
-		Free();
+		QueueFree();
 	}
 }

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl04b6y2tctv8"]
+
+[ext_resource type="Texture2D" uid="uid://durb7fh1bolos" path="res://art/objects/greenApple.png" id="1_02h83"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4eayp"]
+radius = 11.0
+height = 26.0
+
+[node name="apple" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_02h83")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CapsuleShape2D_4eayp")
