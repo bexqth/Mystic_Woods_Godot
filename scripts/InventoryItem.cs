@@ -36,7 +36,7 @@ public partial class InventoryItem : Node
 		if(body.Name == "Player") {
 			GD.Print(this.Name + " was added to the inventory");
 			player.addItemToInventory(this);
-			//QueueFree();
+			QueueFree();
 		}
 	}
 
