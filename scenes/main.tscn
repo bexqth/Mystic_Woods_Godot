@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=64 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bcth3ha76e56p" path="res://art/background/grass.png" id="1_6ilq0"]
 [ext_resource type="Texture2D" uid="uid://dtlwue5nfbugb" path="res://art/background/plains.png" id="2_wfmyg"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://6md573miq70" path="res://art/character/player.png" id="7_0y041"]
 [ext_resource type="Script" path="res://scripts/Enemy.cs" id="8_nod51"]
 [ext_resource type="Texture2D" uid="uid://bjh1ynwrm66lu" path="res://art/character/slime.png" id="9_cx54d"]
+[ext_resource type="PackedScene" uid="uid://dl04b6y2tctv8" path="res://scenes/apple.tscn" id="11_ghngm"]
+[ext_resource type="PackedScene" uid="uid://ccooo1l8iym0h" path="res://scenes/inventory.tscn" id="12_85xqg"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_6n2a6"]
 script/source = "using Godot;
@@ -447,6 +449,10 @@ size = Vector2(34, 9.99998)
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7x1s"]
 radius = 16.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6qoja"]
+radius = 7.66667
+height = 21.3333
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_28axj"]
 radius = 7.66666
 
@@ -614,11 +620,12 @@ layer_0/tile_data = PackedInt32Array(262144, 131072, 0, 262145, 131072, 0, 26214
 layer_1/name = "objects"
 layer_1/tile_data = PackedInt32Array(458773, 65541, 2, 393237, 196613, 0, 393236, 131077, 3, 393235, 131077, 3, 393234, 131077, 3, 393233, 131077, 3, 393232, 131077, 3, 196608, 131077, 3, 196609, 131077, 3, 196610, 131077, 3, 589826, 131077, 3, 589827, 131077, 3, 589828, 131077, 3, 589829, 131077, 3, 589830, 131077, 3, 589831, 131077, 3, 720904, 65541, 2, 655368, 5, 1, 589832, 196613, 0, 589824, 65541, 2, 589825, 131077, 3, 524288, 5, 1, 458752, 196613, 0, 196612, 196613, 0, 327684, 65541, 2, 327687, 196613, 2, 262151, 65541, 0, 262156, 196613, 0, 327692, 5, 1, 393228, 5, 1, 262148, 5, 1, 327685, 131077, 3, 327686, 131077, 3, 196611, 131077, 3, 262152, 131077, 3, 262155, 131077, 3, 458764, 3, 0, 131091, 655363, 0, 720905, 131077, 3, 720906, 131077, 3, 720907, 131077, 3, 720908, 131077, 3, 720913, 131077, 3, 720915, 131077, 3, 720914, 131077, 3, 720916, 131077, 3, 720917, 131077, 3, 720918, 131077, 3, 720919, 131077, 3, 458774, 131077, 3, 458775, 131077, 3, 393231, 65541, 0, 458767, 5, 2, 65545, 3, 1, 262166, 3, 1, 65557, 3, 1, 720909, 131077, 3, 720899, 3, 1, 720910, 131077, 3, 720911, 131077, 3, 720912, 131077, 3, 262153, 131077, 3, 262154, 131077, 3, 262143, 131077, 3, 524287, 131077, 3, 262142, 131077, 3, 524286, 131077, 3)
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("inventory")]
 position = Vector2(442, 338)
 scale = Vector2(3, 3)
 collision_layer = 3
 script = ExtResource("6_u2qtk")
+inventory = NodePath("Camera2D/Inventory")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(0, -6.33332)
@@ -628,7 +635,7 @@ frame = 3
 frame_progress = 0.88777
 speed_scale = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Collision_Feet" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.333344, 9.00002)
 scale = Vector2(0.333333, 0.333333)
 shape = SubResource("RectangleShape2D_c6khb")
@@ -651,8 +658,10 @@ wait_time = 0.3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
+
+[node name="Inventory" parent="Player/Camera2D" instance=ExtResource("12_85xqg")]
+position = Vector2(-39.6667, 74.6667)
+scale = Vector2(0.333333, 0.333333)
 
 [node name="healthbar" type="ProgressBar" parent="Player"]
 modulate = Color(0.458824, 0.792157, 0.654902, 1)
@@ -662,6 +671,12 @@ offset_right = 136.333
 offset_bottom = 12.3333
 scale = Vector2(0.1, 0.1)
 show_percentage = false
+
+[node name="player_collision" type="Area2D" parent="Player"]
+
+[node name="player_collisionShape" type="CollisionShape2D" parent="Player/player_collision"]
+position = Vector2(0.666667, 1.66667)
+shape = SubResource("CapsuleShape2D_6qoja")
 
 [node name="SlimeEnemy" type="CharacterBody2D" parent="."]
 position = Vector2(796, 446)
@@ -707,10 +722,15 @@ scale = Vector2(0.1, 0.1)
 value = 100.0
 show_percentage = false
 
+[node name="apple" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ghngm")]
+position = Vector2(245, 356)
+player = NodePath("../Player")
+
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="Player/take_attack_cooldown" to="Player" method="_on_take_attack_cooldown_timeout"]
 [connection signal="timeout" from="Player/give_attack_cooldown" to="Player" method="_on_give_attack_cooldown_timeout"]
+[connection signal="body_entered" from="Player/player_collision" to="Player" method="_on_player_collision_body_entered"]
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="SlimeEnemy/take_attack_cooldown" to="SlimeEnemy" method="_on_take_attack_cooldown_timeout"]

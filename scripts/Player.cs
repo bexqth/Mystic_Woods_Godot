@@ -155,6 +155,19 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
+	public void addItemToInventory(InventoryItem item) {
+		inventory.addItem(item);
+	}
+
+	private void _on_player_collision_body_entered(Node2D body) {
+		/*switch (body.Name) {
+			case "apple":
+				GD.Print("Collision with the apple");
+				//inventory.addItem(item);
+			break;
+		}*/
+	}
+
 	public void checkForBeingHit() {
 		if (canGetHit) {
 			switch(enemyType){
@@ -201,3 +214,4 @@ public partial class Player : CharacterBody2D
 		QueueFree();
 	}
 }
+

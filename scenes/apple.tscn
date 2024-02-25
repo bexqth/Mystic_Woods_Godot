@@ -1,18 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl04b6y2tctv8"]
+[gd_scene load_steps=4 format=3 uid="uid://dl04b6y2tctv8"]
 
 [ext_resource type="Texture2D" uid="uid://durb7fh1bolos" path="res://art/objects/greenApple.png" id="1_02h83"]
+[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_4xnpf"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4eayp"]
-radius = 11.0
-height = 26.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tl6b8"]
+radius = 22.0
+height = 56.0
 
 [node name="apple" type="Node2D"]
+script = ExtResource("1_4xnpf")
+name = "apple"
+icon = ExtResource("1_02h83")
+stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_02h83")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("CapsuleShape2D_4eayp")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("CapsuleShape2D_tl6b8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

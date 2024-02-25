@@ -15,6 +15,8 @@ public partial class InventoryItem : Node
 	public int index;
 	[Export] 
 	public bool isInInventory;
+	[Export]
+	public Player player;
 	public override void _Ready()
 	{
 	}
@@ -24,8 +26,19 @@ public partial class InventoryItem : Node
 	{
 	}
 
-    public Texture2D getIcon()
-    {
-        return this.icon;
-    }
+	public Texture2D getIcon()
+	{
+		return this.icon;
+	}
+
+	private void _on_area_2d_body_entered(Node2D body)
+	{
+		if(body.Name == "Player") {
+			GD.Print(this.Name + " was added to the inventory");
+			player.addItemToInventory(this);
+			//QueueFree();
+		}
+	}
+
+
 }

@@ -21,6 +21,8 @@ public partial class Inventory : Node
 	public Slot slot5;
 	public override void _Ready()
 	{
+		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 };
+		setSlotsIntoInventory();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,6 +42,7 @@ public partial class Inventory : Node
 		for(int i = 0; i < inventorySize; i++) {
 			if(slots[i].getIsFree() == true) {
 				slots[i].setIcon(item.getIcon());
+				slots[i].setFree(false);
 				break;
 			}
 		}

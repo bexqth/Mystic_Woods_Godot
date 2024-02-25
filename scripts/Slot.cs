@@ -12,9 +12,14 @@ public partial class Slot : Node
 	public bool isFree;
 	[Export] 
 	public int index;
+
+	private TextureRect textureRect;
+	private Texture2D texture2d;
 	public override void _Ready()
 	{
-		icon = GetNode<Texture2D>("slotItemIcon");
+		textureRect = GetNode<TextureRect>("slotItemIcon");
+    	texture2d = textureRect.Texture;
+		isFree = true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,12 +28,17 @@ public partial class Slot : Node
 	}
 
     public void setIcon(Texture2D newIcon)
-    {
-        icon = newIcon;
+    {	
+        textureRect.Texture = newIcon;
     }
 
     public bool getIsFree()
     {
         return this.isFree;
+    }
+
+    public void setFree(bool v)
+    {
+        this.isFree = v;
     }
 }
