@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccooo1l8iym0h"]
+[gd_scene load_steps=4 format=3 uid="uid://ccooo1l8iym0h"]
 
 [ext_resource type="Script" path="res://scripts/Inventory.cs" id="1_xstrd"]
 [ext_resource type="Script" path="res://scripts/Slot.cs" id="2_kl7pf"]
+[ext_resource type="Texture2D" uid="uid://cfussj7c3sqii" path="res://art/UI/X.png" id="3_enx47"]
 
 [node name="Inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5")]
 script = ExtResource("1_xstrd")
 slot1 = NodePath("TextureRect/GridContainer/Slot1")
-slot2 = NodePath("TextureRect/GridContainer/Slot2")
-slot3 = NodePath("TextureRect/GridContainer/Slot3")
-slot4 = NodePath("TextureRect/GridContainer/Slot4")
-slot5 = NodePath("TextureRect/GridContainer/Slot5")
+slot2 = NodePath("")
+slot3 = NodePath("")
+slot4 = NodePath("")
+slot5 = NodePath("")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 291.0
@@ -46,7 +47,7 @@ layout_mode = 2
 offset_left = 37.0
 offset_top = 2.0
 offset_right = 48.0
-offset_bottom = 12.0
+offset_bottom = 13.0
 
 [node name="deleteButtonIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot1/deleteButton"]
 layout_mode = 1
@@ -55,19 +56,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_enx47")
 expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
 [node name="Slot2" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 script = ExtResource("2_kl7pf")
-index = 1
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot2"]
 layout_mode = 1
@@ -89,7 +100,7 @@ layout_mode = 2
 offset_left = 37.0
 offset_top = 2.0
 offset_right = 48.0
-offset_bottom = 12.0
+offset_bottom = 13.0
 
 [node name="deleteButtonIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot2/deleteButton"]
 layout_mode = 1
@@ -98,19 +109,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_enx47")
 expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
 [node name="Slot3" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 script = ExtResource("2_kl7pf")
-index = 2
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot3"]
 layout_mode = 1
@@ -132,7 +153,7 @@ layout_mode = 2
 offset_left = 37.0
 offset_top = 2.0
 offset_right = 48.0
-offset_bottom = 12.0
+offset_bottom = 13.0
 
 [node name="deleteButtonIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot3/deleteButton"]
 layout_mode = 1
@@ -141,19 +162,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_enx47")
 expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
 [node name="Slot4" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 script = ExtResource("2_kl7pf")
-index = 3
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot4"]
 layout_mode = 1
@@ -175,7 +206,7 @@ layout_mode = 2
 offset_left = 37.0
 offset_top = 2.0
 offset_right = 48.0
-offset_bottom = 12.0
+offset_bottom = 13.0
 
 [node name="deleteButtonIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot4/deleteButton"]
 layout_mode = 1
@@ -184,19 +215,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_enx47")
 expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
 [node name="Slot5" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 script = ExtResource("2_kl7pf")
-index = 4
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot5"]
 layout_mode = 1
@@ -218,7 +259,7 @@ layout_mode = 2
 offset_left = 37.0
 offset_top = 2.0
 offset_right = 48.0
-offset_bottom = 12.0
+offset_bottom = 13.0
 
 [node name="deleteButtonIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot5/deleteButton"]
 layout_mode = 1
@@ -227,10 +268,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_enx47")
 expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0

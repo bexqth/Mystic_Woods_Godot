@@ -9,7 +9,6 @@ height = 56.0
 
 [node name="apple" type="Node2D"]
 script = ExtResource("1_4xnpf")
-name = "apple"
 icon = ExtResource("1_02h83")
 stackable = true
 

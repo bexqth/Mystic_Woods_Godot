@@ -724,6 +724,12 @@ show_percentage = false
 
 [node name="apple" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ghngm")]
 position = Vector2(245, 356)
+itemName = "apple"
+player = NodePath("../Player")
+
+[node name="apple2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ghngm")]
+position = Vector2(145, 360)
+itemName = "apple"
 player = NodePath("../Player")
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]

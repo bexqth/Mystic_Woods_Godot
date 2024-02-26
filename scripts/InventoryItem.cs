@@ -1,12 +1,13 @@
 using Godot;
 using System;
 using System.Runtime.CompilerServices;
+using System.Xml.Serialization;
 
 public partial class InventoryItem : Node
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export] 
-	public String name;
+	public String itemName;
 	[Export] 
 	public Texture2D icon;
 	[Export] 
@@ -17,6 +18,7 @@ public partial class InventoryItem : Node
 	public bool isInInventory;
 	[Export]
 	public Player player;
+	private int count;
 	public override void _Ready()
 	{
 	}
@@ -36,9 +38,20 @@ public partial class InventoryItem : Node
 		if(body.Name == "Player") {
 			GD.Print(this.Name + " was added to the inventory");
 			player.addItemToInventory(this);
-			QueueFree();
+			//QueueFree();
 		}
 	}
+
+	public void addCount() {
+
+	}
+
+	public String getItemName() {
+		return this.itemName;
+	}
+
+	public virtual void useItem() {}
+
 
 
 }

@@ -147,13 +147,13 @@ public partial class Player : CharacterBody2D
 
 	}
 
-	public void checkCollisionInventory(InventoryItem item) {
+	/*public void checkCollisionInventory(InventoryItem item) {
 		switch(item.Name) {
 			case "apple":
 				inventory.addItem(item);
 			break;
 		}
-	}
+	}*/
 
 	public void addItemToInventory(InventoryItem item) {
 		inventory.addItem(item);
@@ -212,6 +212,10 @@ public partial class Player : CharacterBody2D
 		canGetHit = false;
 		animator.Play("die");
 		QueueFree();
+	}
+
+	public void addHealth(int howMuch) {
+		this.health += howMuch;
 	}
 }
 

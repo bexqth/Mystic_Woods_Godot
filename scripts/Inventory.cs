@@ -4,7 +4,7 @@ using System;
 public partial class Inventory : Node
 {
 	// Called when the node enters the scene tree for the first time.
-	InventoryItem[] items;
+	//InventoryItem[] items;
 	private int inventorySize = 5;
 	
 	private Slot[] slots;
@@ -40,15 +40,29 @@ public partial class Inventory : Node
 
 	public void addItem(InventoryItem item) {
 		for(int i = 0; i < inventorySize; i++) {
-			if(slots[i].getIsFree() == true) {
+			if(slots[i].getSlotItemName() == item.getItemName()) {
+				slots[i].addItemToArray(item);
+				item.QueueFree();
+			} else if(slots[i].getIsFree() == true) {
 				slots[i].setIcon(item.getIcon());
+				slots[i].addItemToArray(item);
+				slots[i].setSlotItemName(item.getItemName());
 				slots[i].setFree(false);
+				item.QueueFree();
 				break;
 			}
 		}
 	}
 
 	public void deleteItem() {
+
+	}
+
+	public void manageInventory() {
+
+	}
+
+	public void useInventoryItem(InventoryItem item) {
 
 	}
 }
