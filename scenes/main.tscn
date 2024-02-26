@@ -660,6 +660,8 @@ wait_time = 0.3
 zoom = Vector2(2, 2)
 
 [node name="Inventory" parent="Player/Camera2D" instance=ExtResource("12_85xqg")]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(-39.6667, 74.6667)
 scale = Vector2(0.333333, 0.333333)
 
@@ -723,12 +725,12 @@ value = 100.0
 show_percentage = false
 
 [node name="apple" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ghngm")]
-position = Vector2(245, 356)
+position = Vector2(251, 356)
 itemName = "apple"
 player = NodePath("../Player")
 
 [node name="apple2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ghngm")]
-position = Vector2(145, 360)
+position = Vector2(147, 356)
 itemName = "apple"
 player = NodePath("../Player")
 

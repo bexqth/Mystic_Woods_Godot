@@ -286,3 +286,5 @@ anchor_right = 0.02
 anchor_bottom = 0.54
 offset_right = 32.0
 offset_bottom = 23.0
+
+[connection signal="pressed" from="TextureRect/GridContainer/Slot1/deleteButton" to="TextureRect/GridContainer/Slot1" method="_on_delete_button_pressed"]

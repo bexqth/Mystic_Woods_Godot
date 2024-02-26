@@ -3,7 +3,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
-public partial class InventoryItem : Node
+public partial class InventoryItem : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export] 
@@ -42,16 +42,21 @@ public partial class InventoryItem : Node
 		}
 	}
 
-	public void addCount() {
-
-	}
-
 	public String getItemName() {
 		return this.itemName;
 	}
 
 	public virtual void useItem() {}
 
+	public void setPositionAfterDeletingFromItem() {
+		Vector2 position = Position;
+		GD.Print(position.X + " , " + position.Y);
+		position.X = player.Position.X;
+		position.Y = player.Position.Y - 20;
+		GD.Print("item " + position.X + " , " + position.Y);
+		GD.Print("player " + player.Position.X + " " + player.Position.Y);
+		Position = position;
+	}
 
 
 }
