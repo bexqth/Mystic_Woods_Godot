@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch6uvgtrqbfiq"]
+
+[ext_resource type="Texture2D" uid="uid://crgen425bvoxh" path="res://art/objects/redPotion.png" id="1_4t8bf"]
+[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="2_frxut"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k6dn6"]
+radius = 11.0
+height = 26.0
+
+[node name="healthPotion" type="Node2D"]
+light_mask = 3
+visibility_layer = 3
+script = ExtResource("2_frxut")
+itemName = "healthPotion"
+icon = ExtResource("1_4t8bf")
+stackable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4t8bf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_k6dn6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

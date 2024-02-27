@@ -50,11 +50,8 @@ public partial class InventoryItem : Node2D
 
 	public void setPositionAfterDeletingFromItem() {
 		Vector2 position = Position;
-		GD.Print(position.X + " , " + position.Y);
 		position.X = player.Position.X;
-		position.Y = player.Position.Y - 20;
-		GD.Print("item " + position.X + " , " + position.Y);
-		GD.Print("player " + player.Position.X + " " + player.Position.Y);
+		position.Y = player.Position.Y - 30;
 		Position = position;
 	}
 

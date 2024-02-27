@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=65 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bcth3ha76e56p" path="res://art/background/grass.png" id="1_6ilq0"]
 [ext_resource type="Texture2D" uid="uid://dtlwue5nfbugb" path="res://art/background/plains.png" id="2_wfmyg"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bjh1ynwrm66lu" path="res://art/character/slime.png" id="9_cx54d"]
 [ext_resource type="PackedScene" uid="uid://dl04b6y2tctv8" path="res://scenes/apple.tscn" id="11_ghngm"]
 [ext_resource type="PackedScene" uid="uid://ccooo1l8iym0h" path="res://scenes/inventory.tscn" id="12_85xqg"]
+[ext_resource type="PackedScene" uid="uid://ch6uvgtrqbfiq" path="res://scenes/health_potion.tscn" id="13_qpr2y"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_6n2a6"]
 script/source = "using Godot;
@@ -732,6 +733,10 @@ player = NodePath("../Player")
 [node name="apple2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ghngm")]
 position = Vector2(147, 356)
 itemName = "apple"
+player = NodePath("../Player")
+
+[node name="healthPotion" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_qpr2y")]
+position = Vector2(49, 277)
 player = NodePath("../Player")
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]

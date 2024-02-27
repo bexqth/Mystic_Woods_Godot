@@ -19,6 +19,10 @@ public partial class EdibleItem : InventoryItem
 		return this.addHealth;
 	}
 
+	public void addHealthToPlayer(Player player) {
+		player.addHealth(this.addHealth);
+	}
+
 	public override void useItem() {
 		
 	}

@@ -73,16 +73,18 @@ public partial class Slot : Node
 		} else {
 			textureRect.Texture = null;
 			countLabel.Text = " ";
+			slotItemName = " ";
+			isFree = true;
 		}
 	}
 
 	private void _on_delete_button_pressed() {
-		GD.Print("BUTTON CLICKED 1");
+		//GD.Print("BUTTON CLICKED 1");
 		InventoryItem item = items[0];
 		item.setPositionAfterDeletingFromItem();
 		GetTree().CurrentScene.AddChild(item);
 		deleteItemFromArray();
-		GD.Print("ITEM DELETED");
+		//GD.Print("ITEM DELETED");
 	}
 
 

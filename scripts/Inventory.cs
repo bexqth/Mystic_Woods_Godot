@@ -38,32 +38,14 @@ public partial class Inventory : Node
 		slots[4] = slot5;
 	}
 
-	/*public void addItem(InventoryItem item) {
-		
-		for(int i = 0; i < inventorySize; i++) {
-			if(slots[i].getSlotItemName() == item.getItemName()) {
-				slots[i].addItemToArray(item);
-				//item.QueueFree();
-				item.GetParent().RemoveChild(item);
-			} else if(slots[i].getIsFree() == true) {
-				slots[i].setIcon(item.getIcon());
-				slots[i].addItemToArray(item);
-				slots[i].setSlotItemName(item.getItemName());
-				slots[i].setFree(false);
-				//item.QueueFree();
-				item.GetParent().RemoveChild(item);
-				break;
-			}
-		}
-	}*/
 	public void addItem(InventoryItem item) {
-		GD.Print(item.icon);
 	for(int i = 0; i < inventorySize; i++) {
 		if(slots[i].getSlotItemName() == item.getItemName()) {
 			InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 			slots[i].setIcon(itemCopy.getIcon());
 			slots[i].addItemToArray(itemCopy); 
 			item.QueueFree(); 
+			break;
 		} else if(slots[i].getIsFree() == true) {
 			InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 			slots[i].setIcon(itemCopy.getIcon());
