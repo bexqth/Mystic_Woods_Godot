@@ -74,6 +74,9 @@ public partial class Inventory : Node
 		}
 	}
 
+	public void deleteItem() {
+		slots[focusIndex].deleteItemFromArray();
+	}
 
 	public void useInventoryItem(InventoryItem item) {
 
@@ -93,6 +96,7 @@ public partial class Inventory : Node
 				focusIndex = inventorySize - 1;
 		}
 		slots[focusIndex].GrabFocus();
+		//slots[focusIndex].GetNode<Button>("deleteButton").GrabFocus();
 	}
 
 }

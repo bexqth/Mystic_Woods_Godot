@@ -77,6 +77,10 @@ public partial class Player : CharacterBody2D
 			setRunning(true);
 		}
 
+		if(Input.IsActionJustPressed("delete_item")) {
+			inventory.deleteItem();
+		}
+
 		Position = position;
 		animator.Scale = scale;
 		//MoveAndSlide();

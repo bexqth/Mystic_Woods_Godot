@@ -35,6 +35,7 @@ public partial class Slot : Button
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		//GD.Print(Disabled); 
 	}
 
 	public void addItemToArray(InventoryItem newItem) {
@@ -69,6 +70,13 @@ public partial class Slot : Button
 	}
 
 	public void deleteItemFromArray() {
+
+		//GD.Print("Delete button pressed!");
+		//GD.Print("BUTTON CLICKED 1");
+		InventoryItem item = items[0];
+		item.setPositionAfterDeletingFromItem();
+		GetTree().CurrentScene.AddChild(item);
+
 		items.RemoveAt(0);
 		if(items.Count > 0) {
 			textureRect.Texture = items[0].getIcon(); 
@@ -82,12 +90,13 @@ public partial class Slot : Button
 	}
 
 	private void _on_delete_button_pressed() {
+		/*GD.Print("Delete button pressed!");
 		//GD.Print("BUTTON CLICKED 1");
 		InventoryItem item = items[0];
 		item.setPositionAfterDeletingFromItem();
 		GetTree().CurrentScene.AddChild(item);
 		deleteItemFromArray();
-		//GD.Print("ITEM DELETED");
+		//GD.Print("ITEM DELETED");*/
 	}
 
 
