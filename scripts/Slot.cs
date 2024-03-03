@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public partial class Slot : Node
+public partial class Slot : Button
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export] 

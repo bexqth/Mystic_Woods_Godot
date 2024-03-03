@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class Inventory : Node
 {
@@ -19,15 +20,18 @@ public partial class Inventory : Node
 	public Slot slot4;
 	[Export]
 	public Slot slot5;
+	private int focusIndex;
 	public override void _Ready()
 	{
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 };
 		setSlotsIntoInventory();
+		focusIndex = 0;	
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		changeFocus();
 	}
 
 	public void setSlotsIntoInventory() {
@@ -74,4 +78,21 @@ public partial class Inventory : Node
 	public void useInventoryItem(InventoryItem item) {
 
 	}
+
+	public void changeFocus() {
+		if (Input.IsActionJustPressed("scroll_up")) {
+			//GD.Print("Mouse wheel scrolled up!");
+			focusIndex++;
+			if (focusIndex >= inventorySize)
+				focusIndex = 0;
+		}
+		else if (Input.IsActionJustPressed("scroll_down")){
+			//GD.Print("Mouse wheel scrolled down!");
+			focusIndex--;
+			if (focusIndex < 0)
+				focusIndex = inventorySize - 1;
+		}
+		slots[focusIndex].GrabFocus();
+	}
+
 }

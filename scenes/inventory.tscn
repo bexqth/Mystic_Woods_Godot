@@ -25,6 +25,7 @@ columns = 5
 [node name="Slot1" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("2_kl7pf")
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot1"]
@@ -78,7 +79,9 @@ offset_bottom = 23.0
 [node name="Slot2" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("2_kl7pf")
+index = 1
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot2"]
 layout_mode = 1
@@ -131,7 +134,9 @@ offset_bottom = 23.0
 [node name="Slot3" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("2_kl7pf")
+index = 2
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot3"]
 layout_mode = 1
@@ -184,7 +189,9 @@ offset_bottom = 23.0
 [node name="Slot4" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("2_kl7pf")
+index = 3
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot4"]
 layout_mode = 1
@@ -237,7 +244,9 @@ offset_bottom = 23.0
 [node name="Slot5" type="Button" parent="TextureRect/GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("2_kl7pf")
+index = 4
 
 [node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot5"]
 layout_mode = 1
