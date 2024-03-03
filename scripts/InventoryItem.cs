@@ -55,5 +55,4 @@ public partial class InventoryItem : Node2D
 		Position = position;
 	}
 
-
 }

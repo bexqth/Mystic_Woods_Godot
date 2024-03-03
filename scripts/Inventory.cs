@@ -39,24 +39,36 @@ public partial class Inventory : Node
 	}
 
 	public void addItem(InventoryItem item) {
-	for(int i = 0; i < inventorySize; i++) {
-		if(slots[i].getSlotItemName() == item.getItemName()) {
-			InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-			slots[i].setIcon(itemCopy.getIcon());
-			slots[i].addItemToArray(itemCopy); 
-			item.QueueFree(); 
-			break;
-		} else if(slots[i].getIsFree() == true) {
-			InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-			slots[i].setIcon(itemCopy.getIcon());
-			slots[i].addItemToArray(itemCopy);
-			slots[i].setSlotItemName(item.getItemName());
-			slots[i].setFree(false);
-			item.QueueFree();
-			break;
+		for(int i = 0; i < inventorySize; i++) {
+			if(slots[i].getSlotItemName() == item.getItemName()) {
+				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+				slots[i].setIcon(itemCopy.getIcon()); 
+				slots[i].addItemToArray(itemCopy); 
+
+				GD.Print("object name " + itemCopy.getItemName());
+				GD.Print("slot name " + slots[i].getSlotItemName());
+
+				item.QueueFree(); 
+				return;
+			}
+		}
+
+		for(int i = 0; i < inventorySize; i++) {
+			if(slots[i].getIsFree() == true) {
+				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+				slots[i].setIcon(itemCopy.getIcon());
+				slots[i].addItemToArray(itemCopy);
+				slots[i].setSlotItemName(item.getItemName());
+
+				GD.Print("object name " + itemCopy.getItemName());
+				GD.Print("slot name " + slots[i].getSlotItemName());
+
+				slots[i].setFree(false);
+				item.QueueFree();
+				return;
+			}
 		}
 	}
-}
 
 
 	public void useInventoryItem(InventoryItem item) {
