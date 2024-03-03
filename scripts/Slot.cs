@@ -39,7 +39,10 @@ public partial class Slot : Node
 
 	public void addItemToArray(InventoryItem newItem) {
 		items.Add(newItem);
-		countLabel.Text = items.Count.ToString();
+		if(newItem.getStackable()) {
+			countLabel.Text = items.Count.ToString();
+		}
+		
 	}
 
 	public void setIcon(Texture2D newIcon)

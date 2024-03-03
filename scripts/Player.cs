@@ -13,6 +13,7 @@ public partial class Player : CharacterBody2D
 	private bool isDead;
 	private int direction;
 	private int health;
+	private int hungerBar;
 	private bool canGetHit;
 	private bool attackCooldownTurnOn;
 	private Timer attackCooldownTimer;
@@ -30,6 +31,7 @@ public partial class Player : CharacterBody2D
 	{
 		base._Ready();
 		health = 100;
+		hungerBar = 100;
 		damage = 20;
 		canGetHit = false;
 		isRunning = false;

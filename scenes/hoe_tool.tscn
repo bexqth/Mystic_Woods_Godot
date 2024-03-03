@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwd8bva0o7px1"]
+
+[ext_resource type="Texture2D" uid="uid://cscclx7e6blih" path="res://art/objects/Farming Tools spritesheet.png" id="1_1mvmr"]
+[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_2lher"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6cae"]
+atlas = ExtResource("1_1mvmr")
+region = Rect2(0.428, 64, 15.572, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wmcxh"]
+radius = 4.23892
+height = 18.4279
+
+[node name="hoe_tool" type="Node2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_2lher")
+itemName = "hoe"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(1, 1.034)
+texture = SubResource("AtlasTexture_y6cae")
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+rotation = 0.760964
+shape = SubResource("CapsuleShape2D_wmcxh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

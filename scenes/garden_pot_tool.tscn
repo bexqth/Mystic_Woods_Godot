@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbouwbftyvg3i"]
+
+[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_551ww"]
+[ext_resource type="Texture2D" uid="uid://cscclx7e6blih" path="res://art/objects/Farming Tools spritesheet.png" id="1_h5dls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow8d6"]
+atlas = ExtResource("1_h5dls")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p76vj"]
+radius = 5.12
+height = 11.2
+
+[node name="garden_pot_tool" type="Node2D"]
+script = ExtResource("1_551ww")
+itemName = "garden_pool"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = SubResource("AtlasTexture_ow8d6")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(-0.48, 0.16)
+shape = SubResource("CapsuleShape2D_p76vj")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

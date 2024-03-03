@@ -21,6 +21,7 @@ public partial class InventoryItem : Node2D
 	private int count;
 	public override void _Ready()
 	{
+		icon = GetNode<Sprite2D>("Sprite2D").Texture;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,4 +56,9 @@ public partial class InventoryItem : Node2D
 		Position = position;
 	}
 
+	public bool getStackable()
+	{
+		return stackable;
+	}
 }
+
