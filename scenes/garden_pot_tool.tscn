@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbouwbftyvg3i"]
 
-[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_551ww"]
+[ext_resource type="Script" path="res://scripts/GardenPotTool.cs" id="1_guyyw"]
 [ext_resource type="Texture2D" uid="uid://cscclx7e6blih" path="res://art/objects/Farming Tools spritesheet.png" id="1_h5dls"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ow8d6"]
@@ -12,8 +12,8 @@ radius = 5.12
 height = 11.2
 
 [node name="garden_pot_tool" type="Node2D"]
-script = ExtResource("1_551ww")
-itemName = "garden_pool"
+script = ExtResource("1_guyyw")
+itemName = "garden_pot"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)

@@ -24,10 +24,11 @@ public partial class Player : CharacterBody2D
 	private ProgressBar healthbar;
 	
 	private AnimatedSprite2D animator;
+	private InventoryItem holdingItem;
 
 	[Export]
 	public Inventory inventory;
-	private TileMap tileMap;
+	//private TileMap tileMap;
 	public override void _Ready()
 	{
 		base._Ready();
@@ -44,7 +45,8 @@ public partial class Player : CharacterBody2D
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
 		healthbar = GetNode<ProgressBar>("healthbar");
 		//tileMap = GetNode<TileMap>("TileMap");
-		tileMap = GetNode<TileMap>("../TileMap");
+		//tileMap = GetNode<TileMap>("../TileMap");
+		isIdle = true;
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -54,7 +56,6 @@ public partial class Player : CharacterBody2D
 		checkForBeingHit();
 		checkHealth();
 		manageHealthBar();
-		//GD.Print("is idle  " + isIdle);
 	}
 
 	public void keyboardControl() {
@@ -64,23 +65,23 @@ public partial class Player : CharacterBody2D
 		Vector2 position = Position;
 		Vector2 scale = animator.Scale;
 
-		if(Input.IsKeyPressed(Key.A)) {
+		if(Input.IsActionPressed("pressed_a")) {
 			position.X -= speed;
 			scale.X = -1;
 			setRunning(true);	
-		} else if(Input.IsKeyPressed(Key.D)) {
+		} else if(Input.IsActionPressed("pressed_d")) {
 			position.X += speed;
 			scale.X = 1;
 			setRunning(true);
-		} else if (Input.IsKeyPressed(Key.W)) {
+		} else if (Input.IsActionPressed("pressed_w")) {
 			position.Y -= speed;
 			setRunning(true);
-		} else if(Input.IsKeyPressed(Key.S)) {
+		} else if(Input.IsActionPressed("pressed_s")) {
 			position.Y += speed;	
 			setRunning(true);
 		}
 
-		if(Input.IsActionJustPressed("delete_item")) { //Prepisat
+		if(Input.IsActionJustPressed("delete_item")) { //Prepisat na Q
 			inventory.deleteItem();
 		}
 
@@ -90,7 +91,13 @@ public partial class Player : CharacterBody2D
 	}
 
 	public void mouseControl() {
-		if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack && !isAttacking) {
+		holdingItem = inventory.getHoldingItem();
+
+		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null) {
+			holdingItem.useItem();
+		}
+
+		/*if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack && !isAttacking) {
 			setAttacking(true);
 			canAttack = false;
 			giveAttackCoolDownTimer.Start();
@@ -110,7 +117,28 @@ public partial class Player : CharacterBody2D
 			int sourceId = 6;
 			Vector2I tile = new Vector2I(2,0);
 			tileMap.SetCell(0, tileMousePosition, sourceId, tile);
-		}
+		}*/
+	}
+
+
+	public Vector2 globalMousePosition() {
+		Vector2 mousePosition = GetGlobalMousePosition();
+		int mouseX = (int)(mousePosition.X / 3);
+		int mouseY = (int)(mousePosition.Y / 3);
+		Vector2 newMousePosition = new Vector2(mouseX, mouseY);
+		return newMousePosition;
+	}
+
+	public void setCanAttack(bool b) {
+		canAttack = b;
+	}
+
+	public bool getCanAttack() {
+		return canAttack;
+	}
+
+	public Timer getGiveAttackCoolDownTimer() {
+		return giveAttackCoolDownTimer;
 	}
 
 	private void _on_give_attack_cooldown_timeout(){
@@ -167,30 +195,15 @@ public partial class Player : CharacterBody2D
 			health -= damage;
 			attackCooldownTurnOn = true;
 			attackCooldownTimer.Start();
-			//GD.Print(health);
 		}
 
 	}
-
-	/*public void checkCollisionInventory(InventoryItem item) {
-		switch(item.Name) {
-			case "apple":
-				inventory.addItem(item);
-			break;
-		}
-	}*/
 
 	public void addItemToInventory(InventoryItem item) {
 		inventory.addItem(item);
 	}
 
 	private void _on_player_collision_body_entered(Node2D body) {
-		/*switch (body.Name) {
-			case "apple":
-				GD.Print("Collision with the apple");
-				//inventory.addItem(item);
-			break;
-		}*/
 	}
 
 	public void checkForBeingHit() {
@@ -215,13 +228,6 @@ public partial class Player : CharacterBody2D
 
 	public void manageHealthBar() {
 		healthbar.Value = health;
-		//GD.Print(healthbar.Value);
-
-		/*if(health >= 100) {
-			healthbar.Visible = false;
-		} else {
-			healthbar.Visible = true;
-		}*/
 
 		if(health >= 100) {
 			healthbar.Modulate = new Color("#75caa7");

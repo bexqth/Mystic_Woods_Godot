@@ -37,9 +37,7 @@ public partial class InventoryItem : Node2D
 	private void _on_area_2d_body_entered(Node2D body)
 	{
 		if(body.Name == "Player") {
-			GD.Print(this.Name + " was added to the inventory");
 			player.addItemToInventory(this);
-			//QueueFree();
 		}
 	}
 
@@ -47,7 +45,10 @@ public partial class InventoryItem : Node2D
 		return this.itemName;
 	}
 
-	public virtual void useItem() {}
+	public virtual void useItem() {
+
+	}
+
 
 	public void setPositionAfterDeletingFromItem() {
 		Vector2 position = Position;

@@ -89,6 +89,10 @@ public partial class Slot : Button
 		}
 	}
 
+	public InventoryItem getItem() {
+		return items[0];
+	}
+
 	private void _on_delete_button_pressed() {
 		/*GD.Print("Delete button pressed!");
 		//GD.Print("BUTTON CLICKED 1");

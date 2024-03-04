@@ -1,4 +1,5 @@
 using Godot;
+using Godot.NativeInterop;
 using System;
 using System.Runtime.CompilerServices;
 
@@ -42,39 +43,58 @@ public partial class Inventory : Node
 		slots[4] = slot5;
 	}
 
-	public void addItem(InventoryItem item) {
-		for(int i = 0; i < inventorySize; i++) {
-			if(slots[i].getSlotItemName() == item.getItemName()) {
-				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-				slots[i].setIcon(itemCopy.getIcon()); 
-				slots[i].addItemToArray(itemCopy); 
-
-				//GD.Print("object name " + itemCopy.getItemName());
-				//GD.Print("slot name " + slots[i].getSlotItemName());
-
-				item.QueueFree(); 
-				return;
-			}
+	public InventoryItem getHoldingItem() {
+		if(!slots[focusIndex].isFree) {
+			return slots[focusIndex].getItem();
 		}
-
-		for(int i = 0; i < inventorySize; i++) {
-			if(slots[i].getIsFree() == true) {
-				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-				slots[i].setIcon(itemCopy.getIcon());
-				slots[i].addItemToArray(itemCopy);
-				slots[i].setSlotItemName(item.getItemName());
-
-				//GD.Print("object name " + itemCopy.getItemName());
-				//GD.Print("slot name " + slots[i].getSlotItemName());
-
-				slots[i].setFree(false);
-				item.QueueFree();
-				return;
-			}
-		}
+		return null;
 	}
 
-	public void deleteItem() {
+	public void addItem(InventoryItem item) {
+			for(int i = 0; i < inventorySize; i++) {
+				if(slots[i].getSlotItemName() == item.getItemName()) {
+					InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+					slots[i].setIcon(itemCopy.getIcon()); 
+					slots[i].addItemToArray(itemCopy); 
+					item.QueueFree(); 
+					return;
+				}
+			}
+
+			if(!isFull()) {
+				for(int i = 0; i < inventorySize; i++) {
+					if(slots[i].getIsFree() == true) {
+						InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+						slots[i].setIcon(itemCopy.getIcon());
+						slots[i].addItemToArray(itemCopy);
+						slots[i].setSlotItemName(item.getItemName());
+						slots[i].setFree(false);
+						item.QueueFree();
+						return;
+					}
+				}
+			}
+			
+	}
+
+    public bool isFull()
+    {
+		int freeSpots =  0;
+        for(int i = 0; i < inventorySize; i++) {
+			if(slots[i].isFree) {
+				freeSpots++;
+			}
+		}
+
+		if(freeSpots > 0) {
+			return false;
+		}
+
+		GD.Print("INVENTORY IS FULL");
+		return true;
+    }
+
+    public void deleteItem() {
 		slots[focusIndex].deleteItemFromArray();
 	}
 
