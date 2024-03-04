@@ -27,6 +27,7 @@ public partial class Player : CharacterBody2D
 
 	[Export]
 	public Inventory inventory;
+	private TileMap tileMap;
 	public override void _Ready()
 	{
 		base._Ready();
@@ -42,6 +43,8 @@ public partial class Player : CharacterBody2D
 		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
 		healthbar = GetNode<ProgressBar>("healthbar");
+		//tileMap = GetNode<TileMap>("TileMap");
+		tileMap = GetNode<TileMap>("../TileMap");
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -77,7 +80,7 @@ public partial class Player : CharacterBody2D
 			setRunning(true);
 		}
 
-		if(Input.IsActionJustPressed("delete_item")) {
+		if(Input.IsActionJustPressed("delete_item")) { //Prepisat
 			inventory.deleteItem();
 		}
 
@@ -91,6 +94,22 @@ public partial class Player : CharacterBody2D
 			setAttacking(true);
 			canAttack = false;
 			giveAttackCoolDownTimer.Start();
+		}
+
+		if(Input.IsActionJustPressed("on_right_click")) {
+			GD.Print("RIGHT BUTTON CLICKED");
+			Vector2 mousePosition = GetGlobalMousePosition();
+			int mouseX = (int)(mousePosition.X / 3);
+			int mouseY = (int)(mousePosition.Y / 3);
+
+            Vector2 newMousePosition = new Vector2(mouseX, mouseY);
+
+			GD.Print(mousePosition);
+			var tileMousePosition = tileMap.LocalToMap(newMousePosition);
+			GD.Print(tileMousePosition);
+			int sourceId = 6;
+			Vector2I tile = new Vector2I(2,0);
+			tileMap.SetCell(0, tileMousePosition, sourceId, tile);
 		}
 	}
 

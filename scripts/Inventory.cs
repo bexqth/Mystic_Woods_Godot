@@ -49,8 +49,8 @@ public partial class Inventory : Node
 				slots[i].setIcon(itemCopy.getIcon()); 
 				slots[i].addItemToArray(itemCopy); 
 
-				GD.Print("object name " + itemCopy.getItemName());
-				GD.Print("slot name " + slots[i].getSlotItemName());
+				//GD.Print("object name " + itemCopy.getItemName());
+				//GD.Print("slot name " + slots[i].getSlotItemName());
 
 				item.QueueFree(); 
 				return;
@@ -64,8 +64,8 @@ public partial class Inventory : Node
 				slots[i].addItemToArray(itemCopy);
 				slots[i].setSlotItemName(item.getItemName());
 
-				GD.Print("object name " + itemCopy.getItemName());
-				GD.Print("slot name " + slots[i].getSlotItemName());
+				//GD.Print("object name " + itemCopy.getItemName());
+				//GD.Print("slot name " + slots[i].getSlotItemName());
 
 				slots[i].setFree(false);
 				item.QueueFree();
