@@ -852,17 +852,18 @@ layer_3/name = "plants"
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("inventory")]
-position = Vector2(442, 338)
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(3, 3)
 collision_layer = 3
 script = ExtResource("6_u2qtk")
 inventory = NodePath("Camera2D/Inventory")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(0, -6.33332)
+position = Vector2(-2.08165e-12, -2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_w31n5")
-animation = &"attack"
+animation = &"idle"
 speed_scale = 2.0
+offset = Vector2(2.08165e-12, -8)
 
 [node name="Collision_Feet" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.333344, 9.00002)
@@ -874,6 +875,7 @@ debug_color = Color(0, 0.552941, 0.760784, 0.419608)
 [node name="player_hitbox" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/player_hitbox"]
+visible = false
 position = Vector2(3.33786e-06, 0.666663)
 shape = SubResource("CircleShape2D_v7x1s")
 

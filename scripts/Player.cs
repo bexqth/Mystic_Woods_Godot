@@ -122,6 +122,7 @@ public partial class Player : CharacterBody2D
 
 
 	public Vector2 globalMousePosition() {
+		//Vector2 mousePosition = GetLocalMousePosition();
 		Vector2 mousePosition = GetGlobalMousePosition();
 		int mouseX = (int)(mousePosition.X / 3);
 		int mouseY = (int)(mousePosition.Y / 3);
