@@ -25,8 +25,8 @@ public partial class GardenPotTool : InventoryItem
 		//Vector2I tilePlayerPosition = tileMap.LocalToMap(player.GlobalPosition);
 		Vector2I tile = new Vector2I(2,0);
 
-		GD.Print("tile mouse pos " + tileMousePosition);
-		GD.Print("playes pos" + (int)player.GlobalPosition.X/48 + " " + (int)player.GlobalPosition.Y/48);
+		//GD.Print("tile mouse pos " + tileMousePosition);
+		//GD.Print("playes pos" + (int)player.GlobalPosition.X/48 + " " + (int)player.GlobalPosition.Y/48);
 		//GD.Print("tile playes pos " + tilePlayerPosition);
 
 		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://u7e4xrllxakj"]
+
+[ext_resource type="Texture2D" uid="uid://c70jpqlwkiocx" path="res://art/objects/Carrot.png" id="1_rabkj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwjoq"]
+atlas = ExtResource("1_rabkj")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lb820"]
+radius = 3.5
+height = 16.2752
+
+[node name="carrot" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_rwjoq")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+rotation = 0.849975
+shape = SubResource("CapsuleShape2D_lb820")

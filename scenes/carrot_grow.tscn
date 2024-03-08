@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnb82mupg3x7w"]
+
+[ext_resource type="Texture2D" uid="uid://c70jpqlwkiocx" path="res://art/objects/Carrot.png" id="1_0i22b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3hed"]
+atlas = ExtResource("1_0i22b")
+region = Rect2(16, 16, 16, 16)
+
+[node name="carrot2" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_a3hed")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]

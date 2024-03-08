@@ -375,6 +375,7 @@ texture = ExtResource("7_rxu21")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/custom_data_0 = true
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -516,6 +517,8 @@ texture = ExtResource("10_sper5")
 [sub_resource type="TileSet" id="TileSet_r710j"]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
+custom_data_layer_0/name = "canPlaceSeeds"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_dpyir")
 sources/1 = SubResource("TileSetAtlasSource_l5qb7")
 sources/2 = SubResource("TileSetAtlasSource_g7707")
@@ -861,7 +864,7 @@ inventory = NodePath("Camera2D/Inventory")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-2.08165e-12, -2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_w31n5")
-animation = &"idle"
+animation = &"attack"
 speed_scale = 2.0
 offset = Vector2(2.08165e-12, -8)
 
