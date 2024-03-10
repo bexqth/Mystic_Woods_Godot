@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs4sdv6abhy5y"]
+[gd_scene load_steps=7 format=3 uid="uid://cs4sdv6abhy5y"]
 
 [ext_resource type="Texture2D" uid="uid://dkd2isnue7duc" path="res://art/objects/Radish.png" id="1_amfsv"]
+[ext_resource type="Script" path="res://scripts/Plant.cs" id="1_c8qa5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wn3nk"]
 atlas = ExtResource("1_amfsv")
@@ -26,13 +27,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_plefx")
 }],
-"loop": true,
+"loop": false,
 "name": &"grow",
 "speed": 5.0
 }]
 
 [node name="radish_grow" type="Node2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_c8qa5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://djvhiinen0o86"]
+[gd_scene load_steps=7 format=3 uid="uid://djvhiinen0o86"]
 
+[ext_resource type="Script" path="res://scripts/Plant.cs" id="1_551r7"]
 [ext_resource type="Texture2D" uid="uid://djsdpae3hnjuh" path="res://art/objects/Turnip.png" id="1_q03lc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aae8w"]
@@ -26,13 +27,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l2cr8")
 }],
-"loop": true,
+"loop": false,
 "name": &"grow",
 "speed": 5.0
 }]
 
 [node name="turnip_grow" type="Node2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_551r7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)

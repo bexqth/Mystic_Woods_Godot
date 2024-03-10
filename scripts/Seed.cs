@@ -27,6 +27,14 @@ public partial class Seed : InventoryItem
 			case "PotatoSeed":
 				plantScene = GD.Load<PackedScene>("res://scenes/potato_grow.tscn");
 			break;
+
+			case "TurnipSeed":
+				plantScene = GD.Load<PackedScene>("res://scenes/turnip_grow.tscn");
+			break;
+
+			case "RadishSeed":
+				plantScene = GD.Load<PackedScene>("res://scenes/radish_grow.tscn");
+			break;
 		}
 
 	} 
