@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=83 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bcth3ha76e56p" path="res://art/background/grass.png" id="1_6ilq0"]
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_em87q"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://dtrpt5vpnu6bh" path="res://scenes/sword_tool.tscn" id="23_f0x6a"]
 [ext_resource type="PackedScene" uid="uid://dwgq8sjp7ubk5" path="res://scenes/carrot_seed.tscn" id="24_qa881"]
 [ext_resource type="PackedScene" uid="uid://bj4vi5fr5b7ec" path="res://scenes/potato_seed.tscn" id="25_cd558"]
+[ext_resource type="PackedScene" uid="uid://t2hdm1q22rvb" path="res://scenes/radish_seed.tscn" id="26_vraqb"]
+[ext_resource type="PackedScene" uid="uid://d0ktefind1kxn" path="res://scenes/turnip_seed.tscn" id="27_kvyea"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dpyir"]
 texture = ExtResource("2_wfmyg")
@@ -1000,6 +1002,16 @@ player = NodePath("../Player")
 
 [node name="potato_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("25_cd558")]
 position = Vector2(374, 58)
+tileMap = NodePath("../TileMap")
+player = NodePath("../Player")
+
+[node name="radish_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("26_vraqb")]
+position = Vector2(268, 57)
+tileMap = NodePath("../TileMap")
+player = NodePath("../Player")
+
+[node name="turnip_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("27_kvyea")]
+position = Vector2(216, 59)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 

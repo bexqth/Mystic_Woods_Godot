@@ -11,7 +11,6 @@ public partial class Seed : InventoryItem
 	
 	public override void _Ready() {
 		base._Ready();
-		//assignPlant();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,14 +45,11 @@ public partial class Seed : InventoryItem
 				Vector2 plantPixelPosition = new Vector2(tileMousePosition.X * 16 * 3 + 8*3, tileMousePosition.Y * 16 * 3 + 8*3);
 				plant.Position = plantPixelPosition;
 				player.GetTree().CurrentScene.AddChild(plant);
-				GD.Print("Tile position is " + tileMousePosition.X + " , " + tileMousePosition.Y);
-				GD.Print("Plant position is " + plant.Position.X + " , " + plant.Position.Y);
+				//GD.Print("Tile position is " + tileMousePosition.X + " , " + tileMousePosition.Y);
+				//GD.Print("Plant position is " + plant.Position.X + " , " + plant.Position.Y);
 
 				//tileData.SetCustomData("hasPlacedSeed", true);
-
 				plant.grow();
-
-				GD.Print("U planted a carrot");
 			} else {
 				GD.Print("cant place plats here");
 			}

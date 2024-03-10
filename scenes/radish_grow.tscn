@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs4sdv6abhy5y"]
+
+[ext_resource type="Texture2D" uid="uid://dkd2isnue7duc" path="res://art/objects/Radish.png" id="1_amfsv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn3nk"]
+atlas = ExtResource("1_amfsv")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st8q1"]
+atlas = ExtResource("1_amfsv")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plefx"]
+atlas = ExtResource("1_amfsv")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yscgo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn3nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_st8q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plefx")
+}],
+"loop": true,
+"name": &"grow",
+"speed": 5.0
+}]
+
+[node name="radish_grow" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_yscgo")
+animation = &"grow"
+frame = 2
+frame_progress = 0.218584
+speed_scale = 0.1

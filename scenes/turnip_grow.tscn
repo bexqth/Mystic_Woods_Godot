@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://djvhiinen0o86"]
+
+[ext_resource type="Texture2D" uid="uid://djsdpae3hnjuh" path="res://art/objects/Turnip.png" id="1_q03lc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aae8w"]
+atlas = ExtResource("1_q03lc")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk80j"]
+atlas = ExtResource("1_q03lc")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2cr8"]
+atlas = ExtResource("1_q03lc")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7bt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aae8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk80j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2cr8")
+}],
+"loop": true,
+"name": &"grow",
+"speed": 5.0
+}]
+
+[node name="turnip_grow" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_h7bt5")
+animation = &"grow"
+frame_progress = 0.519102
+speed_scale = 0.1
