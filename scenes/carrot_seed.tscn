@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwgq8sjp7ubk5"]
 
-[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_qql4i"]
+[ext_resource type="Script" path="res://scripts/Seed.cs" id="1_d1ir8"]
 [ext_resource type="Texture2D" uid="uid://c70jpqlwkiocx" path="res://art/objects/Carrot.png" id="2_x0m48"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkgsk"]
@@ -11,7 +11,8 @@ region = Rect2(0, 16, 16, 16)
 radius = 6.0
 
 [node name="CarrotSeed" type="Node2D"]
-script = ExtResource("1_qql4i")
+scale = Vector2(3, 3)
+script = ExtResource("1_d1ir8")
 itemName = "CarrotSeed"
 stackable = true
 
@@ -22,3 +23,5 @@ texture = SubResource("AtlasTexture_nkgsk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 shape = SubResource("CircleShape2D_dlkpa")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

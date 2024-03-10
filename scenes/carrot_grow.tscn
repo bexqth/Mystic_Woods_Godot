@@ -1,17 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnb82mupg3x7w"]
+[gd_scene load_steps=7 format=3 uid="uid://cnb82mupg3x7w"]
 
 [ext_resource type="Texture2D" uid="uid://c70jpqlwkiocx" path="res://art/objects/Carrot.png" id="1_0i22b"]
+[ext_resource type="Script" path="res://scripts/Plant.cs" id="1_qs42k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3hed"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_515tr"]
 atlas = ExtResource("1_0i22b")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(32, 16, 16, 16)
 
-[node name="carrot2" type="Node2D"]
-scale = Vector2(1.5, 1.5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp4q7"]
+atlas = ExtResource("1_0i22b")
+region = Rect2(48, 16, 16, 16)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_a3hed")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nln2"]
+atlas = ExtResource("1_0i22b")
+region = Rect2(64, 16, 16, 16)
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3kvyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_515tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp4q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nln2")
+}],
+"loop": true,
+"name": &"grow",
+"speed": 5.0
+}]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+[node name="carrot_grow" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_qs42k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3kvyn")
+animation = &"grow"
+frame = 1
+frame_progress = 0.406618

@@ -11,7 +11,7 @@ radius = 3.5
 height = 16.2752
 
 [node name="carrot" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_rwjoq")

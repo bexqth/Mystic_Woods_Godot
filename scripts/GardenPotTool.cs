@@ -18,7 +18,7 @@ public partial class GardenPotTool : InventoryItem
 
 	}
 
-    public override void useItem() {
+	public override void useItem() {
 		int sourceId = 6;
 
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
@@ -42,12 +42,12 @@ public partial class GardenPotTool : InventoryItem
 		Vector2I tile = new Vector2I(1,0);
 
 		Vector2 playerPosition = player.Position;
-    	Vector2I tilePlayerPosition = tileMap.LocalToMap(playerPosition);
+		Vector2I tilePlayerPosition = tileMap.LocalToMap(playerPosition);
 
-    	Vector2I upTile = tilePlayerPosition + new Vector2I(0, -rangeOption);
-    	Vector2I downTile = tilePlayerPosition + new Vector2I(0, rangeOption);
-    	Vector2I leftTile = tilePlayerPosition + new Vector2I(-rangeOption, 0);
-    	Vector2I rightTile = tilePlayerPosition + new Vector2I(rangeOption, 0);
+		Vector2I upTile = tilePlayerPosition + new Vector2I(0, -rangeOption);
+		Vector2I downTile = tilePlayerPosition + new Vector2I(0, rangeOption);
+		Vector2I leftTile = tilePlayerPosition + new Vector2I(-rangeOption, 0);
+		Vector2I rightTile = tilePlayerPosition + new Vector2I(rangeOption, 0);
 
 		tileMap.SetCell(0, upTile, sourceId, tile);
 		tileMap.SetCell(0, downTile, sourceId, tile);

@@ -56,6 +56,7 @@ public partial class Player : CharacterBody2D
 		checkForBeingHit();
 		checkHealth();
 		manageHealthBar();
+		//GD.Print(Position.X + ", " + Position.Y);
 	}
 
 	public void keyboardControl() {

@@ -77,10 +77,10 @@ public partial class Inventory : Node
 			
 	}
 
-    public bool isFull()
-    {
+	public bool isFull()
+	{
 		int freeSpots =  0;
-        for(int i = 0; i < inventorySize; i++) {
+		for(int i = 0; i < inventorySize; i++) {
 			if(slots[i].isFree) {
 				freeSpots++;
 			}
@@ -92,14 +92,10 @@ public partial class Inventory : Node
 
 		GD.Print("INVENTORY IS FULL");
 		return true;
-    }
-
-    public void deleteItem() {
-		slots[focusIndex].deleteItemFromArray();
 	}
 
-	public void useInventoryItem(InventoryItem item) {
-
+	public void deleteItem() {
+		slots[focusIndex].deleteItemFromArray();
 	}
 
 	public void changeFocus() {
