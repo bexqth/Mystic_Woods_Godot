@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://btiknxks30bfg"]
+
+[ext_resource type="Texture2D" uid="uid://dkkmonoslybjl" path="res://art/objects/Potato.png" id="1_ujgme"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af6qh"]
+atlas = ExtResource("1_ujgme")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_13k78"]
+radius = 3.54336
+height = 11.3333
+
+[node name="potato" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_af6qh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -0.84823
+shape = SubResource("CapsuleShape2D_13k78")

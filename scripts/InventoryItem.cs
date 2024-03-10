@@ -62,4 +62,3 @@ public partial class InventoryItem : Node2D
 		return stackable;
 	}
 }
-

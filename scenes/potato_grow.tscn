@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnoylnqrf07nj"]
+
+[ext_resource type="Texture2D" uid="uid://dkkmonoslybjl" path="res://art/objects/Potato.png" id="1_xsow7"]
+[ext_resource type="Script" path="res://scripts/Plant.cs" id="2_4g8ma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxn1e"]
+atlas = ExtResource("1_xsow7")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v6ag"]
+atlas = ExtResource("1_xsow7")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne8cl"]
+atlas = ExtResource("1_xsow7")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdyhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxn1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v6ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne8cl")
+}],
+"loop": true,
+"name": &"grow",
+"speed": 5.0
+}]
+
+[node name="potato_grow" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("2_4g8ma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.333333, -7.33333)
+sprite_frames = SubResource("SpriteFrames_vdyhw")
+animation = &"grow"
+frame_progress = 0.11356
+speed_scale = 0.1

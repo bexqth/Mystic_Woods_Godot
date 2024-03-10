@@ -27,7 +27,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8nln2")
 }],
-"loop": true,
+"loop": false,
 "name": &"grow",
 "speed": 5.0
 }]
@@ -39,5 +39,4 @@ script = ExtResource("1_qs42k")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3kvyn")
 animation = &"grow"
-frame = 1
-frame_progress = 0.406618
+speed_scale = 0.1

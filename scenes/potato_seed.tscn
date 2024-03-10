@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj4vi5fr5b7ec"]
+
+[ext_resource type="Texture2D" uid="uid://dkkmonoslybjl" path="res://art/objects/Potato.png" id="1_ac5mr"]
+[ext_resource type="Script" path="res://scripts/Seed.cs" id="1_hwru3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44mys"]
+atlas = ExtResource("1_ac5mr")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3typt"]
+radius = 18.0
+
+[node name="PotatoSeed" type="Node2D"]
+script = ExtResource("1_hwru3")
+itemName = "PotatoSeed"
+stackable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_44mys")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3typt")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
