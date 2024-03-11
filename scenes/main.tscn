@@ -379,7 +379,6 @@ texture = ExtResource("7_rxu21")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/custom_data_0 = true
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -521,10 +520,8 @@ texture = ExtResource("10_sper5")
 [sub_resource type="TileSet" id="TileSet_r710j"]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-custom_data_layer_0/name = "canPlaceSeeds"
-custom_data_layer_0/type = 1
-custom_data_layer_1/name = "hasPlacedSeed"
-custom_data_layer_1/type = 1
+custom_data_layer_0/name = "hasPlantName"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_dpyir")
 sources/1 = SubResource("TileSetAtlasSource_l5qb7")
 sources/2 = SubResource("TileSetAtlasSource_g7707")
@@ -861,6 +858,9 @@ layer_3/name = "plants"
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("inventory")]
+light_mask = 15
+visibility_layer = 15
+z_index = 1
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(3, 3)
 collision_layer = 3
@@ -868,7 +868,7 @@ script = ExtResource("6_u2qtk")
 inventory = NodePath("Camera2D/Inventory")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-2.08165e-12, -2.08165e-12)
+position = Vector2(-2.33333, -0.333333)
 sprite_frames = SubResource("SpriteFrames_w31n5")
 animation = &"attack"
 speed_scale = 2.0
@@ -978,8 +978,9 @@ player = NodePath("../Player")
 position = Vector2(49, 277)
 player = NodePath("../Player")
 
-[node name="hoe_tool" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_0drt5")]
+[node name="hoe_tool" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("18_0drt5")]
 position = Vector2(562, 150)
+tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="axe_tool" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_rqtx2")]

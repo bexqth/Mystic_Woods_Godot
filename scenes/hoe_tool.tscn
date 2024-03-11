@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwd8bva0o7px1"]
 
 [ext_resource type="Texture2D" uid="uid://cscclx7e6blih" path="res://art/objects/Farming Tools spritesheet.png" id="1_1mvmr"]
-[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_2lher"]
+[ext_resource type="Script" path="res://scripts/HoeTool.cs" id="1_wdw41"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6cae"]
 atlas = ExtResource("1_1mvmr")
@@ -13,7 +13,7 @@ height = 18.4279
 
 [node name="hoe_tool" type="Node2D"]
 scale = Vector2(2.5, 2.5)
-script = ExtResource("1_2lher")
+script = ExtResource("1_wdw41")
 itemName = "hoe"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

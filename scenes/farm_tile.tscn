@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://0lwryhf6308w"]
+
+[ext_resource type="Script" path="res://scripts/FarmTile.cs" id="1_klg3o"]
+[ext_resource type="Texture2D" uid="uid://bil8alw7igoya" path="res://art/background/misc.png" id="1_n2ks7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8m14"]
+atlas = ExtResource("1_n2ks7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtr04"]
+size = Vector2(16, 16)
+
+[node name="FarmTile" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_klg3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_w8m14")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_klg3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wtr04")

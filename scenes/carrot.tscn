@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://u7e4xrllxakj"]
+[gd_scene load_steps=5 format=3 uid="uid://u7e4xrllxakj"]
 
+[ext_resource type="Script" path="res://scripts/Food.cs" id="1_0npf6"]
 [ext_resource type="Texture2D" uid="uid://c70jpqlwkiocx" path="res://art/objects/Carrot.png" id="1_rabkj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwjoq"]
@@ -11,7 +12,10 @@ radius = 3.5
 height = 16.2752
 
 [node name="carrot" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_0npf6")
+itemName = "Carrot"
+stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_rwjoq")
@@ -21,3 +25,5 @@ texture = SubResource("AtlasTexture_rwjoq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 0.849975
 shape = SubResource("CapsuleShape2D_lb820")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://qcu0arx1nul5"]
+[gd_scene load_steps=5 format=3 uid="uid://qcu0arx1nul5"]
 
+[ext_resource type="Script" path="res://scripts/Food.cs" id="1_1su5j"]
 [ext_resource type="Texture2D" uid="uid://djsdpae3hnjuh" path="res://art/objects/Turnip.png" id="1_82r1n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wji5"]
@@ -11,7 +12,10 @@ radius = 4.66667
 height = 13.6333
 
 [node name="turnip" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_1su5j")
+itemName = "Turnip"
+stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_1wji5")
@@ -22,3 +26,5 @@ texture = SubResource("AtlasTexture_1wji5")
 position = Vector2(-1.66667, 1.33333)
 rotation = 0.738274
 shape = SubResource("CapsuleShape2D_sg7mw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

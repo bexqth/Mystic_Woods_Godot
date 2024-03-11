@@ -6,7 +6,9 @@ public partial class Plant : Node2D
 	// Called when the node enters the scene tree for the first time.
 	private AnimatedSprite2D animator;
 	private bool canBeDigged;
-	
+	private int tileX;
+	private int tileY;
+	private String plantName;
 	public override void _Ready() {
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		canBeDigged = false;
@@ -17,9 +19,16 @@ public partial class Plant : Node2D
 		checkForGrowing();
 	}
 
+	public void setPlantName(String s) {
+		plantName = s;
+	}
+
+	public String getPlantName() {
+		return plantName;
+	}
+
 	public void grow() {
 		animator.Play("grow");
-		GD.Print("is growing");
 	}
 
 	public void checkForGrowing() {
@@ -34,5 +43,13 @@ public partial class Plant : Node2D
 
 	public void setCanBeDigged(bool b) {
 		canBeDigged = b;
+	}
+
+	public void setTileX(int i){
+		tileX = i;
+	}
+
+	public void setTileY(int i) {
+		tileY = i;
 	}
 }

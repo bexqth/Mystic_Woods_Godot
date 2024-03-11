@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ianx6pssvajy"]
+[gd_scene load_steps=5 format=3 uid="uid://ianx6pssvajy"]
 
 [ext_resource type="Texture2D" uid="uid://dkd2isnue7duc" path="res://art/objects/Radish.png" id="1_j0bdo"]
+[ext_resource type="Script" path="res://scripts/Food.cs" id="1_lhn5d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thyhx"]
 atlas = ExtResource("1_j0bdo")
@@ -11,7 +12,10 @@ radius = 1.66667
 height = 9.33333
 
 [node name="radish" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_lhn5d")
+itemName = "Radish"
+stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.333333, -2)
@@ -22,3 +26,5 @@ texture = SubResource("AtlasTexture_thyhx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.33333)
 shape = SubResource("CapsuleShape2D_kvclu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

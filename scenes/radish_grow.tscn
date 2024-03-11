@@ -40,6 +40,4 @@ script = ExtResource("1_c8qa5")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_yscgo")
 animation = &"grow"
-frame = 2
-frame_progress = 0.218584
 speed_scale = 0.1

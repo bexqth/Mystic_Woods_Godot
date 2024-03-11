@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://btiknxks30bfg"]
+[gd_scene load_steps=5 format=3 uid="uid://btiknxks30bfg"]
 
+[ext_resource type="Script" path="res://scripts/Food.cs" id="1_4g0rq"]
 [ext_resource type="Texture2D" uid="uid://dkkmonoslybjl" path="res://art/objects/Potato.png" id="1_ujgme"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_af6qh"]
@@ -11,7 +12,10 @@ radius = 3.54336
 height = 11.3333
 
 [node name="potato" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_4g0rq")
+itemName = "Potato"
+stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_af6qh")
@@ -21,3 +25,5 @@ texture = SubResource("AtlasTexture_af6qh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = -0.84823
 shape = SubResource("CapsuleShape2D_13k78")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
