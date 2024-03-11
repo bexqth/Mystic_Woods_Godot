@@ -8,7 +8,7 @@ public partial class HoeTool : InventoryItem
 	private PackedScene foodPlantScene;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
+	{	
 		base._Ready();
 	}
 
@@ -25,25 +25,43 @@ public partial class HoeTool : InventoryItem
 			break;
 
 			case "Potato":
-			GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
+				GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
 				foodPlantScene = GD.Load<PackedScene>("res://scenes/potato.tscn");
 			break;
 
 			case "Turnip":
-			GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
+				GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
 				foodPlantScene = GD.Load<PackedScene>("res://scenes/turnip.tscn");
 			break;
 
 			case "Radish":
-			GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
+				GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
 				foodPlantScene = GD.Load<PackedScene>("res://scenes/radish.tscn");
 			break;
 		}
-
 	}
 
     public override void useItem()
     {
+		//int sourceIdGrass = 1;
+		//Vector2I grassTile = new Vector2I(0,0);
+	
+		//Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
+		//TileData tileData = tileMap.GetCellTileData(0, tileMousePosition);
+
+		//TileData plantTileData = tileMap.GetCellTileData(4, tileMousePosition);
+
+		/*getPlantFood();
+
+		Food newFoodPlant = (Food)foodPlantScene.Instantiate();
+		newFoodPlant.player = player;
+        Vector2 plantPixelPosition = new Vector2(clickedFarmTile.Position.X + 8, clickedFarmTile.Position.X + 8);
+		newFoodPlant.Position = plantPixelPosition;
+		player.GetParent().GetTree().CurrentScene.AddChild(newFoodPlant);
+		clickedFarmTile.QueueFree();
+		//setting the grass
+		//tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);*/
+
 		int sourceIdGrass = 1;
 		Vector2I grassTile = new Vector2I(0,0);
 		
@@ -60,6 +78,8 @@ public partial class HoeTool : InventoryItem
 
 		//setting the grass
 		tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);
+		
+
 		
     }
 }

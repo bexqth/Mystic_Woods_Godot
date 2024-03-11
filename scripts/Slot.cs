@@ -71,8 +71,6 @@ public partial class Slot : Button
 
 	public void deleteItemFromArray() {
 
-		//GD.Print("Delete button pressed!");
-		//GD.Print("BUTTON CLICKED 1");
 		InventoryItem item = items[0];
 		item.setPositionAfterDeletingFromItem();
 		GetTree().CurrentScene.AddChild(item);

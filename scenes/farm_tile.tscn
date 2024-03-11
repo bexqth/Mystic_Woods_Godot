@@ -10,7 +10,7 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtr04"]
 size = Vector2(16, 16)
 
-[node name="FarmTile" type="Node2D"]
+[node name="FarmTile" type="Node2D" groups=["FarmTiles"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_klg3o")
 

@@ -10,7 +10,7 @@ region = Rect2(0, 16, 16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_dlkpa"]
 radius = 6.0
 
-[node name="CarrotSeed" type="Node2D"]
+[node name="carrot_seed" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_d1ir8")
 itemName = "CarrotSeed"

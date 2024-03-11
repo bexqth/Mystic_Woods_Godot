@@ -96,6 +96,8 @@ public partial class Player : CharacterBody2D
 
 		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null) {
 			holdingItem.useItem();
+			//if(holdingItem.getStackable()) {
+			//}
 		}
 
 		/*if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack && !isAttacking) {

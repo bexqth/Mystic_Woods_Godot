@@ -18,23 +18,35 @@ public partial class GardenPotTool : InventoryItem
 
 	}
 
+
 	public override void useItem() {
 
 		int sourceId = 6;
 
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-		//Vector2I tilePlayerPosition = tileMap.LocalToMap(player.GlobalPosition);
 		Vector2I tile = new Vector2I(2,0);
-
-		//GD.Print("tile mouse pos " + tileMousePosition);
-		//GD.Print("playes pos" + (int)player.GlobalPosition.X/48 + " " + (int)player.GlobalPosition.Y/48);
-		//GD.Print("tile playes pos " + tilePlayerPosition);
 
 		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
 			tileMap.SetCell(0, tileMousePosition, sourceId, tile);
 		} else {
 			GD.Print("out of reach");
 		}
+
+		/*PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
+
+		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
+
+		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
+			FarmTile farmTile = (FarmTile)farmTileScene.Instantiate();
+			farmTile.Name = "FarmTile";
+			farmTile.Position = new Vector2(tileMousePosition.X * 48, tileMousePosition.Y * 48);
+			farmTile.AddToGroup("FarmTiles");
+			player.GetParent().GetTree().CurrentScene.AddChild(farmTile);
+			GD.Print(player.GetParent().GetTree().CurrentScene.GetChildCount());
+		} else {
+			GD.Print("out of reach");
+		}*/
+
 	}		
 
 

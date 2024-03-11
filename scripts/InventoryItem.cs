@@ -46,9 +46,10 @@ public partial class InventoryItem : Node2D
 	}
 
 	public virtual void useItem() {
-
+		
 	}
 
+	
 
 	public void setPositionAfterDeletingFromItem() {
 		Vector2 position = Position;
