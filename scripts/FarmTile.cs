@@ -10,6 +10,10 @@ public partial class FarmTile : Node2D
 	private Plant plant;
 	private Food food;
 	private FarmTileManager farmTileManager;
+
+	[Signal]
+	public delegate void FarmTileClickedEventHandler(FarmTile clickedFarmTile); //creating signal
+
 	public override void _Ready()
 	{
 		
@@ -51,4 +55,12 @@ public partial class FarmTile : Node2D
 	public String getPlantName() {
 		return plantName;
 	}
+
+	public void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx) {
+		if(Input.IsActionJustPressed("on_left_click")) {
+			EmitSignal(nameof(FarmTileClickedEventHandler), this);
+		}	
+	}
+
 }
+

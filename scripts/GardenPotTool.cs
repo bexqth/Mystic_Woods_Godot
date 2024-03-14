@@ -21,7 +21,7 @@ public partial class GardenPotTool : InventoryItem
 
 	public override void useItem() {
 
-		int sourceId = 6;
+		/*int sourceId = 6;
 
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 		Vector2I tile = new Vector2I(2,0);
@@ -30,9 +30,9 @@ public partial class GardenPotTool : InventoryItem
 			tileMap.SetCell(0, tileMousePosition, sourceId, tile);
 		} else {
 			GD.Print("out of reach");
-		}
+		}*/
 
-		/*PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
+	    PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
 
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 
@@ -43,9 +43,11 @@ public partial class GardenPotTool : InventoryItem
 			farmTile.AddToGroup("FarmTiles");
 			player.GetParent().GetTree().CurrentScene.AddChild(farmTile);
 			GD.Print(player.GetParent().GetTree().CurrentScene.GetChildCount());
+			//farmTile.Connect(nameof(FarmTile.FarmTileClickedEventHandler), this, nameof(Seed.OnFarmTileClicked));
+			farmTile.Connect(nameof(FarmTile.FarmTileClickedEventHandler), new Callable(this, nameof(Seed.OnFarmTileClicked)));
 		} else {
 			GD.Print("out of reach");
-		}*/
+		}
 
 	}		
 
