@@ -41,45 +41,12 @@ public partial class HoeTool : InventoryItem
 		}
 	}
 
-    public override void useItem()
-    {
-		//int sourceIdGrass = 1;
-		//Vector2I grassTile = new Vector2I(0,0);
-	
-		//Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-		//TileData tileData = tileMap.GetCellTileData(0, tileMousePosition);
-
-		//TileData plantTileData = tileMap.GetCellTileData(4, tileMousePosition);
-
-		/*getPlantFood();
-
-		Food newFoodPlant = (Food)foodPlantScene.Instantiate();
-		newFoodPlant.player = player;
-        Vector2 plantPixelPosition = new Vector2(clickedFarmTile.Position.X + 8, clickedFarmTile.Position.X + 8);
-		newFoodPlant.Position = plantPixelPosition;
-		player.GetParent().GetTree().CurrentScene.AddChild(newFoodPlant);
-		clickedFarmTile.QueueFree();
-		//setting the grass
-		//tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);*/
-
+    public override void useItem() {
+		
 		int sourceIdGrass = 1;
-		Vector2I grassTile = new Vector2I(0,0);
-		
+		Vector2I grassTile = new Vector2I(0,0);	
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-		TileData tileData = tileMap.GetCellTileData(0, tileMousePosition);
-
-		getPlantFood(tileData); //returns nothing
-		
-		Food newFoodPlant = (Food)foodPlantScene.Instantiate();
-		newFoodPlant.player = player;
-        Vector2 plantPixelPosition = new Vector2(tileMousePosition.X * 16 * 3 + 8*3, tileMousePosition.Y * 16 * 3 + 8*3);
-		newFoodPlant.Position = plantPixelPosition;
-		player.GetTree().CurrentScene.AddChild(newFoodPlant);
-
-		//setting the grass
 		tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);
-		
-
-		
+	
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata;
 
 public partial class Player : CharacterBody2D
 {
@@ -25,6 +26,11 @@ public partial class Player : CharacterBody2D
 	
 	private AnimatedSprite2D animator;
 	private InventoryItem holdingItem;
+
+	private String farmingTool;
+	private bool wantsToPlantSeed;
+
+	private FarmingManager farmingManager;
 
 	[Export]
 	public Inventory inventory;
@@ -57,6 +63,22 @@ public partial class Player : CharacterBody2D
 		checkHealth();
 		manageHealthBar();
 		//GD.Print(Position.X + ", " + Position.Y);
+	}
+
+	public void setFarmingTool(String s) {
+		farmingTool = s;
+	}
+
+	public String getFarmingTool() {
+		return farmingTool;
+	}
+
+	public bool getWantsToPlantSeed() {
+		return wantsToPlantSeed;
+	}
+
+	public void setWantsToPlantSeed(bool b) {
+		this.wantsToPlantSeed = b;
 	}
 
 	public void keyboardControl() {
@@ -96,42 +118,18 @@ public partial class Player : CharacterBody2D
 
 		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null) {
 			holdingItem.useItem();
-			//if(holdingItem.getStackable()) {
-			//}
 		}
-
-		/*if(Input.IsMouseButtonPressed(MouseButton.Left) && canAttack && !isAttacking) {
-			setAttacking(true);
-			canAttack = false;
-			giveAttackCoolDownTimer.Start();
-		}
-
-		if(Input.IsActionJustPressed("on_right_click")) {
-			GD.Print("RIGHT BUTTON CLICKED");
-			Vector2 mousePosition = GetGlobalMousePosition();
-			int mouseX = (int)(mousePosition.X / 3);
-			int mouseY = (int)(mousePosition.Y / 3);
-
-            Vector2 newMousePosition = new Vector2(mouseX, mouseY);
-
-			GD.Print(mousePosition);
-			var tileMousePosition = tileMap.LocalToMap(newMousePosition);
-			GD.Print(tileMousePosition);
-			int sourceId = 6;
-			Vector2I tile = new Vector2I(2,0);
-			tileMap.SetCell(0, tileMousePosition, sourceId, tile);
-		}*/
 	}
 
 
 	public Vector2 globalMousePosition() {
-		//Vector2 mousePosition = GetLocalMousePosition();
 		Vector2 mousePosition = GetGlobalMousePosition();
 		int mouseX = (int)(mousePosition.X / 3);
 		int mouseY = (int)(mousePosition.Y / 3);
 		Vector2 newMousePosition = new Vector2(mouseX, mouseY);
 		return newMousePosition;
 	}
+
 
 	public void setCanAttack(bool b) {
 		canAttack = b;

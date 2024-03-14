@@ -15,6 +15,10 @@ public partial class Food : InventoryItem
 	{
 	}
 
+	public void setPlayer(Player p){
+		player = p;
+	}
+
 	public void setGiveHealth(int i) {
 		giveHealth = i;
 	}

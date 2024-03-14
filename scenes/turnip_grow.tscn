@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djvhiinen0o86"]
+[gd_scene load_steps=8 format=3 uid="uid://djvhiinen0o86"]
 
 [ext_resource type="Script" path="res://scripts/Plant.cs" id="1_551r7"]
 [ext_resource type="Texture2D" uid="uid://djsdpae3hnjuh" path="res://art/objects/Turnip.png" id="1_q03lc"]
@@ -32,6 +32,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87r2d"]
+size = Vector2(16.3333, 18.7083)
+
 [node name="turnip_grow" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_551r7")
@@ -40,5 +43,13 @@ script = ExtResource("1_551r7")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_h7bt5")
 animation = &"grow"
-frame_progress = 0.519102
+frame = 2
 speed_scale = 0.1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2.97917)
+shape = SubResource("RectangleShape2D_87r2d")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

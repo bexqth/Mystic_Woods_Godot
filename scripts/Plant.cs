@@ -9,14 +9,27 @@ public partial class Plant : Node2D
 	private int tileX;
 	private int tileY;
 	private String plantName;
+	private Food plantFood;
+	private int posX;
+	private int posY;
+	private Player player;
 	public override void _Ready() {
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		canBeDigged = false;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		checkForGrowing();
+	}
+
+	public void setPlayer(Player p) {
+		player = p;
+	}
+
+	public void setPlandFood(Food plantFood) {
+		this.plantFood = plantFood;
 	}
 
 	public void setPlantName(String s) {
@@ -41,6 +54,14 @@ public partial class Plant : Node2D
 		return canBeDigged;
 	}
 
+	public void setX(int x) {
+		posX = x;
+	}
+
+	public void setY(int y) {
+		posY = y;
+	}
+
 	public void setCanBeDigged(bool b) {
 		canBeDigged = b;
 	}
@@ -51,5 +72,15 @@ public partial class Plant : Node2D
 
 	public void setTileY(int i) {
 		tileY = i;
+	}
+
+
+	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx) {
+		if (Input.IsActionJustPressed("on_left_click")) {
+			GD.Print("area 2d clicked");
+			GD.Print(plantFood);
+			this.QueueFree();
+			player.GetParent().GetTree().CurrentScene.AddChild(plantFood);
+		}
 	}
 }

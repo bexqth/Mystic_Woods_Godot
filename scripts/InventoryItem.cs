@@ -49,8 +49,6 @@ public partial class InventoryItem : Node2D
 		
 	}
 
-	
-
 	public void setPositionAfterDeletingFromItem() {
 		Vector2 position = Position;
 		position.X = player.Position.X;

@@ -1,16 +1,17 @@
 using Godot;
 using System;
+using System.Runtime.Intrinsics.X86;
 
 public partial class GardenPotTool : InventoryItem
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export]
 	public TileMap tileMap;
+	private FarmingManager farmingManager;
 	private int rangeOption = 1;
 
 	public override void _Ready() {
 		base._Ready();
-		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,33 +19,32 @@ public partial class GardenPotTool : InventoryItem
 
 	}
 
+	public void setFarmingManager(FarmingManager fm) {
+		this.farmingManager = fm;
+		GD.Print("the manager was added");
+		GD.Print(farmingManager);
+	}
 
 	public override void useItem() {
+	    /*PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
+		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 
-		/*int sourceId = 6;
+		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
+			FarmTile farmTile = (FarmTile)farmTileScene.Instantiate();
+			farmTile.Position = new Vector2(tileMousePosition.X * 48, tileMousePosition.Y * 48);
+			player.GetParent().GetTree().CurrentScene.AddChild(farmTile);
+			GD.Print(player.GetParent().GetTree().CurrentScene.GetChildCount());
+		} else {
+			GD.Print("out of reach");
+		}*/
+		
+		int sourceId = 6;
 
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 		Vector2I tile = new Vector2I(2,0);
 
 		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
 			tileMap.SetCell(0, tileMousePosition, sourceId, tile);
-		} else {
-			GD.Print("out of reach");
-		}*/
-
-	    PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
-
-		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-
-		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
-			FarmTile farmTile = (FarmTile)farmTileScene.Instantiate();
-			farmTile.Name = "FarmTile";
-			farmTile.Position = new Vector2(tileMousePosition.X * 48, tileMousePosition.Y * 48);
-			farmTile.AddToGroup("FarmTiles");
-			player.GetParent().GetTree().CurrentScene.AddChild(farmTile);
-			GD.Print(player.GetParent().GetTree().CurrentScene.GetChildCount());
-			//farmTile.Connect(nameof(FarmTile.FarmTileClickedEventHandler), this, nameof(Seed.OnFarmTileClicked));
-			farmTile.Connect(nameof(FarmTile.FarmTileClickedEventHandler), new Callable(this, nameof(Seed.OnFarmTileClicked)));
 		} else {
 			GD.Print("out of reach");
 		}
