@@ -43,7 +43,6 @@ script = ExtResource("1_551r7")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_h7bt5")
 animation = &"grow"
-frame = 2
 speed_scale = 0.1
 
 [node name="Area2D" type="Area2D" parent="."]

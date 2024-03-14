@@ -130,6 +130,9 @@ public partial class Player : CharacterBody2D
 		return newMousePosition;
 	}
 
+	public String getNameHoldingItem() {
+		return holdingItem.getItemName();
+	}
 
 	public void setCanAttack(bool b) {
 		canAttack = b;
