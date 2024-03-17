@@ -131,7 +131,10 @@ public partial class Player : CharacterBody2D
 	}
 
 	public String getNameHoldingItem() {
-		return holdingItem.getItemName();
+		if(this.holdingItem != null) {
+			return holdingItem.getItemName();
+		}
+		return null;
 	}
 
 	public void setCanAttack(bool b) {

@@ -17,32 +17,7 @@ public partial class HoeTool : InventoryItem
 	{
 	}
 
-	public void getPlantFood(TileData tile) {
-		switch((string)tile.GetCustomData("hasPlantName")) {
-			case "Carrot":
-				GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
-				foodPlantScene = GD.Load<PackedScene>("res://scenes/carrot.tscn");
-			break;
-
-			case "Potato":
-				GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
-				foodPlantScene = GD.Load<PackedScene>("res://scenes/potato.tscn");
-			break;
-
-			case "Turnip":
-				GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
-				foodPlantScene = GD.Load<PackedScene>("res://scenes/turnip.tscn");
-			break;
-
-			case "Radish":
-				GD.Print("tile name " + tile.GetCustomData("hasPlantName"));
-				foodPlantScene = GD.Load<PackedScene>("res://scenes/radish.tscn");
-			break;
-		}
-	}
-
     public override void useItem() {
-		
 		int sourceIdGrass = 1;
 		Vector2I grassTile = new Vector2I(0,0);	
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());

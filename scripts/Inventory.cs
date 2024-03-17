@@ -100,19 +100,16 @@ public partial class Inventory : Node
 
 	public void changeFocus() {
 		if (Input.IsActionJustPressed("scroll_up")) {
-			//GD.Print("Mouse wheel scrolled up!");
 			focusIndex++;
 			if (focusIndex >= inventorySize)
 				focusIndex = 0;
 		}
 		else if (Input.IsActionJustPressed("scroll_down")){
-			//GD.Print("Mouse wheel scrolled down!");
 			focusIndex--;
 			if (focusIndex < 0)
 				focusIndex = inventorySize - 1;
 		}
 		slots[focusIndex].GrabFocus();
-		//slots[focusIndex].GetNode<Button>("deleteButton").GrabFocus();
 	}
 
 }

@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0f7un63vh623"]
+
+[ext_resource type="Script" path="res://scripts/Chest.cs" id="1_f5fdr"]
+[ext_resource type="Texture2D" uid="uid://sdu7n07cuy88" path="res://art/objects/chest_01.png" id="1_l5bgv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smgbk"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bamcd"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyca2"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qko2g"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up6e8"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsedo"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dux6n"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpvkv"]
+atlas = ExtResource("1_l5bgv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3x1xo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smgbk")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bamcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyca2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qko2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up6e8")
+}],
+"loop": false,
+"name": &"closing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsedo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dux6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpvkv")
+}],
+"loop": false,
+"name": &"opening",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_urfd1"]
+radius = 24.6689
+
+[sub_resource type="FontFile" id="FontFile_vq8pt"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="chest" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_f5fdr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3x1xo")
+animation = &"closing"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_urfd1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -15.0
+offset_right = 193.0
+offset_bottom = 5.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = SubResource("FontFile_vq8pt")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

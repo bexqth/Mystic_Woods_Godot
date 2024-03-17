@@ -12,7 +12,7 @@ radius = 3.5
 height = 16.2752
 
 [node name="carrot" type="Node2D"]
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2, 2)
 script = ExtResource("1_0npf6")
 itemName = "Carrot"
 stackable = true

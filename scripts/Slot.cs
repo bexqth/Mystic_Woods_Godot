@@ -70,7 +70,6 @@ public partial class Slot : Button
 	}
 
 	public void deleteItemFromArray() {
-
 		InventoryItem item = items[0];
 		item.setPositionAfterDeletingFromItem();
 		GetTree().CurrentScene.AddChild(item);

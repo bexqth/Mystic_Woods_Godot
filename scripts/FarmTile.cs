@@ -9,6 +9,7 @@ public partial class FarmTile : Node2D
 		
 	private Plant plant;
 	private Food food;
+	private bool seedPlanted;
 
 
 	public override void _Ready()
@@ -53,5 +54,12 @@ public partial class FarmTile : Node2D
 		return plantName;
 	}
 
+	public void setSeedPlanted(bool b) {
+		seedPlanted = b;
+	}
+
+	public bool getSeedPlanted() {
+		return seedPlanted;
+	}
 
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=88 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bcth3ha76e56p" path="res://art/background/grass.png" id="1_6ilq0"]
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_em87q"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bj4vi5fr5b7ec" path="res://scenes/potato_seed.tscn" id="25_cd558"]
 [ext_resource type="PackedScene" uid="uid://t2hdm1q22rvb" path="res://scenes/radish_seed.tscn" id="26_vraqb"]
 [ext_resource type="PackedScene" uid="uid://d0ktefind1kxn" path="res://scenes/turnip_seed.tscn" id="27_kvyea"]
+[ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="30_qgth6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dpyir"]
 texture = ExtResource("2_wfmyg")
@@ -1066,6 +1067,9 @@ player = NodePath("../Player")
 position = Vector2(57, 61)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
+
+[node name="chest" parent="." instance=ExtResource("30_qgth6")]
+position = Vector2(115, -41)
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_exited"]

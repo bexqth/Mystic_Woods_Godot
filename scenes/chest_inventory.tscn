@@ -1,0 +1,690 @@
+[gd_scene load_steps=3 format=3 uid="uid://ymjxa6tlctj7"]
+
+[ext_resource type="Script" path="res://scripts/Slot.cs" id="1_f1eki"]
+[ext_resource type="Script" path="res://scripts/ChestInventory.cs" id="1_fvjha"]
+
+[node name="chest_inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10", "slot11", "slot12", "slot13", "slot14", "slot15")]
+light_mask = 15
+visibility_layer = 15
+scale = Vector2(3, 3)
+script = ExtResource("1_fvjha")
+slot1 = NodePath("GridContainer/chest_slot")
+slot2 = NodePath("GridContainer/chest_slot2")
+slot3 = NodePath("GridContainer/chest_slot3")
+slot4 = NodePath("GridContainer/chest_slot4")
+slot5 = NodePath("GridContainer/chest_slot5")
+slot6 = NodePath("GridContainer/chest_slot6")
+slot7 = NodePath("GridContainer/chest_slot7")
+slot8 = NodePath("GridContainer/chest_slot8")
+slot9 = NodePath("GridContainer/chest_slot9")
+slot10 = NodePath("GridContainer/chest_slot10")
+slot11 = NodePath("GridContainer/chest_slot11")
+slot12 = NodePath("GridContainer/chest_slot12")
+slot13 = NodePath("GridContainer/chest_slot13")
+slot14 = NodePath("GridContainer/chest_slot14")
+slot15 = NodePath("GridContainer/chest_slot15")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+
+[node name="chest_slot" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot2" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot2"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot2/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot3" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot3"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot3/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot4" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot4"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot4/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot5" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot5"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot5/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot6" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot6"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot6/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot7" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot7"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot7/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot8" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot8"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot8/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot9" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot9"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot9"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot9/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot10" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot10"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot10"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot10/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot11" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot11"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot11"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot11/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot12" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot12"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot12"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot12/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot13" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot13"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot13"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot13/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot14" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot14"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot14"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot14/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="chest_slot15" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("1_f1eki")
+
+[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot15"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_button" type="Button" parent="GridContainer/chest_slot15"]
+visible = false
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 12.0
+
+[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot15/delete_button"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2

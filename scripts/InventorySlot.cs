@@ -1,31 +1,18 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
-public partial class Food : InventoryItem
+public partial class InventorySlot : Button
 {
 	// Called when the node enters the scene tree for the first time.
-	private int giveHealth;
+	private List<InventoryItem> chestItems;
 	public override void _Ready()
 	{
-		base._Ready();
+		chestItems = new List<InventoryItem>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
 	}
-
-	public void setPlayer(Player p){
-		player = p;
-	}
-
-	public void setGiveHealth(int i) {
-		giveHealth = i;
-	}
-
-	public int getGiveHealth() {
-		return giveHealth;
-	}
-
 }
