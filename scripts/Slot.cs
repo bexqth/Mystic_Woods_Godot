@@ -130,10 +130,8 @@ public partial class Slot : Button
 
 	public void pickUpItem() {
 		if (items.Count > 0) {
-			InventoryItem item = items[0];
-			selectedItem = item;
-
-			GetTree().CurrentScene.AddChild(item);
+			selectedItem = items[0];
+			GetTree().CurrentScene.AddChild(selectedItem);
 			selectedItem.setSelected(true);
 			selectedItem.setInInventory(false);
 
@@ -150,22 +148,19 @@ public partial class Slot : Button
 				slotItemName = " ";
 				isFree = true;
 			}
-			canStoreItem = true;	
 		 }
 		
 	}
 
-	public void storeItem() {
+	public void storeItem(InventoryItem item) {
 		canStoreItem = false;
 		GD.Print("Trying to store it");
-		InventoryItem itemCopy = (InventoryItem)selectedItem.Duplicate();
-		addItemToArray(itemCopy);
-		setIcon(itemCopy.getIcon());
-		setSlotItemName(itemCopy.getItemName());
-		itemCopy.setSelected(false);
-		itemCopy.setInInventory(true);
-		selectedItem.QueueFree();
+		addItemToArray(item);
+		setIcon(item.getIcon());
+		setSlotItemName(item.getItemName());
+		item.setSelected(false);
+		item.setInInventory(true);
+		GetTree().CurrentScene.RemoveChild(item);
 		selectedItem = null;
 	}
-
 }

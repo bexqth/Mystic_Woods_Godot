@@ -23,6 +23,8 @@ public partial class Inventory : Node
 	public Slot slot5;
 	private int focusIndex;
 	private Slot clickedSlot;
+	private Slot slotToDropItem;
+	private InventoryItem draggerItem;
 	public override void _Ready()
 	{
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 };
@@ -31,7 +33,6 @@ public partial class Inventory : Node
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 		}
-
 		
 	}
 
@@ -51,7 +52,13 @@ public partial class Inventory : Node
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-		clickedSlot.pickUpItem();
+		if(draggerItem == null) {
+			clickedSlot.pickUpItem();
+			draggerItem = clickedSlot.getSelectedItem();
+		} else {
+			clickedSlot.storeItem(draggerItem);
+			draggerItem = null;
+		}
 	}
 
 	public void OnItemPickedUp(InventoryItem item) {
