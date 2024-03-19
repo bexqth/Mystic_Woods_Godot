@@ -19,6 +19,7 @@ public partial class InventoryItem : Node2D
 	[Export]
 	public Player player;
 	private int count;
+	private bool isSelected;
 	public override void _Ready()
 	{
 		icon = GetNode<Sprite2D>("Sprite2D").Texture;
@@ -27,6 +28,10 @@ public partial class InventoryItem : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(isSelected) {
+			followMouse();
+		}
+		
 	}
 
 	public Texture2D getIcon()
@@ -60,4 +65,17 @@ public partial class InventoryItem : Node2D
 	{
 		return stackable;
 	}
+	
+	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx) {
+		if(Input.IsActionJustPressed("on_left_click") && !isSelected) {
+			isSelected = true;
+		} else if(Input.IsActionJustPressed("on_left_click") && isSelected){
+			isSelected = false;
+		}
+	}
+
+	public void followMouse() {
+		Position = GetGlobalMousePosition();
+	}
 }
+
