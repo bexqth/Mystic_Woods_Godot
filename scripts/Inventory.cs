@@ -35,7 +35,6 @@ public partial class Inventory : Node
 		}
 		
 	}
-
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
@@ -55,15 +54,16 @@ public partial class Inventory : Node
 		if(draggerItem == null) {
 			clickedSlot.pickUpItem();
 			draggerItem = clickedSlot.getSelectedItem();
+			draggerItem = null;
 		} else {
 			clickedSlot.storeItem(draggerItem);
 			draggerItem = null;
 		}
 	}
 
-	public void OnItemPickedUp(InventoryItem item) {
+	/*public void OnItemPickedUp(InventoryItem item) {
 		selectedItem = item;
-	}
+	}*/
 
 	public InventoryItem getHoldingItem() {
 		if(!slots[focusIndex].isFree) {

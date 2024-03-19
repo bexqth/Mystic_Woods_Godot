@@ -129,38 +129,54 @@ public partial class Slot : Button
 	}
 
 	public void pickUpItem() {
-		if (items.Count > 0) {
-			selectedItem = items[0];
-			GetTree().CurrentScene.AddChild(selectedItem);
-			selectedItem.setSelected(true);
-			selectedItem.setInInventory(false);
+		selectedItem = items[0];
+		items.Remove(selectedItem);
 
+		
+		GetTree().CurrentScene.AddChild(selectedItem);
+		selectedItem.setSelected(true);
+		selectedItem.setInInventory(false);
 
-			selectedItem.followMouse();
-			items.RemoveAt(0);
+		selectedItem.followMouse();
 
-			if(items.Count > 0) {
-				textureRect.Texture = items[0].getIcon(); 
-				countLabel.Text = items.Count.ToString();
-			} else {
-				textureRect.Texture = null;
-				countLabel.Text = " ";
-				slotItemName = " ";
-				isFree = true;
-			}
-		 }
+		if(items.Count > 0) {
+			textureRect.Texture = items[0].getIcon(); 
+			countLabel.Text = items.Count.ToString();
+		} else {
+			textureRect.Texture = null;
+			countLabel.Text = " ";
+			slotItemName = " ";
+			isFree = true;
+		}
 		
 	}
 
 	public void storeItem(InventoryItem item) {
-		canStoreItem = false;
-		GD.Print("Trying to store it");
-		addItemToArray(item);
-		setIcon(item.getIcon());
-		setSlotItemName(item.getItemName());
-		item.setSelected(false);
-		item.setInInventory(true);
-		GetTree().CurrentScene.RemoveChild(item);
+		InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+		setIcon(itemCopy.getIcon()); 
+		addItemToArray(itemCopy); 
+		itemCopy.setInInventory(true);
+		item.QueueFree(); 
+
+
+		/*selectedItem = item;
+		addItemToArray(selectedItem); 
+
+		setIcon(selectedItem.getIcon()); 
+		
+		selectedItem.setInInventory(true);
+		setSlotItemName(selectedItem.getItemName());
+		selectedItem.setSelected(false);
 		selectedItem = null;
+
+		GetTree().CurrentScene.RemoveChild(item);
+		item.QueueFree();*/
+		
+	}
+	
+	private void _on_mouse_entered()
+	{
+		GrabFocus();
 	}
 }
+
