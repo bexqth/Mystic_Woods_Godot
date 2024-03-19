@@ -56,6 +56,7 @@ public partial class Inventory : Node
 					InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 					slots[i].setIcon(itemCopy.getIcon()); 
 					slots[i].addItemToArray(itemCopy); 
+					itemCopy.setInInventory(true);
 					item.QueueFree(); 
 					return;
 				}
@@ -67,6 +68,7 @@ public partial class Inventory : Node
 						InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 						slots[i].setIcon(itemCopy.getIcon());
 						slots[i].addItemToArray(itemCopy);
+						itemCopy.setInInventory(true);
 						slots[i].setSlotItemName(item.getItemName());
 						slots[i].setFree(false);
 						item.QueueFree();

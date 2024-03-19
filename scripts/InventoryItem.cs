@@ -67,11 +67,14 @@ public partial class InventoryItem : Node2D
 	}
 	
 	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx) {
-		if(Input.IsActionJustPressed("on_left_click") && !isSelected) {
-			isSelected = true;
-		} else if(Input.IsActionJustPressed("on_left_click") && isSelected){
+		if (Input.IsActionJustPressed("on_left_click") && isSelected){
 			isSelected = false;
 		}
+		
+	}
+
+	public void setInInventory(bool b) {
+		isInInventory = b;
 	}
 
 	public void followMouse() {

@@ -1022,7 +1022,7 @@ itemName = "apple"
 player = NodePath("../Player")
 
 [node name="apple2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ghngm")]
-position = Vector2(147, 356)
+position = Vector2(80, 5)
 itemName = "apple"
 player = NodePath("../Player")
 
@@ -1031,7 +1031,7 @@ position = Vector2(49, 277)
 player = NodePath("../Player")
 
 [node name="hoe_tool" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("18_0drt5")]
-position = Vector2(328, 59)
+position = Vector2(558, -26)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
@@ -1040,7 +1040,7 @@ position = Vector2(511, 149)
 player = NodePath("../Player")
 
 [node name="garden_pot_tool" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("20_at6bo")]
-position = Vector2(274, 58)
+position = Vector2(504, -27)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
@@ -1049,27 +1049,27 @@ position = Vector2(393, 154)
 player = NodePath("../Player")
 
 [node name="CarrotSeed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("24_qa881")]
-position = Vector2(169, 62)
+position = Vector2(399, -23)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="potato_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("25_cd558")]
-position = Vector2(219, 62)
+position = Vector2(449, -23)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="radish_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("26_vraqb")]
-position = Vector2(113, 62)
+position = Vector2(343, -23)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="turnip_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("27_kvyea")]
-position = Vector2(57, 61)
+position = Vector2(287, -24)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="chest" parent="." instance=ExtResource("30_qgth6")]
-position = Vector2(115, -41)
+position = Vector2(345, -126)
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_exited"]

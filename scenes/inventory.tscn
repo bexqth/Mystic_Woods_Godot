@@ -299,7 +299,11 @@ offset_bottom = 23.0
 
 [connection signal="pressed" from="TextureRect/GridContainer/Slot1" to="TextureRect/GridContainer/Slot1" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/GridContainer/Slot1/deleteButton" to="TextureRect/GridContainer/Slot1" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="TextureRect/GridContainer/Slot2" to="TextureRect/GridContainer/Slot2" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/GridContainer/Slot2/deleteButton" to="TextureRect/GridContainer/Slot2" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="TextureRect/GridContainer/Slot3" to="TextureRect/GridContainer/Slot3" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/GridContainer/Slot3/deleteButton" to="TextureRect/GridContainer/Slot3" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="TextureRect/GridContainer/Slot4" to="TextureRect/GridContainer/Slot4" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/GridContainer/Slot4/deleteButton" to="TextureRect/GridContainer/Slot4" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="TextureRect/GridContainer/Slot5" to="TextureRect/GridContainer/Slot5" method="_on_pressed"]
 [connection signal="pressed" from="TextureRect/GridContainer/Slot5/deleteButton" to="TextureRect/GridContainer/Slot5" method="_on_delete_button_pressed"]

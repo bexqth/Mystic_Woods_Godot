@@ -22,6 +22,7 @@ public partial class Slot : Button
 	private List<InventoryItem> items;
 
 	private Button deleteButton;
+	private InventoryItem selectedItem;
 	public override void _Ready()
 	{
 		textureRect = GetNode<TextureRect>("slotItemIcon");
@@ -91,31 +92,47 @@ public partial class Slot : Button
 	}
 
 	private void _on_delete_button_pressed() {
-		/*GD.Print("Delete button pressed!");
-		//GD.Print("BUTTON CLICKED 1");
-		InventoryItem item = items[0];
-		item.setPositionAfterDeletingFromItem();
-		GetTree().CurrentScene.AddChild(item);
-		deleteItemFromArray();
-		//GD.Print("ITEM DELETED");*/
+
 	}
 
 	private void _on_pressed()
 	{
-		InventoryItem item = items[0];
-		GetTree().CurrentScene.AddChild(item);
-		item.setSelected(true);
-		item.followMouse();
-		items.RemoveAt(0);
-		if(items.Count > 0) {
-			textureRect.Texture = items[0].getIcon(); 
-			countLabel.Text = items.Count.ToString();
-		} else {
-			textureRect.Texture = null;
-			countLabel.Text = " ";
-			slotItemName = " ";
-			isFree = true;
-		}	
+		pickUpItem();
 	}
-}
 
+	public void pickUpItem() {
+		if (items.Count > 0) {
+			InventoryItem item = items[0];
+			selectedItem = item;
+
+			GetTree().CurrentScene.AddChild(item);
+			selectedItem.setSelected(true);
+			selectedItem.followMouse();
+			items.RemoveAt(0);
+
+			if(items.Count > 0) {
+				textureRect.Texture = items[0].getIcon(); 
+				countLabel.Text = items.Count.ToString();
+			} else {
+				textureRect.Texture = null;
+				countLabel.Text = " ";
+				slotItemName = " ";
+				isFree = true;
+			}
+		 }
+		
+	}
+
+	public void storeItem() {
+		if (selectedItem != null && selectedItem.IsInsideTree()) {
+			InventoryItem itemCopy = (InventoryItem)selectedItem.Duplicate();
+			addItemToArray(itemCopy);
+			setIcon(itemCopy.getIcon());
+			setSlotItemName(itemCopy.getItemName());
+			itemCopy.setInInventory(false);
+			selectedItem.QueueFree();
+			selectedItem = null;
+		}
+	}
+
+}
