@@ -8,7 +8,7 @@ public partial class Inventory : Node
 	// Called when the node enters the scene tree for the first time.
 	//InventoryItem[] items;
 	private int inventorySize = 5;
-	
+	private InventoryItem selectedItem;
 	private Slot[] slots;
 
 	[Export]
@@ -22,11 +22,17 @@ public partial class Inventory : Node
 	[Export]
 	public Slot slot5;
 	private int focusIndex;
+	private Slot clickedSlot;
 	public override void _Ready()
 	{
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 };
 		setSlotsIntoInventory();
 		focusIndex = 0;	
+		foreach (var slot in slots) {
+			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
+		}
+
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +49,15 @@ public partial class Inventory : Node
 		slots[4] = slot5;
 	}
 
+	public void onSlotClicked(Slot slot){
+		clickedSlot = slot;
+		clickedSlot.pickUpItem();
+	}
+
+	public void OnItemPickedUp(InventoryItem item) {
+		selectedItem = item;
+	}
+
 	public InventoryItem getHoldingItem() {
 		if(!slots[focusIndex].isFree) {
 			return slots[focusIndex].getItem();
@@ -51,32 +66,31 @@ public partial class Inventory : Node
 	}
 
 	public void addItem(InventoryItem item) {
+		for(int i = 0; i < inventorySize; i++) {
+			if(slots[i].getSlotItemName() == item.getItemName()) {
+				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+				slots[i].setIcon(itemCopy.getIcon()); 
+				slots[i].addItemToArray(itemCopy); 
+				itemCopy.setInInventory(true);
+				item.QueueFree(); 
+				return;
+			}
+		}
+
+		if(!isFull()) {
 			for(int i = 0; i < inventorySize; i++) {
-				if(slots[i].getSlotItemName() == item.getItemName()) {
+				if(slots[i].getIsFree() == true) {
 					InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-					slots[i].setIcon(itemCopy.getIcon()); 
-					slots[i].addItemToArray(itemCopy); 
+					slots[i].setIcon(itemCopy.getIcon());
+					slots[i].addItemToArray(itemCopy);
 					itemCopy.setInInventory(true);
-					item.QueueFree(); 
+					slots[i].setSlotItemName(item.getItemName());
+					slots[i].setFree(false);
+					item.QueueFree();
 					return;
 				}
 			}
-
-			if(!isFull()) {
-				for(int i = 0; i < inventorySize; i++) {
-					if(slots[i].getIsFree() == true) {
-						InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-						slots[i].setIcon(itemCopy.getIcon());
-						slots[i].addItemToArray(itemCopy);
-						itemCopy.setInInventory(true);
-						slots[i].setSlotItemName(item.getItemName());
-						slots[i].setFree(false);
-						item.QueueFree();
-						return;
-					}
-				}
-			}
-			
+		}
 	}
 
 	public bool isFull()

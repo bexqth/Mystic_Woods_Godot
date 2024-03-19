@@ -16,6 +16,9 @@ public partial class Slot : Button
 	[Export] 
 	public int index;
 
+	[Signal]
+	public delegate void SlotClikedEventHandler(Slot slot); //creating the signal
+
 	private TextureRect textureRect;
 	private Texture2D texture2d;
 	private Label countLabel;
@@ -23,6 +26,11 @@ public partial class Slot : Button
 
 	private Button deleteButton;
 	private InventoryItem selectedItem;
+	private bool isHoldingItem;
+	private bool canStoreItem;
+	private bool isClickedOn;
+	private bool isTryingToPickUpItem;
+	private bool isTryingToStoreItem;
 	public override void _Ready()
 	{
 		textureRect = GetNode<TextureRect>("slotItemIcon");
@@ -31,6 +39,8 @@ public partial class Slot : Button
 		deleteButton = GetNode<Button>("deleteButton");
 		isFree = true;
 		items = new List<InventoryItem>();
+		isHoldingItem = false; 
+		canStoreItem = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -97,7 +107,25 @@ public partial class Slot : Button
 
 	private void _on_pressed()
 	{
-		pickUpItem();
+		EmitSignal(nameof(Slot.SlotCliked), this);
+		// this signals the signal, so when its cliked it emits the signal 
+		//and the inventorty need to catch it now
+	}
+
+	public bool getIsClikedOn() {
+		return isClickedOn;
+	}
+
+	public bool getIsTryingToPickUp() {
+		return isTryingToPickUpItem;
+	}
+
+	public bool getIsTryingToStoreItem() {
+		return isTryingToStoreItem;
+	}
+
+	public InventoryItem getSelectedItem() {
+		return selectedItem;
 	}
 
 	public void pickUpItem() {
@@ -107,6 +135,9 @@ public partial class Slot : Button
 
 			GetTree().CurrentScene.AddChild(item);
 			selectedItem.setSelected(true);
+			selectedItem.setInInventory(false);
+
+
 			selectedItem.followMouse();
 			items.RemoveAt(0);
 
@@ -119,20 +150,22 @@ public partial class Slot : Button
 				slotItemName = " ";
 				isFree = true;
 			}
+			canStoreItem = true;	
 		 }
 		
 	}
 
 	public void storeItem() {
-		if (selectedItem != null && selectedItem.IsInsideTree()) {
-			InventoryItem itemCopy = (InventoryItem)selectedItem.Duplicate();
-			addItemToArray(itemCopy);
-			setIcon(itemCopy.getIcon());
-			setSlotItemName(itemCopy.getItemName());
-			itemCopy.setInInventory(false);
-			selectedItem.QueueFree();
-			selectedItem = null;
-		}
+		canStoreItem = false;
+		GD.Print("Trying to store it");
+		InventoryItem itemCopy = (InventoryItem)selectedItem.Duplicate();
+		addItemToArray(itemCopy);
+		setIcon(itemCopy.getIcon());
+		setSlotItemName(itemCopy.getItemName());
+		itemCopy.setSelected(false);
+		itemCopy.setInInventory(true);
+		selectedItem.QueueFree();
+		selectedItem = null;
 	}
 
 }
