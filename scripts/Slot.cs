@@ -100,5 +100,22 @@ public partial class Slot : Button
 		//GD.Print("ITEM DELETED");*/
 	}
 
-
+	private void _on_pressed()
+	{
+		InventoryItem item = items[0];
+		GetTree().CurrentScene.AddChild(item);
+		item.setSelected(true);
+		item.followMouse();
+		items.RemoveAt(0);
+		if(items.Count > 0) {
+			textureRect.Texture = items[0].getIcon(); 
+			countLabel.Text = items.Count.ToString();
+		} else {
+			textureRect.Texture = null;
+			countLabel.Text = " ";
+			slotItemName = " ";
+			isFree = true;
+		}	
+	}
 }
+

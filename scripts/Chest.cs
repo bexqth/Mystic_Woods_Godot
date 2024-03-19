@@ -11,6 +11,8 @@ public partial class Chest : Node2D
 	private Label text;
 	private PackedScene chestInventoryScene;
 	private ChestInventory chestInventory;
+	private bool chestInventoryIsVisible;
+	private bool canOpenChest;
 	public override void _Ready()
 	{
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -18,12 +20,16 @@ public partial class Chest : Node2D
 		animator.Play("closed");
 		chestInventoryScene = GD.Load<PackedScene>("res://scenes/chest_inventory.tscn");
 		chestInventory = (ChestInventory)chestInventoryScene.Instantiate();
+		AddChild(chestInventory);
+		//chestInventory.Position = GetViewportRect().Size / 2;
+		chestInventoryIsVisible = false;
+		chestInventory.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+		handleChest();
 	}
 
 
@@ -33,6 +39,7 @@ public partial class Chest : Node2D
 			GD.Print("Chest should open");
 			text.Text = "Press E to show chest inventoy";
 			animator.Play("opening");
+			canOpenChest = true;
 		}
 
 	}
@@ -43,6 +50,23 @@ public partial class Chest : Node2D
 			GD.Print("Chest should close");
 			clearText();
 			animator.Play("closing");
+			canOpenChest = false;
+			if(chestInventoryIsVisible) {
+				chestInventory.Visible = false;
+				chestInventoryIsVisible = false;
+			}
+		}
+	}
+
+	public void handleChest() {
+		if(Input.IsActionJustPressed("pressed_e") && !chestInventoryIsVisible && canOpenChest) {
+			GD.Print("Visible");
+			chestInventory.Visible = true;
+			chestInventoryIsVisible = true;
+		} else if(Input.IsActionJustPressed("pressed_e") && chestInventoryIsVisible) {
+			GD.Print("Hidden");
+			chestInventory.Visible = false;
+			chestInventoryIsVisible = false;
 		}
 	}
 

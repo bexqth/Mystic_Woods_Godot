@@ -77,5 +77,9 @@ public partial class InventoryItem : Node2D
 	public void followMouse() {
 		Position = GetGlobalMousePosition();
 	}
+
+	public void setSelected(bool b) {
+		isSelected = b;
+	}
 }
 

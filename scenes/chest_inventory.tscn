@@ -1,690 +1,866 @@
-[gd_scene load_steps=3 format=3 uid="uid://ymjxa6tlctj7"]
+[gd_scene load_steps=4 format=3 uid="uid://ymjxa6tlctj7"]
 
 [ext_resource type="Script" path="res://scripts/Slot.cs" id="1_f1eki"]
 [ext_resource type="Script" path="res://scripts/ChestInventory.cs" id="1_fvjha"]
+[ext_resource type="Texture2D" uid="uid://cfussj7c3sqii" path="res://art/UI/X.png" id="3_416iu"]
 
 [node name="chest_inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10", "slot11", "slot12", "slot13", "slot14", "slot15")]
-light_mask = 15
-visibility_layer = 15
-scale = Vector2(3, 3)
+z_index = 2
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_fvjha")
-slot1 = NodePath("GridContainer/chest_slot")
-slot2 = NodePath("GridContainer/chest_slot2")
-slot3 = NodePath("GridContainer/chest_slot3")
-slot4 = NodePath("GridContainer/chest_slot4")
-slot5 = NodePath("GridContainer/chest_slot5")
-slot6 = NodePath("GridContainer/chest_slot6")
-slot7 = NodePath("GridContainer/chest_slot7")
-slot8 = NodePath("GridContainer/chest_slot8")
-slot9 = NodePath("GridContainer/chest_slot9")
-slot10 = NodePath("GridContainer/chest_slot10")
-slot11 = NodePath("GridContainer/chest_slot11")
-slot12 = NodePath("GridContainer/chest_slot12")
-slot13 = NodePath("GridContainer/chest_slot13")
-slot14 = NodePath("GridContainer/chest_slot14")
-slot15 = NodePath("GridContainer/chest_slot15")
+slot1 = NodePath("GridContainer/Slot1")
+slot2 = NodePath("GridContainer/Slot2")
+slot3 = NodePath("GridContainer/Slot3")
+slot4 = NodePath("GridContainer/Slot4")
+slot5 = NodePath("GridContainer/Slot5")
+slot6 = NodePath("GridContainer/Slot6")
+slot7 = NodePath("GridContainer/Slot7")
+slot8 = NodePath("GridContainer/Slot8")
+slot9 = NodePath("GridContainer/Slot9")
+slot10 = NodePath("GridContainer/Slot10")
+slot11 = NodePath("GridContainer/Slot11")
+slot12 = NodePath("GridContainer/Slot12")
+slot13 = NodePath("GridContainer/Slot13")
+slot14 = NodePath("GridContainer/Slot14")
+slot15 = NodePath("GridContainer/Slot15")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -79.0
+offset_right = 133.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 columns = 5
 
-[node name="chest_slot" type="Button" parent="GridContainer"]
+[node name="Slot1" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot1"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot1/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot1"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot2" type="Button" parent="GridContainer"]
+[node name="Slot2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot2"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot2"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot2"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot2/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot2"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot2/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot3" type="Button" parent="GridContainer"]
+[node name="Slot3" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot3"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot3"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot3"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot3/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot3"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot3/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot4" type="Button" parent="GridContainer"]
+[node name="Slot4" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot4"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot4"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot4"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot4/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot4"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot4/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot5" type="Button" parent="GridContainer"]
+[node name="Slot5" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot5"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot5"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot5"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot5"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot5/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot5"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot5/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot6" type="Button" parent="GridContainer"]
+[node name="Slot6" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot6"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot6"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot6"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot6"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot6/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot6"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot6/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot7" type="Button" parent="GridContainer"]
+[node name="Slot7" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot7"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot7"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot7"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot7"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot7/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot7"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot7/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot8" type="Button" parent="GridContainer"]
+[node name="Slot8" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot8"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot8"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot8"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot8"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot8/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot8"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot8/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot9" type="Button" parent="GridContainer"]
+[node name="Slot9" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot9"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot9"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot9"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot9"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot9/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot9"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot9/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot10" type="Button" parent="GridContainer"]
+[node name="Slot10" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot10"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot10"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot10"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot10"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot10/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot10"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot10/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot11" type="Button" parent="GridContainer"]
+[node name="Slot11" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot11"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot11"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot11"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot11"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot11/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot11"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot11/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot12" type="Button" parent="GridContainer"]
+[node name="Slot12" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot12"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot12"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot12"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot12"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot12/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot12"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot12/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot13" type="Button" parent="GridContainer"]
+[node name="Slot13" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot13"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot13"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot13"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot13"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot13/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot13"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot13/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot14" type="Button" parent="GridContainer"]
+[node name="Slot14" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot14"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot14"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot14"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot14"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot14/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot14"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot14/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="chest_slot15" type="Button" parent="GridContainer"]
+[node name="Slot15" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_mode = 1
 script = ExtResource("1_f1eki")
 
-[node name="chest_item_icon" type="TextureRect" parent="GridContainer/chest_slot15"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot15"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -3.5
-offset_right = 3.5
-offset_bottom = 3.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
 
-[node name="delete_button" type="Button" parent="GridContainer/chest_slot15"]
-visible = false
-custom_minimum_size = Vector2(11, 11)
+[node name="deleteButton" type="Button" parent="GridContainer/Slot15"]
+layout_mode = 2
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 13.0
+
+[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot15/deleteButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_416iu")
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="GridContainer/Slot15"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 37.0
-offset_top = 1.0
-offset_right = 48.0
-offset_bottom = 12.0
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_right = 32.0
+offset_bottom = 23.0
 
-[node name="delete_icon" type="TextureRect" parent="GridContainer/chest_slot15/delete_button"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
+[connection signal="pressed" from="GridContainer/Slot1/deleteButton" to="GridContainer/Slot1" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot2/deleteButton" to="GridContainer/Slot2" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot3/deleteButton" to="GridContainer/Slot3" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot4/deleteButton" to="GridContainer/Slot4" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot5/deleteButton" to="GridContainer/Slot5" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot6/deleteButton" to="GridContainer/Slot6" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot7/deleteButton" to="GridContainer/Slot7" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot8/deleteButton" to="GridContainer/Slot8" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot9/deleteButton" to="GridContainer/Slot9" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot10/deleteButton" to="GridContainer/Slot10" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot11/deleteButton" to="GridContainer/Slot11" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot12/deleteButton" to="GridContainer/Slot12" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot13/deleteButton" to="GridContainer/Slot13" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot14/deleteButton" to="GridContainer/Slot14" method="_on_delete_button_pressed"]
+[connection signal="pressed" from="GridContainer/Slot15/deleteButton" to="GridContainer/Slot15" method="_on_delete_button_pressed"]
