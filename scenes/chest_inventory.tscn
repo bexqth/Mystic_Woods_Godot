@@ -849,7 +849,6 @@ anchor_bottom = 0.54
 offset_right = 32.0
 offset_bottom = 23.0
 
-[connection signal="mouse_entered" from="GridContainer/Slot1" to="GridContainer/Slot1" method="_on_mouse_entered"]
 [connection signal="pressed" from="GridContainer/Slot1" to="GridContainer/Slot1" method="_on_pressed"]
 [connection signal="pressed" from="GridContainer/Slot1/deleteButton" to="GridContainer/Slot1" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot2" to="GridContainer/Slot2" method="_on_pressed"]

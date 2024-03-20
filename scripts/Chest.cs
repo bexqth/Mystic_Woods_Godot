@@ -11,6 +11,8 @@ public partial class Chest : Node2D
 	private Label text;
 	private PackedScene chestInventoryScene;
 	private ChestInventory chestInventory;
+	///private PackedScene chestInventoryScene;
+	//private Inventory chestInventory;
 	private bool chestInventoryIsVisible;
 	private bool canOpenChest;
 	public override void _Ready()
@@ -40,6 +42,7 @@ public partial class Chest : Node2D
 			text.Text = "Press E to show chest inventoy";
 			animator.Play("opening");
 			canOpenChest = true;
+			//chestInventory.turnOnFocus();
 		}
 
 	}
@@ -55,6 +58,7 @@ public partial class Chest : Node2D
 				chestInventory.Visible = false;
 				chestInventoryIsVisible = false;
 			}
+			//chestInventory.turnOffFocus();
 		}
 	}
 

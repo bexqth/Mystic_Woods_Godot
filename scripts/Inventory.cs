@@ -3,7 +3,7 @@ using Godot.NativeInterop;
 using System;
 using System.Runtime.CompilerServices;
 
-public partial class Inventory : Node
+public partial class Inventory : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	//InventoryItem[] items;
@@ -24,7 +24,9 @@ public partial class Inventory : Node
 	private int focusIndex;
 	private Slot clickedSlot;
 	private Slot slotToDropItem;
-	private InventoryItem draggerItem;
+	private InventoryItem draggedItem;
+	[Signal]
+	public delegate void pickedInventorySlotEventHandler(Slot slot); 
 	public override void _Ready()
 	{
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 };
@@ -38,7 +40,7 @@ public partial class Inventory : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		changeFocus();
+		//changeFocus();
 	}
 
 	public void setSlotsIntoInventory() {
@@ -51,14 +53,17 @@ public partial class Inventory : Node
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-		if(draggerItem == null) {
+    	World world = (World)GetNode("/root/World");
+
+    	if(world.getDraggedItem() == null) {
 			clickedSlot.pickUpItem();
-			draggerItem = clickedSlot.getSelectedItem();
-			draggerItem = null;
-		} else {
-			clickedSlot.storeItem(draggerItem);
-			draggerItem = null;
-		}
+			world.setDraggedItem(clickedSlot.getSelectedItem());
+			GD.Print(world.getDraggedItem());
+    	} else {
+			GD.Print(world.getDraggedItem());
+			clickedSlot.storeItem(world.getDraggedItem());
+			world.setDraggedItem(null);
+    	}
 	}
 
 	/*public void OnItemPickedUp(InventoryItem item) {
@@ -120,6 +125,7 @@ public partial class Inventory : Node
 	public void deleteItem() {
 		slots[focusIndex].deleteItemFromArray();
 	}
+
 
 	public void changeFocus() {
 		if (Input.IsActionJustPressed("scroll_up")) {

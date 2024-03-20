@@ -1069,7 +1069,7 @@ tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="chest" parent="." instance=ExtResource("30_qgth6")]
-position = Vector2(345, -126)
+position = Vector2(174, -81)
 
 [connection signal="body_entered" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player/player_hitbox" to="Player" method="_on_player_hitbox_body_exited"]

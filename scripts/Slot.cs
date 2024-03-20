@@ -1,4 +1,4 @@
-using Godot;
+ using Godot;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +31,7 @@ public partial class Slot : Button
 	private bool isClickedOn;
 	private bool isTryingToPickUpItem;
 	private bool isTryingToStoreItem;
+	private InventoryItem draggedItem;
 	public override void _Ready()
 	{
 		textureRect = GetNode<TextureRect>("slotItemIcon");
@@ -108,6 +109,7 @@ public partial class Slot : Button
 	private void _on_pressed()
 	{
 		EmitSignal(nameof(Slot.SlotCliked), this);
+		GD.Print("Emit signal");
 		// this signals the signal, so when its cliked it emits the signal 
 		//and the inventorty need to catch it now
 	}
@@ -128,30 +130,41 @@ public partial class Slot : Button
 		return selectedItem;
 	}
 
+	public void setSelectedItemNull() {
+		selectedItem = null;
+	}
+ 
 	public void pickUpItem() {
-		selectedItem = items[0];
-		items.Remove(selectedItem);
+		if (items.Count > 0) {
+			
+			selectedItem = items[0];
+			items.Remove(selectedItem);
+			draggedItem = selectedItem;
 
-		
-		GetTree().CurrentScene.AddChild(selectedItem);
-		selectedItem.setSelected(true);
-		selectedItem.setInInventory(false);
+			GetTree().CurrentScene.AddChild(selectedItem);
+			selectedItem.setSelected(true);
+			selectedItem.setInInventory(false);
 
-		selectedItem.followMouse();
+			World world = (World)GetNode("/root/World");
+			world.setDraggedItem(selectedItem);
 
-		if(items.Count > 0) {
-			textureRect.Texture = items[0].getIcon(); 
-			countLabel.Text = items.Count.ToString();
-		} else {
-			textureRect.Texture = null;
-			countLabel.Text = " ";
-			slotItemName = " ";
-			isFree = true;
+			selectedItem.followMouse();
+
+			if(items.Count > 0) {
+				textureRect.Texture = items[0].getIcon(); 
+				countLabel.Text = items.Count.ToString();
+			} else {
+				textureRect.Texture = null;
+				countLabel.Text = " ";
+				slotItemName = " ";
+				isFree = true;
+			}
 		}
-		
+	
 	}
 
 	public void storeItem(InventoryItem item) {
+		GD.Print("STORE");
 		InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 		setIcon(itemCopy.getIcon()); 
 		addItemToArray(itemCopy); 
@@ -177,6 +190,10 @@ public partial class Slot : Button
 	private void _on_mouse_entered()
 	{
 		GrabFocus();
+	}
+
+	public InventoryItem getDraggedItem() {
+		return draggedItem;
 	}
 }
 

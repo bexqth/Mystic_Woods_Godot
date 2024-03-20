@@ -38,14 +38,24 @@ public partial class ChestInventory : Node2D
 	public Slot slot15;
 	private Slot clickedSlot;
 	private Slot slotToDropItem;
-	private InventoryItem draggerItem;
+	private InventoryItem draggedItem;
+	[Signal]
+	public delegate void pickedChestInventorySlotEventHandler(Slot slot); 
+
 	public override void _Ready()
 	{	
-		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 , slot6, slot7, slot8, slot9, slot10, slot11, slot12, slot13, slot14, slot15 };
+		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot12, slot12, slot13, slot14, slot15 };
 		setSlotsIntoInventory();
 		foreach (var slot in slots) {
+			GD.Print(slot);
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
+			GD.Print(slot + "conected");
 		}
+
+		PackedScene appleScene = GD.Load<PackedScene>("res://scenes/apple.tscn");
+		InventoryItem apple = (InventoryItem)appleScene.Instantiate();
+		slot1.addItemToArray(apple);
+		slot1.setIcon(apple.getIcon());
 		
 	}
 
@@ -76,12 +86,29 @@ public partial class ChestInventory : Node2D
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-		if(draggerItem == null) {
+    	World world = (World)GetNode("/root/World");
+		
+    	if(world.getDraggedItem() == null) {
 			clickedSlot.pickUpItem();
-			draggerItem = clickedSlot.getSelectedItem();
-		} else {
-			clickedSlot.storeItem(draggerItem);
-			draggerItem = null;
+			world.setDraggedItem(clickedSlot.getSelectedItem());
+			GD.Print(world.getDraggedItem());
+    	} else {
+			GD.Print(world.getDraggedItem());
+			clickedSlot.storeItem(world.getDraggedItem());
+			world.setDraggedItem(null);
+    	}
+	}
+
+	public void turnOnFocus() {
+		foreach (var slot in slots) {
+			slot.GrabFocus();
 		}
 	}
+
+	public void turnOffFocus() {
+		foreach (var slot in slots) {
+			slot.ReleaseFocus();
+		}
+	}
+
 }
