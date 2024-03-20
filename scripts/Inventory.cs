@@ -34,13 +34,14 @@ public partial class Inventory : Node2D
 		focusIndex = 0;	
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
+			slot.FocusMode = Control.FocusModeEnum.None;
 		}
 		
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		//changeFocus();
+		changeFocus();
 	}
 
 	public void setSlotsIntoInventory() {
@@ -58,17 +59,11 @@ public partial class Inventory : Node2D
     	if(world.getDraggedItem() == null) {
 			clickedSlot.pickUpItem();
 			world.setDraggedItem(clickedSlot.getSelectedItem());
-			GD.Print(world.getDraggedItem());
     	} else {
-			GD.Print(world.getDraggedItem());
 			clickedSlot.storeItem(world.getDraggedItem());
 			world.setDraggedItem(null);
     	}
 	}
-
-	/*public void OnItemPickedUp(InventoryItem item) {
-		selectedItem = item;
-	}*/
 
 	public InventoryItem getHoldingItem() {
 		if(!slots[focusIndex].isFree) {
@@ -138,7 +133,7 @@ public partial class Inventory : Node2D
 			if (focusIndex < 0)
 				focusIndex = inventorySize - 1;
 		}
-		slots[focusIndex].GrabFocus();
+		//slots[focusIndex].GrabFocus();
 	}
 
 }

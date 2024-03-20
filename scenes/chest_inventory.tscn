@@ -6,7 +6,7 @@
 
 [node name="chest_inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10", "slot11", "slot12", "slot13", "slot14", "slot15")]
 z_index = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_fvjha")
 slot1 = NodePath("GridContainer/Slot1")
 slot2 = NodePath("GridContainer/Slot2")

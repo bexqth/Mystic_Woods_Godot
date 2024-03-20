@@ -131,7 +131,7 @@ public partial class Player : CharacterBody2D
 	}
 
 	public String getNameHoldingItem() {
-		if(this.holdingItem != null) {
+		if(holdingItem != null) {
 			return holdingItem.getItemName();
 		}
 		return null;

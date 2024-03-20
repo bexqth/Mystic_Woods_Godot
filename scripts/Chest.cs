@@ -26,6 +26,7 @@ public partial class Chest : Node2D
 		//chestInventory.Position = GetViewportRect().Size / 2;
 		chestInventoryIsVisible = false;
 		chestInventory.Visible = false;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,12 +38,12 @@ public partial class Chest : Node2D
 
 	private void _on_area_2d_body_entered(Node2D body)
 	{
+
 		if(body.Name == "Player") {
 			GD.Print("Chest should open");
 			text.Text = "Press E to show chest inventoy";
 			animator.Play("opening");
 			canOpenChest = true;
-			//chestInventory.turnOnFocus();
 		}
 
 	}
@@ -58,7 +59,6 @@ public partial class Chest : Node2D
 				chestInventory.Visible = false;
 				chestInventoryIsVisible = false;
 			}
-			//chestInventory.turnOffFocus();
 		}
 	}
 

@@ -109,7 +109,6 @@ public partial class Slot : Button
 	private void _on_pressed()
 	{
 		EmitSignal(nameof(Slot.SlotCliked), this);
-		GD.Print("Emit signal");
 		// this signals the signal, so when its cliked it emits the signal 
 		//and the inventorty need to catch it now
 	}
@@ -164,13 +163,11 @@ public partial class Slot : Button
 	}
 
 	public void storeItem(InventoryItem item) {
-		GD.Print("STORE");
 		InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 		setIcon(itemCopy.getIcon()); 
 		addItemToArray(itemCopy); 
 		itemCopy.setInInventory(true);
 		item.QueueFree(); 
-
 
 		/*selectedItem = item;
 		addItemToArray(selectedItem); 

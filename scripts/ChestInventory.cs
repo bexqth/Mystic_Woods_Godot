@@ -49,9 +49,10 @@ public partial class ChestInventory : Node2D
 		foreach (var slot in slots) {
 			GD.Print(slot);
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
-			GD.Print(slot + "conected");
+			slot.FocusMode = Control.FocusModeEnum.None;
 		}
 
+		//TEST OBJECT
 		PackedScene appleScene = GD.Load<PackedScene>("res://scenes/apple.tscn");
 		InventoryItem apple = (InventoryItem)appleScene.Instantiate();
 		slot1.addItemToArray(apple);
@@ -91,24 +92,10 @@ public partial class ChestInventory : Node2D
     	if(world.getDraggedItem() == null) {
 			clickedSlot.pickUpItem();
 			world.setDraggedItem(clickedSlot.getSelectedItem());
-			GD.Print(world.getDraggedItem());
     	} else {
-			GD.Print(world.getDraggedItem());
 			clickedSlot.storeItem(world.getDraggedItem());
 			world.setDraggedItem(null);
     	}
-	}
-
-	public void turnOnFocus() {
-		foreach (var slot in slots) {
-			slot.GrabFocus();
-		}
-	}
-
-	public void turnOffFocus() {
-		foreach (var slot in slots) {
-			slot.ReleaseFocus();
-		}
 	}
 
 }
