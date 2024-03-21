@@ -47,7 +47,6 @@ public partial class ChestInventory : Node2D
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot12, slot12, slot13, slot14, slot15 };
 		setSlotsIntoInventory();
 		foreach (var slot in slots) {
-			GD.Print(slot);
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 			slot.FocusMode = Control.FocusModeEnum.None;
 		}

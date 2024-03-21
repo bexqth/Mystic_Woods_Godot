@@ -34,12 +34,12 @@ public partial class Slot : Button
 	private InventoryItem draggedItem;
 	public override void _Ready()
 	{
+		items = new List<InventoryItem>();
 		textureRect = GetNode<TextureRect>("slotItemIcon");
 		texture2d = textureRect.Texture;
 		countLabel = GetNode<Label>("countLabel");
 		deleteButton = GetNode<Button>("deleteButton");
 		isFree = true;
-		items = new List<InventoryItem>();
 		isHoldingItem = false; 
 		canStoreItem = false;
 	}
@@ -110,7 +110,7 @@ public partial class Slot : Button
 	{
 		EmitSignal(nameof(Slot.SlotCliked), this);
 		// this signals the signal, so when its cliked it emits the signal 
-		//and the inventorty need to catch it now
+		//and the inventorty need to catch it now	
 	}
 
 	public bool getIsClikedOn() {

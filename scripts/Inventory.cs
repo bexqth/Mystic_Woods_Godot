@@ -34,7 +34,7 @@ public partial class Inventory : Node2D
 		focusIndex = 0;	
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
-			slot.FocusMode = Control.FocusModeEnum.None;
+			//slot.FocusMode = Control.FocusModeEnum.None;
 		}
 		
 	}
@@ -42,6 +42,7 @@ public partial class Inventory : Node2D
 	public override void _Process(double delta)
 	{
 		changeFocus();
+		changeFocusNearChest();
 	}
 
 	public void setSlotsIntoInventory() {
@@ -55,17 +56,34 @@ public partial class Inventory : Node2D
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
     	World world = (World)GetNode("/root/World");
+		if(world.getPlayerNearChest()) {
+			if(world.getDraggedItem() == null) { //PICK UP
+				clickedSlot.pickUpItem();
+				world.setDraggedItem(clickedSlot.getSelectedItem());
+				world.getDraggedItem().turnOffColision();
+			} else {                             //STORE
+				clickedSlot.storeItem(world.getDraggedItem());
+				world.getDraggedItem().setInInventory(true);
+				world.getDraggedItem().turnOnCollision();
+				world.setDraggedItem(null);
+			}
+		}
+    	
+	}
 
-    	if(world.getDraggedItem() == null) { //PICK UP
-			clickedSlot.pickUpItem();
-			world.setDraggedItem(clickedSlot.getSelectedItem());
-			world.getDraggedItem().turnOffColision();
-    	} else {                             //STORE
-			clickedSlot.storeItem(world.getDraggedItem());
-			world.getDraggedItem().setInInventory(true);
-			world.getDraggedItem().turnOnCollision();
-			world.setDraggedItem(null);
-    	}
+	public void changeFocusNearChest() {
+		World world = (World)GetNode("/root/World");
+		if(world.getPlayerNearChest()) {
+			foreach (var slot in slots) {
+				slot.FocusMode = Control.FocusModeEnum.None;
+			}
+		} else {
+			foreach (var slot in slots) {
+				slot.FocusMode = Control.FocusModeEnum.All;
+			}
+			slots[0].GrabFocus();
+		}
+		
 	}
 
 	public InventoryItem getHoldingItem() {
@@ -136,7 +154,15 @@ public partial class Inventory : Node2D
 			if (focusIndex < 0)
 				focusIndex = inventorySize - 1;
 		}
-		//slots[focusIndex].GrabFocus();
+		slots[focusIndex].GrabFocus();
+		
+		/*slots[focusIndex].Scale = new Vector2(2, 2);
+		GD.Print(slots[focusIndex] + "  " + focusIndex);
+		for(int i = 0; i < slots.Length; i++) {
+			if(i == focusIndex) {
+				slots[i].Scale = new Vector2(1f, 1f);
+			}
+		}*/
 	}
 
 }
