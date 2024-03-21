@@ -38,20 +38,20 @@ public partial class Chest : Node2D
 
 	private void _on_area_2d_body_entered(Node2D body)
 	{
-
+		World world = (World)GetNode("/root/World");
 		if(body.Name == "Player") {
-			GD.Print("Chest should open");
 			text.Text = "Press E to show chest inventoy";
 			animator.Play("opening");
 			canOpenChest = true;
+			world.setPlayerNearChest(true);
 		}
 
 	}
 
 	private void _on_area_2d_body_exited(Node2D body)
 	{
+		World world = (World)GetNode("/root/World");
 		if(body.Name == "Player") {
-			GD.Print("Chest should close");
 			clearText();
 			animator.Play("closing");
 			canOpenChest = false;
@@ -59,6 +59,7 @@ public partial class Chest : Node2D
 				chestInventory.Visible = false;
 				chestInventoryIsVisible = false;
 			}
+			world.setPlayerNearChest(false);
 		}
 	}
 

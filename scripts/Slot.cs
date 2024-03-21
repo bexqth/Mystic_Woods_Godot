@@ -134,8 +134,11 @@ public partial class Slot : Button
 	}
  
 	public void pickUpItem() {
-		if (items.Count > 0) {
-			
+		World world = (World)GetNode("/root/World");
+		//GD.Print(world.getPlayerNearChest());
+		if(world.getPlayerNearChest()) {
+			//GD.Print(world.getPlayerNearChest());
+			if (items.Count > 0) {
 			selectedItem = items[0];
 			items.Remove(selectedItem);
 			draggedItem = selectedItem;
@@ -144,30 +147,30 @@ public partial class Slot : Button
 			selectedItem.setSelected(true);
 			selectedItem.setInInventory(false);
 
-			World world = (World)GetNode("/root/World");
 			world.setDraggedItem(selectedItem);
 
 			selectedItem.followMouse();
 
-			if(items.Count > 0) {
-				textureRect.Texture = items[0].getIcon(); 
-				countLabel.Text = items.Count.ToString();
-			} else {
-				textureRect.Texture = null;
-				countLabel.Text = " ";
-				slotItemName = " ";
-				isFree = true;
-			}
+				if(items.Count > 0) {
+					textureRect.Texture = items[0].getIcon(); 
+					countLabel.Text = items.Count.ToString();
+				} else {
+					textureRect.Texture = null;
+					countLabel.Text = " ";
+					slotItemName = " ";
+					isFree = true;
+				}
+			}	
+		} else {
+			GD.Print("u cant pick up an item");
 		}
-	
 	}
 
 	public void storeItem(InventoryItem item) {
-		InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+		/*InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 		setIcon(itemCopy.getIcon()); 
 		addItemToArray(itemCopy); 
-		itemCopy.setInInventory(true);
-		item.QueueFree(); 
+		item.QueueFree(); */
 
 		/*selectedItem = item;
 		addItemToArray(selectedItem); 
@@ -179,9 +182,16 @@ public partial class Slot : Button
 		selectedItem.setSelected(false);
 		selectedItem = null;
 
-		GetTree().CurrentScene.RemoveChild(item);
-		item.QueueFree();*/
-		
+		//GetTree().CurrentScene.RemoveChild(item);
+		//item.QueueFree();*/
+
+		InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+		setIcon(itemCopy.getIcon());
+		addItemToArray(itemCopy);
+		itemCopy.setInInventory(true);
+		setSlotItemName(item.getItemName());
+		setFree(false);
+		item.QueueFree();
 	}
 	
 	private void _on_mouse_entered()

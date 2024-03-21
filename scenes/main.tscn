@@ -741,10 +741,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6khb"]
-size = Vector2(34, 9.99998)
+size = Vector2(45, 60.0001)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7x1s"]
-radius = 16.0
+radius = 19.3333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6qoja"]
 radius = 7.66667
@@ -927,7 +927,9 @@ speed_scale = 2.0
 offset = Vector2(2.08165e-12, -8)
 
 [node name="Collision_Feet" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.333344, 9.00002)
+light_mask = 3
+visibility_layer = 3
+position = Vector2(1.16667, 0.666674)
 scale = Vector2(0.333333, 0.333333)
 shape = SubResource("RectangleShape2D_c6khb")
 one_way_collision_margin = 0.0
@@ -936,7 +938,6 @@ debug_color = Color(0, 0.552941, 0.760784, 0.419608)
 [node name="player_hitbox" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/player_hitbox"]
-visible = false
 position = Vector2(3.33786e-06, 0.666663)
 shape = SubResource("CircleShape2D_v7x1s")
 

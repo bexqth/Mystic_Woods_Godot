@@ -55,14 +55,27 @@ public partial class Player : CharacterBody2D
 		isIdle = true;
 	}
 
-	public override void _PhysicsProcess(double delta) {
+    public override void _Process(double delta)
+    {
+        //changeCollision();
+    }
+
+    public override void _PhysicsProcess(double delta) {
 		keyboardControl();
 		mouseControl();
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
 		manageHealthBar();
-		//GD.Print(Position.X + ", " + Position.Y);
+	}
+
+	public void changeCollision() {
+		World world = (World)GetNode("/root/World");
+		if(world.getPlayerNearChest()) {
+			turnOffColision();
+		} else {
+			turnOnCollision();
+		}
 	}
 
 	public void setFarmingTool(String s) {
@@ -119,6 +132,18 @@ public partial class Player : CharacterBody2D
 		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null) {
 			holdingItem.useItem();
 		}
+	}
+
+	public void turnOffColision() {
+		GD.Print("Colision turned off");
+		//GetNode<CollisionShape2D>("player_hitbox/CollisionShape2D").SetDeferred("disabled", true);
+		
+	}
+
+	public void turnOnCollision() {
+		GD.Print("Colision turned on");
+		//GetNode<CollisionShape2D>("player_hitbox/CollisionShape2D").SetDeferred("disabled", false);
+		//GetNode<CollisionShape2D>("Collision_Feet").Disabled = false;
 	}
 
 

@@ -56,11 +56,14 @@ public partial class Inventory : Node2D
 		clickedSlot = slot;
     	World world = (World)GetNode("/root/World");
 
-    	if(world.getDraggedItem() == null) {
+    	if(world.getDraggedItem() == null) { //PICK UP
 			clickedSlot.pickUpItem();
 			world.setDraggedItem(clickedSlot.getSelectedItem());
-    	} else {
+			world.getDraggedItem().turnOffColision();
+    	} else {                             //STORE
 			clickedSlot.storeItem(world.getDraggedItem());
+			world.getDraggedItem().setInInventory(true);
+			world.getDraggedItem().turnOnCollision();
 			world.setDraggedItem(null);
     	}
 	}

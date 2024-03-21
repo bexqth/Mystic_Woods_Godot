@@ -20,6 +20,7 @@ public partial class InventoryItem : Node2D
 	public Player player;
 	private int count;
 	private bool isSelected;
+	private bool onFloor;
 	public override void _Ready()
 	{
 		icon = GetNode<Sprite2D>("Sprite2D").Texture;
@@ -52,6 +53,16 @@ public partial class InventoryItem : Node2D
 
 	public virtual void useItem() {
 		
+	}
+
+	public void turnOffColision() {
+		GetNode<CollisionShape2D>("Area2D/CollisionShape2D").Disabled = true;
+		GD.Print("Colision of the holding item is turned off");
+	}
+
+	public void turnOnCollision() {
+		GetNode<CollisionShape2D>("Area2D/CollisionShape2D").Disabled = false;
+		GD.Print("Colision of the holding item is turned on");
 	}
 
 	public void setPositionAfterDeletingFromItem() {
