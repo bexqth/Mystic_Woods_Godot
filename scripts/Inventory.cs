@@ -62,9 +62,9 @@ public partial class Inventory : Node2D
 				world.setDraggedItem(clickedSlot.getSelectedItem());
 				world.getDraggedItem().turnOffColision();
 			} else {                             //STORE
+				world.getDraggedItem().turnOnCollision();
 				clickedSlot.storeItem(world.getDraggedItem());
 				world.getDraggedItem().setInInventory(true);
-				world.getDraggedItem().turnOnCollision();
 				world.setDraggedItem(null);
 			}
 		}
@@ -138,22 +138,26 @@ public partial class Inventory : Node2D
 	}
 
 	public void deleteItem() {
+		GD.Print("index is" + focusIndex);
 		slots[focusIndex].deleteItemFromArray();
 	}
 
 
 	public void changeFocus() {
-		if (Input.IsActionJustPressed("scroll_up")) {
-			focusIndex++;
-			if (focusIndex >= inventorySize)
-				focusIndex = 0;
+		World world = (World)GetNode("/root/World");
+		if(!world.getPlayerNearChest()) {
+			if (Input.IsActionJustPressed("scroll_up")) {
+				focusIndex++;
+				if (focusIndex >= inventorySize)
+					focusIndex = 0;
+			}
+			else if (Input.IsActionJustPressed("scroll_down")){
+				focusIndex--;
+				if (focusIndex < 0)
+					focusIndex = inventorySize - 1;
+			}
+			slots[focusIndex].GrabFocus();					
 		}
-		else if (Input.IsActionJustPressed("scroll_down")){
-			focusIndex--;
-			if (focusIndex < 0)
-				focusIndex = inventorySize - 1;
-		}
-		slots[focusIndex].GrabFocus();
 		
 		/*slots[focusIndex].Scale = new Vector2(2, 2);
 		GD.Print(slots[focusIndex] + "  " + focusIndex);

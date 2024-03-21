@@ -65,10 +65,17 @@ public partial class InventoryItem : Node2D
 		GD.Print("Colision of the holding item is turned on");
 	}
 
+	public String printCollision() {
+		if(GetNode<CollisionShape2D>("Area2D/CollisionShape2D").Disabled){
+			return "is disabled";
+		}
+		return "is not disabled";
+	}
+
 	public void setPositionAfterDeletingFromItem() {
 		Vector2 position = Position;
 		position.X = player.Position.X;
-		position.Y = player.Position.Y - 30;
+		position.Y = player.Position.Y - 50;
 		Position = position;
 	}
 

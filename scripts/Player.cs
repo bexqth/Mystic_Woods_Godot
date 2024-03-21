@@ -117,7 +117,7 @@ public partial class Player : CharacterBody2D
 			setRunning(true);
 		}
 
-		if(Input.IsActionJustPressed("delete_item")) { //Prepisat na Q
+		if(Input.IsActionJustPressed("pressed_q")) { //Prepisat na Q
 			inventory.deleteItem();
 		}
 

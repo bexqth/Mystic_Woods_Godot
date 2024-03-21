@@ -87,17 +87,18 @@ public partial class ChestInventory : Node2D
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
     	World world = (World)GetNode("/root/World");
-
-    	if(world.getDraggedItem() == null) { //PICK UP
-			clickedSlot.pickUpItem();
-			world.setDraggedItem(clickedSlot.getSelectedItem());
-			world.getDraggedItem().turnOffColision();
-    	} else {                             //STORE
-			clickedSlot.storeItem(world.getDraggedItem());
-			world.getDraggedItem().setInInventory(true);
-			world.getDraggedItem().turnOnCollision();
-			world.setDraggedItem(null);
-    	}
+		if(world.getPlayerNearChest()) {
+			if(world.getDraggedItem() == null) { //PICK UP
+				clickedSlot.pickUpItem();
+				world.setDraggedItem(clickedSlot.getSelectedItem());
+				world.getDraggedItem().turnOffColision();
+			} else {                             //STORE
+				world.getDraggedItem().turnOnCollision();
+				clickedSlot.storeItem(world.getDraggedItem());
+				world.getDraggedItem().setInInventory(true);
+				world.setDraggedItem(null);
+			}
+		}
 	}
 
 }

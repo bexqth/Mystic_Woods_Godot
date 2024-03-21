@@ -83,6 +83,7 @@ public partial class Slot : Button
 
 	public void deleteItemFromArray() {
 		InventoryItem item = items[0];
+		GD.Print("deleted item " + item.printCollision());
 		item.setPositionAfterDeletingFromItem();
 		GetTree().CurrentScene.AddChild(item);
 
@@ -96,6 +97,7 @@ public partial class Slot : Button
 			slotItemName = " ";
 			isFree = true;
 		}
+		GD.Print("delete done");
 	}
 
 	public InventoryItem getItem() {
@@ -186,11 +188,15 @@ public partial class Slot : Button
 		//item.QueueFree();*/
 
 		InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+		//itemCopy.turnOnCollision();
+		GD.Print("store " + item.printCollision());
 		setIcon(itemCopy.getIcon());
 		addItemToArray(itemCopy);
 		itemCopy.setInInventory(true);
+		setSlotItemName(itemCopy.getItemName());
 		setSlotItemName(item.getItemName());
 		setFree(false);
+		GetTree().CurrentScene.RemoveChild(item);
 		item.QueueFree();
 	}
 	
