@@ -81,7 +81,6 @@ public partial class Inventory : Node2D
 			foreach (var slot in slots) {
 				slot.FocusMode = Control.FocusModeEnum.All;
 			}
-			slots[0].GrabFocus();
 		}
 		
 	}
