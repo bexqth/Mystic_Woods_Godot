@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 
 public partial class GardenPotTool : InventoryItem
@@ -16,7 +17,7 @@ public partial class GardenPotTool : InventoryItem
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-
+		base._Process(delta);
 	}
 
 	public void setFarmingManager(FarmingManager fm) {
@@ -26,7 +27,7 @@ public partial class GardenPotTool : InventoryItem
 	}
 
 	public override void useItem() {
-	    /*PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
+		/*PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 
 		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
@@ -50,7 +51,6 @@ public partial class GardenPotTool : InventoryItem
 		}
 
 	}		
-
 
 	public void showAllowedOption() {
 		int sourceId = 6;

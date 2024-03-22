@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ymjxa6tlctj7"]
+[gd_scene load_steps=3 format=3 uid="uid://ymjxa6tlctj7"]
 
 [ext_resource type="Script" path="res://scripts/Slot.cs" id="1_f1eki"]
 [ext_resource type="Script" path="res://scripts/ChestInventory.cs" id="1_fvjha"]
-[ext_resource type="Texture2D" uid="uid://cfussj7c3sqii" path="res://art/UI/X.png" id="3_416iu"]
 
 [node name="chest_inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10", "slot11", "slot12", "slot13", "slot14", "slot15")]
 z_index = 2
@@ -60,29 +59,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot1"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot1/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot1"]
 layout_mode = 1
 anchors_preset = -1
@@ -112,29 +88,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-
-[node name="deleteButton" type="Button" parent="GridContainer/Slot2"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot2/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
 expand_mode = 1
 
 [node name="countLabel" type="Label" parent="GridContainer/Slot2"]
@@ -168,29 +121,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot3"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot3/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot3"]
 layout_mode = 1
 anchors_preset = -1
@@ -220,29 +150,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-
-[node name="deleteButton" type="Button" parent="GridContainer/Slot4"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot4/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
 expand_mode = 1
 
 [node name="countLabel" type="Label" parent="GridContainer/Slot4"]
@@ -276,29 +183,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot5"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot5/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot5"]
 layout_mode = 1
 anchors_preset = -1
@@ -328,29 +212,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-
-[node name="deleteButton" type="Button" parent="GridContainer/Slot6"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot6/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
 expand_mode = 1
 
 [node name="countLabel" type="Label" parent="GridContainer/Slot6"]
@@ -384,29 +245,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot7"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot7/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot7"]
 layout_mode = 1
 anchors_preset = -1
@@ -436,29 +274,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-
-[node name="deleteButton" type="Button" parent="GridContainer/Slot8"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot8/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
 expand_mode = 1
 
 [node name="countLabel" type="Label" parent="GridContainer/Slot8"]
@@ -492,29 +307,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot9"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot9/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot9"]
 layout_mode = 1
 anchors_preset = -1
@@ -544,29 +336,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-
-[node name="deleteButton" type="Button" parent="GridContainer/Slot10"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot10/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
 expand_mode = 1
 
 [node name="countLabel" type="Label" parent="GridContainer/Slot10"]
@@ -600,29 +369,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot11"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot11/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot11"]
 layout_mode = 1
 anchors_preset = -1
@@ -652,29 +398,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-
-[node name="deleteButton" type="Button" parent="GridContainer/Slot12"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot12/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
 expand_mode = 1
 
 [node name="countLabel" type="Label" parent="GridContainer/Slot12"]
@@ -708,29 +431,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot13"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot13/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot13"]
 layout_mode = 1
 anchors_preset = -1
@@ -760,29 +460,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-
-[node name="deleteButton" type="Button" parent="GridContainer/Slot14"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot14/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
 expand_mode = 1
 
 [node name="countLabel" type="Label" parent="GridContainer/Slot14"]
@@ -816,29 +493,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="deleteButton" type="Button" parent="GridContainer/Slot15"]
-layout_mode = 2
-offset_left = 37.0
-offset_top = 2.0
-offset_right = 48.0
-offset_bottom = 13.0
-
-[node name="deleteButtonIcon" type="TextureRect" parent="GridContainer/Slot15/deleteButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_416iu")
-expand_mode = 1
-
 [node name="countLabel" type="Label" parent="GridContainer/Slot15"]
 layout_mode = 1
 anchors_preset = -1
@@ -850,32 +504,17 @@ offset_right = 32.0
 offset_bottom = 23.0
 
 [connection signal="pressed" from="GridContainer/Slot1" to="GridContainer/Slot1" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot1/deleteButton" to="GridContainer/Slot1" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot2" to="GridContainer/Slot2" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot2/deleteButton" to="GridContainer/Slot2" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot3" to="GridContainer/Slot3" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot3/deleteButton" to="GridContainer/Slot3" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot4" to="GridContainer/Slot4" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot4/deleteButton" to="GridContainer/Slot4" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot5" to="GridContainer/Slot5" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot5/deleteButton" to="GridContainer/Slot5" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot6" to="GridContainer/Slot6" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot6/deleteButton" to="GridContainer/Slot6" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot7" to="GridContainer/Slot7" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot7/deleteButton" to="GridContainer/Slot7" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot8" to="GridContainer/Slot8" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot8/deleteButton" to="GridContainer/Slot8" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot9" to="GridContainer/Slot9" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot9/deleteButton" to="GridContainer/Slot9" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot10" to="GridContainer/Slot10" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot10/deleteButton" to="GridContainer/Slot10" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot11" to="GridContainer/Slot11" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot11/deleteButton" to="GridContainer/Slot11" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot12" to="GridContainer/Slot12" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot12/deleteButton" to="GridContainer/Slot12" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot13" to="GridContainer/Slot13" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot13/deleteButton" to="GridContainer/Slot13" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot14" to="GridContainer/Slot14" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot14/deleteButton" to="GridContainer/Slot14" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="GridContainer/Slot15" to="GridContainer/Slot15" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot15/deleteButton" to="GridContainer/Slot15" method="_on_delete_button_pressed"]

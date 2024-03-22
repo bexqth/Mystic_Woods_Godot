@@ -38,12 +38,14 @@ public partial class ChestInventory : Node2D
 	public Slot slot15;
 	private Slot clickedSlot;
 	private Slot slotToDropItem;
+	private World world;
 	private InventoryItem draggedItem;
 	[Signal]
 	public delegate void pickedChestInventorySlotEventHandler(Slot slot); 
 
 	public override void _Ready()
 	{	
+		world = (World)GetNode("/root/World");
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot12, slot12, slot13, slot14, slot15 };
 		setSlotsIntoInventory();
 		foreach (var slot in slots) {
@@ -86,8 +88,7 @@ public partial class ChestInventory : Node2D
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-    	World world = (World)GetNode("/root/World");
-		if(world.getPlayerNearChest()) {
+		if(world.getPlayerOpenedChest()) {
 			if(world.getDraggedItem() == null) { //PICK UP
 				clickedSlot.pickUpItem();
 				world.setDraggedItem(clickedSlot.getSelectedItem());

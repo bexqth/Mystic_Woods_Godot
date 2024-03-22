@@ -27,3 +27,4 @@ rotation = -0.84823
 shape = SubResource("CapsuleShape2D_13k78")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -24,6 +24,7 @@ public partial class InventoryItem : Node2D
 	public override void _Ready()
 	{
 		icon = GetNode<Sprite2D>("Sprite2D").Texture;
+		//GD.Print("icon of inventory item is " + icon);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,7 +33,6 @@ public partial class InventoryItem : Node2D
 		if(isSelected) {
 			followMouse();
 		}
-		
 	}
 
 	public Texture2D getIcon()
@@ -88,7 +88,7 @@ public partial class InventoryItem : Node2D
 		if (Input.IsActionJustPressed("on_left_click") && isSelected){
 			isSelected = false;
 		}
-		
+	
 	}
 
 	public void setInInventory(bool b) {

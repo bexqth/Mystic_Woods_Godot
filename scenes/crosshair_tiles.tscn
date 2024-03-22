@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://hukpe2i5uguk"]
-
-[ext_resource type="Texture2D" uid="uid://dhjn8buxibv43" path="res://art/icon.svg" id="1_evwdx"]
-
-[node name="crosshair_tiles" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_evwdx")

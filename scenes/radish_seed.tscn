@@ -25,3 +25,4 @@ texture = SubResource("AtlasTexture_l377p")
 shape = SubResource("CircleShape2D_hbffs")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

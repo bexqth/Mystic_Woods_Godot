@@ -43,7 +43,7 @@ public partial class Inventory : Node2D
 	public override void _Process(double delta)
 	{
 		changeFocus();
-		changeFocusNearChest();
+		changeFocusChestOpened();
 	}
 
 	public void setSlotsIntoInventory() {
@@ -56,7 +56,7 @@ public partial class Inventory : Node2D
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-		if(world.getPlayerNearChest()) {
+		if(world.getPlayerOpenedChest()) {
 			if(world.getDraggedItem() == null) { //PICK UP
 				clickedSlot.pickUpItem();
 				world.setDraggedItem(clickedSlot.getSelectedItem());
@@ -71,7 +71,7 @@ public partial class Inventory : Node2D
     	
 	}
 
-	public void changeFocusNearChest() {
+	public void changeFocusChestOpened() {
 		if(world.getPlayerOpenedChest()) {
 			foreach (var slot in slots) {
 				slot.FocusMode = Control.FocusModeEnum.None;
@@ -143,7 +143,7 @@ public partial class Inventory : Node2D
 
 
 	public void changeFocus() {
-		if(!world.getPlayerNearChest()) {
+		if(!world.getPlayerOpenedChest()) {
 			if (Input.IsActionJustPressed("scroll_up")) {
 				focusIndex++;
 				if (focusIndex >= inventorySize)

@@ -10,7 +10,7 @@ public partial class Sword : InventoryItem
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-
+		base._Process(delta);
 	}
 
 	public override void useItem()

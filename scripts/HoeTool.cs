@@ -15,12 +15,14 @@ public partial class HoeTool : InventoryItem
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		base._Process(delta);
 	}
 
-    public override void useItem() {
+	public override void useItem() {
 		int sourceIdGrass = 1;
 		Vector2I grassTile = new Vector2I(0,0);	
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 		tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);	
-    }
+	}
 }
+

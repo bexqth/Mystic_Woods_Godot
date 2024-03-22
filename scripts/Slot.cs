@@ -24,7 +24,6 @@ public partial class Slot : Button
 	private Label countLabel;
 	private List<InventoryItem> items;
 
-	private Button deleteButton;
 	private InventoryItem selectedItem;
 	private bool isHoldingItem;
 	private bool canStoreItem;
@@ -39,7 +38,6 @@ public partial class Slot : Button
 		textureRect = GetNode<TextureRect>("slotItemIcon");
 		texture2d = textureRect.Texture;
 		countLabel = GetNode<Label>("countLabel");
-		deleteButton = GetNode<Button>("deleteButton");
 		isFree = true;
 		isHoldingItem = false; 
 		canStoreItem = false;
