@@ -77,10 +77,14 @@ public partial class Plant : Node2D
 
 	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx) {
 		if (Input.IsActionJustPressed("on_left_click") && player.getNameHoldingItem() == "hoe") {
-			//GD.Print("area 2d clicked");
-			GD.Print(plantFood);
-			this.QueueFree();
-			player.GetParent().GetTree().CurrentScene.AddChild(plantFood);
+			if(getCanBeDigged()) {
+				GD.Print(plantFood);
+				player.GetParent().GetTree().CurrentScene.AddChild(plantFood);
+				this.QueueFree();
+			} else {
+				GD.Print("dsfdd");
+			}
+			
 		}
 	}
 }

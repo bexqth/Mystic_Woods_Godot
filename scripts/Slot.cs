@@ -32,6 +32,7 @@ public partial class Slot : Button
 	private bool isTryingToPickUpItem;
 	private bool isTryingToStoreItem;
 	private InventoryItem draggedItem;
+	private World world;
 	public override void _Ready()
 	{
 		items = new List<InventoryItem>();
@@ -42,6 +43,7 @@ public partial class Slot : Button
 		isFree = true;
 		isHoldingItem = false; 
 		canStoreItem = false;
+		world = (World)GetNode("/root/World");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -136,9 +138,8 @@ public partial class Slot : Button
 	}
  
 	public void pickUpItem() {
-		World world = (World)GetNode("/root/World");
 		//GD.Print(world.getPlayerNearChest());
-		if(world.getPlayerNearChest()) {
+		if(world.getPlayerOpenedChest()) {
 			//GD.Print(world.getPlayerNearChest());
 			if (items.Count > 0) {
 			selectedItem = items[0];
@@ -186,18 +187,20 @@ public partial class Slot : Button
 
 		//GetTree().CurrentScene.RemoveChild(item);
 		//item.QueueFree();*/
-
-		InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-		//itemCopy.turnOnCollision();
-		GD.Print("store " + item.printCollision());
-		setIcon(itemCopy.getIcon());
-		addItemToArray(itemCopy);
-		itemCopy.setInInventory(true);
-		setSlotItemName(itemCopy.getItemName());
-		setSlotItemName(item.getItemName());
-		setFree(false);
-		GetTree().CurrentScene.RemoveChild(item);
-		item.QueueFree();
+		if(world.getPlayerOpenedChest()) {
+			InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+			//itemCopy.turnOnCollision();
+			GD.Print("store " + item.printCollision());
+			setIcon(itemCopy.getIcon());
+			addItemToArray(itemCopy);
+			itemCopy.setInInventory(true);
+			setSlotItemName(itemCopy.getItemName());
+			setSlotItemName(item.getItemName());
+			setFree(false);
+			GetTree().CurrentScene.RemoveChild(item);
+			item.QueueFree();
+		}
+	
 	}
 	
 	private void _on_mouse_entered()

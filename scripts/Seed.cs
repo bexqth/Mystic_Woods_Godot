@@ -57,19 +57,29 @@ public partial class Seed : InventoryItem
 	}
 
 	public override void useItem() {
-			assignPlant();
-			newPlantFood = (Food)plantFoodScene.Instantiate();
-			newPlant.setPlandFood(newPlantFood);
-			newPlant.setPlayer(player);
-			newPlantFood.setPlayer(player);
 			Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-			Vector2 plantPixelPosition = new Vector2(tileMousePosition.X * 16 * 3 + 8*3 - 4, tileMousePosition.Y * 16 * 3 + 8*3 -2);
-			//Vector2 plantPosition = new Vector2(clickedFarmTile.Position.X + 8, clickedFarmTile.Position.X + 8);
+			TileData tileData = tileMap.GetCellTileData(0, tileMousePosition); //returns the tile
+			
+			if(tileData!= null) {
+				var canPlaceSeeds = tileData.GetCustomData("canPlaceSeeds");
+				if((bool)canPlaceSeeds) {
+					assignPlant();
+					newPlantFood = (Food)plantFoodScene.Instantiate();
+					newPlant.setPlandFood(newPlantFood);
+					newPlant.setPlayer(player);
+					newPlantFood.setPlayer(player);
+					Vector2 plantPixelPosition = new Vector2(tileMousePosition.X * 16 * 3 + 8*3 - 4, tileMousePosition.Y * 16 * 3 + 8*3 -2);
+					//Vector2 plantPosition = new Vector2(clickedFarmTile.Position.X + 8, clickedFarmTile.Position.X + 8);
 
-			newPlant.Position = plantPixelPosition;
-			newPlantFood.Position = plantPixelPosition;
-			player.GetParent().GetTree().CurrentScene.AddChild(newPlant);
-			newPlant.grow();
+					newPlant.Position = plantPixelPosition;
+					newPlantFood.Position = plantPixelPosition;
+					player.GetParent().GetTree().CurrentScene.AddChild(newPlant);
+					newPlant.grow();
+				}
+				else {
+					GD.Print("cant place seeds here");
+				}
+			}
 	}
 	
 }

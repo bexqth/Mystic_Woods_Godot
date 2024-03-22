@@ -27,6 +27,7 @@ public partial class Inventory : Node2D
 	private InventoryItem draggedItem;
 	[Signal]
 	public delegate void pickedInventorySlotEventHandler(Slot slot); 
+	private World world;
 	public override void _Ready()
 	{
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 };
@@ -36,7 +37,7 @@ public partial class Inventory : Node2D
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 			//slot.FocusMode = Control.FocusModeEnum.None;
 		}
-		
+		world = (World)GetNode("/root/World");
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -55,7 +56,6 @@ public partial class Inventory : Node2D
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-    	World world = (World)GetNode("/root/World");
 		if(world.getPlayerNearChest()) {
 			if(world.getDraggedItem() == null) { //PICK UP
 				clickedSlot.pickUpItem();
@@ -72,8 +72,7 @@ public partial class Inventory : Node2D
 	}
 
 	public void changeFocusNearChest() {
-		World world = (World)GetNode("/root/World");
-		if(world.getPlayerNearChest()) {
+		if(world.getPlayerOpenedChest()) {
 			foreach (var slot in slots) {
 				slot.FocusMode = Control.FocusModeEnum.None;
 			}
@@ -144,7 +143,6 @@ public partial class Inventory : Node2D
 
 
 	public void changeFocus() {
-		World world = (World)GetNode("/root/World");
 		if(!world.getPlayerNearChest()) {
 			if (Input.IsActionJustPressed("scroll_up")) {
 				focusIndex++;
@@ -157,15 +155,7 @@ public partial class Inventory : Node2D
 					focusIndex = inventorySize - 1;
 			}
 			slots[focusIndex].GrabFocus();					
-		}
-		
-		/*slots[focusIndex].Scale = new Vector2(2, 2);
-		GD.Print(slots[focusIndex] + "  " + focusIndex);
-		for(int i = 0; i < slots.Length; i++) {
-			if(i == focusIndex) {
-				slots[i].Scale = new Vector2(1f, 1f);
-			}
-		}*/
+		}		
 	}
 
 }

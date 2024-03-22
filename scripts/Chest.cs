@@ -15,6 +15,8 @@ public partial class Chest : Node2D
 	//private Inventory chestInventory;
 	private bool chestInventoryIsVisible;
 	private bool canOpenChest;
+	private bool isOpen;
+	private World world;
 	public override void _Ready()
 	{
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -26,6 +28,7 @@ public partial class Chest : Node2D
 		//chestInventory.Position = GetViewportRect().Size / 2;
 		chestInventoryIsVisible = false;
 		chestInventory.Visible = false;
+		world = (World)GetNode("/root/World");
 
 	}
 
@@ -38,19 +41,17 @@ public partial class Chest : Node2D
 
 	private void _on_area_2d_body_entered(Node2D body)
 	{
-		World world = (World)GetNode("/root/World");
 		if(body.Name == "Player") {
 			text.Text = "Press E to show chest inventoy";
 			animator.Play("opening");
 			canOpenChest = true;
-			world.setPlayerNearChest(true);
+			//world.setPlayerNearChest(true);
 		}
 
 	}
 
 	private void _on_area_2d_body_exited(Node2D body)
 	{
-		World world = (World)GetNode("/root/World");
 		if(body.Name == "Player") {
 			clearText();
 			animator.Play("closing");
@@ -59,19 +60,23 @@ public partial class Chest : Node2D
 				chestInventory.Visible = false;
 				chestInventoryIsVisible = false;
 			}
-			world.setPlayerNearChest(false);
+			//world.setPlayerNearChest(false);
 		}
 	}
 
 	public void handleChest() {
-		if(Input.IsActionJustPressed("pressed_e") && !chestInventoryIsVisible && canOpenChest) {
+		if(Input.IsActionJustPressed("pressed_e") && !isOpen && canOpenChest) {
 			GD.Print("Visible");
 			chestInventory.Visible = true;
 			chestInventoryIsVisible = true;
-		} else if(Input.IsActionJustPressed("pressed_e") && chestInventoryIsVisible) {
+			isOpen = true;
+			world.setPlayerOpenedChest(true);
+		} else if(Input.IsActionJustPressed("pressed_e") && isOpen) {
 			GD.Print("Hidden");
 			chestInventory.Visible = false;
 			chestInventoryIsVisible = false;
+			isOpen = false;
+			world.setPlayerOpenedChest(false);
 		}
 	}
 

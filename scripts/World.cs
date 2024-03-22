@@ -7,8 +7,10 @@ public partial class World : Node
 
 	private InventoryItem draggedItem;
 	private bool playerNearChest;
+	private bool playerOpenedChest;
 	public override void _Ready() {
 		playerNearChest = false;
+		playerOpenedChest = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +34,13 @@ public partial class World : Node
 		playerNearChest = b;
 	}
 
+	public void setPlayerOpenedChest(bool b) {
+		playerOpenedChest = b;
+	}
+
+	public bool getPlayerOpenedChest() {
+		return playerOpenedChest;
+	}
 
 
 }
