@@ -60,13 +60,13 @@ public partial class Inventory : Node2D
 			if(world.getDraggedItem() == null) { //PICK UP
 				clickedSlot.pickUpItem();
 				world.setDraggedItem(clickedSlot.getSelectedItem());
-				world.getDraggedItem().turnOffColision();
+				//world.getDraggedItem().turnOffColision();
 			} else {                             //STORE
 				clickedSlot.storeItem(world.getDraggedItem());
-				world.getDraggedItem().turnOnCollision();
-				if(world.getDraggedItem().getIsInInventory()) {
-					world.setDraggedItem(null);
-				}
+				//world.getDraggedItem().turnOnCollision();
+				//if(world.getDraggedItem().getIsInInventory()) {
+					//world.setDraggedItem(null);
+				//}
 			}
 		}
 	}
