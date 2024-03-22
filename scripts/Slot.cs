@@ -32,6 +32,7 @@ public partial class Slot : Button
 	private bool isTryingToStoreItem;
 	private InventoryItem draggedItem;
 	private World world;
+	private bool storedItem;
 	public override void _Ready()
 	{
 		items = new List<InventoryItem>();
@@ -42,6 +43,7 @@ public partial class Slot : Button
 		isHoldingItem = false; 
 		canStoreItem = false;
 		world = (World)GetNode("/root/World");
+		storedItem = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -143,7 +145,7 @@ public partial class Slot : Button
 			selectedItem = items[0];
 			items.Remove(selectedItem);
 			draggedItem = selectedItem;
-
+			setSlotItemName(selectedItem.getItemName());
 			GetTree().CurrentScene.AddChild(selectedItem);
 			selectedItem.setSelected(true);
 			selectedItem.setInInventory(false);
@@ -186,19 +188,24 @@ public partial class Slot : Button
 		//GetTree().CurrentScene.RemoveChild(item);
 		//item.QueueFree();*/
 		if(world.getPlayerOpenedChest()) {
-			InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-			//itemCopy.turnOnCollision();
-			GD.Print("store " + item.printCollision());
-			setIcon(itemCopy.getIcon());
-			addItemToArray(itemCopy);
-			itemCopy.setInInventory(true);
-			setSlotItemName(itemCopy.getItemName());
-			setSlotItemName(item.getItemName());
-			setFree(false);
-			GetTree().CurrentScene.RemoveChild(item);
-			item.QueueFree();
+			GD.Print("Slot name " + getSlotItemName());
+			GD.Print("Placing item name " + item.getItemName());
+			if(getSlotItemName() == item.getItemName() || items.Count == 0) {
+				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+				world.getDraggedItem().setInInventory(true);
+				//itemCopy.turnOnCollision();
+				GD.Print("store " + item.printCollision());
+				setIcon(itemCopy.getIcon());
+				addItemToArray(itemCopy);
+				setSlotItemName(itemCopy.getItemName());
+				itemCopy.setInInventory(true);
+				setFree(false);
+				GetTree().CurrentScene.RemoveChild(item);
+				item.QueueFree();		
+			} else {
+				GD.Print("item is not the same as the one there");
+			}
 		}
-	
 	}
 	
 	private void _on_mouse_entered()

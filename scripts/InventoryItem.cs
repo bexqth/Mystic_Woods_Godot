@@ -35,6 +35,14 @@ public partial class InventoryItem : Node2D
 		}
 	}
 
+	public void setIsInInventory(bool b) {
+		isInInventory = b;
+	}
+
+	public bool getIsInInventory() {
+		return isInInventory;
+	}
+
 	public Texture2D getIcon()
 	{
 		return this.icon;
@@ -57,12 +65,12 @@ public partial class InventoryItem : Node2D
 
 	public void turnOffColision() {
 		GetNode<CollisionShape2D>("Area2D/CollisionShape2D").Disabled = true;
-		GD.Print("Colision of the holding item is turned off");
+		//GD.Print("Colision of the holding item is turned off");
 	}
 
 	public void turnOnCollision() {
 		GetNode<CollisionShape2D>("Area2D/CollisionShape2D").Disabled = false;
-		GD.Print("Colision of the holding item is turned on");
+		//GD.Print("Colision of the holding item is turned on");
 	}
 
 	public String printCollision() {

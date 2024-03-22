@@ -66,13 +66,13 @@ public partial class Chest : Node2D
 
 	public void handleChest() {
 		if(Input.IsActionJustPressed("pressed_e") && !isOpen && canOpenChest) {
-			GD.Print("Visible");
+			//GD.Print("Visible");
 			chestInventory.Visible = true;
 			chestInventoryIsVisible = true;
 			isOpen = true;
 			world.setPlayerOpenedChest(true);
 		} else if(Input.IsActionJustPressed("pressed_e") && isOpen) {
-			GD.Print("Hidden");
+			//GD.Print("Hidden");
 			chestInventory.Visible = false;
 			chestInventoryIsVisible = false;
 			isOpen = false;
