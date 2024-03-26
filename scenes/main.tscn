@@ -1,6 +1,7 @@
 [gd_scene load_steps=61 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bovv46jde5cxl" path="res://art/background/grass.png" id="1_6ilq0"]
+[ext_resource type="Script" path="res://scripts/World.cs" id="1_x13f4"]
 [ext_resource type="Texture2D" uid="uid://blnb0mo6aimr2" path="res://art/background/grass-path.png" id="4_1bd58"]
 [ext_resource type="Texture2D" uid="uid://bhwwmooaag1kw" path="res://art/background/grass-water.png" id="5_lvtjc"]
 [ext_resource type="Texture2D" uid="uid://syimoxmtyn6g" path="res://art/background/extras/props.png" id="6_5px40"]
@@ -27,47 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://d0ktefind1kxn" path="res://scenes/turnip_seed.tscn" id="27_kvyea"]
 [ext_resource type="PackedScene" uid="uid://bcbeo5ba8uy10" path="res://scenes/player.tscn" id="28_da38h"]
 [ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="30_qgth6"]
-
-[sub_resource type="CSharpScript" id="CSharpScript_ejfhs"]
-script/source = "using Godot;
-using System;
-
-public partial class Crosshair : Node2D
-{
-	[Export]
-	public TileMap tileMap;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		followMouse();
-	}
-
-	public void setTileMap(TileMap tl) {
-		this.tileMap = tl;
-	} 
-
-	public void followMouse() {
-		Vector2I tileMousePosition = tileMap.LocalToMap(GetGlobalMousePosition());
-		Vector2I tileSize = new Vector2I(16, 16) * 3; // Assuming your tile size is 16x16, scaled up by 3
-
-		// Calculate the position of the tile under the mouse
-		Vector2I tilePosition = new Vector2I(
-			(int)Math.Floor((float)tileMousePosition.X / tileSize.X) * tileSize.X,
-			(int)Math.Floor((float)tileMousePosition.Y / tileSize.Y) * tileSize.Y
-		);
-
-		// Position the crosshair at the center of the tile
-		Position = (Vector2)tilePosition + (Vector2)tileSize / 2;
-	}
-
-
-}
-"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28axj"]
 radius = 7.66666
@@ -804,7 +764,7 @@ sources/9 = SubResource("TileSetAtlasSource_yua0k")
 sources/10 = SubResource("TileSetAtlasSource_jhewc")
 
 [node name="World" type="Node"]
-script = SubResource("CSharpScript_ejfhs")
+script = ExtResource("1_x13f4")
 
 [node name="SlimeEnemy" type="CharacterBody2D" parent="."]
 visible = false

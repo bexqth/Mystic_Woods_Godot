@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class CraftingTable : Node
+public partial class CraftingTable : Node2D
 {
-
 	private PackedScene craftingUIScene;
 	private CraftingUI craftingUI;
 	private AnimatedSprite2D animator;
@@ -21,6 +20,7 @@ public partial class CraftingTable : Node
 		craftingUI = (CraftingUI)craftingUIScene.Instantiate();
 		AddChild(craftingUI);
 		text = GetNode<Label>("Label");
+		world = (World)GetNode("/root/World");
 		craftingUIVisible = false;
 		craftingUI.Visible = false;
 	}
@@ -58,13 +58,11 @@ public partial class CraftingTable : Node
 
 	public void handleTable() {
 		if(Input.IsActionJustPressed("pressed_e") && !isBeingUsed && canUseTable) {
-			//GD.Print("Visible");
 			craftingUI.Visible = true;
 			craftingUIVisible = true;
 			isBeingUsed = true;
 			world.setPlayerUsingTable(true);
 		} else if(Input.IsActionJustPressed("pressed_e") && isBeingUsed) {
-			//GD.Print("Hidden");
 			craftingUI.Visible = false;
 			craftingUIVisible = false;
 			isBeingUsed = false;

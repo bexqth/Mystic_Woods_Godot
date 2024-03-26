@@ -56,7 +56,7 @@ public partial class Inventory : Node2D
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-		if(world.getPlayerOpenedChest()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
 			if(world.getDraggedItem() == null) { //PICK UP
 				clickedSlot.pickUpItem();
 				world.setDraggedItem(clickedSlot.getSelectedItem());
@@ -72,7 +72,7 @@ public partial class Inventory : Node2D
 	}
 
 	public void changeFocusChestOpened() {
-		if(world.getPlayerOpenedChest()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
 			foreach (var slot in slots) {
 				slot.FocusMode = Control.FocusModeEnum.None;
 			}
@@ -143,7 +143,7 @@ public partial class Inventory : Node2D
 
 
 	public void changeFocus() {
-		if(!world.getPlayerOpenedChest()) {
+		if(!world.getPlayerOpenedChest() && !world.getPlayerUsingTable()) {
 			if (Input.IsActionJustPressed("scroll_up")) {
 				focusIndex++;
 				if (focusIndex >= inventorySize)

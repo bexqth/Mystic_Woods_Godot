@@ -149,7 +149,7 @@ public partial class Player : CharacterBody2D
 
 	public void mouseControl() {
 		holdingItem = inventory.getHoldingItem();
-		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null && !world.getPlayerOpenedChest()) {
+		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null && !world.getPlayerOpenedChest() && !world.getPlayerUsingTable()) {
 			holdingItem.useItem();
 		}
 	}

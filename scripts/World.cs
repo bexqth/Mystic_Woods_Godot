@@ -9,17 +9,10 @@ public partial class World : Node
 	private bool playerNearChest;
 	private bool playerOpenedChest;
 	private bool playerUsingCraftingTable;
-	//private Crosshair crosshair;
-	//private PackedScene crosshairScene;
-	//private TileMap tileMap;
 	public override void _Ready() {
 		playerNearChest = false;
 		playerOpenedChest = false;
-		//GD.Print(tileMap);
-		//crosshairScene = GD.Load<PackedScene>("res://scenes/crosshair.tscn");
-		//crosshair = (Crosshair)crosshairScene.Instantiate();
-		//AddChild(crosshair);
-		//crosshair.setTileMap(GetNode<TileMap>("TileMap"));
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

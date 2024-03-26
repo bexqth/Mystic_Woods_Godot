@@ -139,7 +139,7 @@ public partial class Slot : Button
  
 	public void pickUpItem() {
 		//GD.Print(world.getPlayerNearChest());
-		if(world.getPlayerOpenedChest()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
 			//GD.Print(world.getPlayerNearChest());
 			if (items.Count > 0) {
 				selectedItem = items[0];
@@ -168,7 +168,7 @@ public partial class Slot : Button
 	}
 
 	public void storeItem(InventoryItem item) {
-		if(world.getPlayerOpenedChest()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
 			if(getSlotItemName() == item.getItemName() || items.Count == 0) {
 				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 				setIcon(itemCopy.getIcon());

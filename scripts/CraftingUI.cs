@@ -27,6 +27,7 @@ public partial class CraftingUI : Node2D
 	public Slot slot10;
 	private Slot clickedSlot;
 	private World world;
+
 	public override void _Ready()
 	{
 		world = (World)GetNode("/root/World");
@@ -36,11 +37,18 @@ public partial class CraftingUI : Node2D
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 			slot.FocusMode = Control.FocusModeEnum.None;
 		}
+
+		//TEST OBJECT
+		PackedScene appleScene = GD.Load<PackedScene>("res://scenes/apple.tscn");
+		InventoryItem apple = (InventoryItem)appleScene.Instantiate();
+		slot1.addItemToArray(apple);
+		slot1.setIcon(apple.getIcon());		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+
 	}
 
 	public void setSlotsIntoInventory() {
@@ -58,7 +66,7 @@ public partial class CraftingUI : Node2D
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-		if(world.getPlayerOpenedChest()) {
+		if(world.getPlayerUsingTable()) {
 			if(world.getDraggedItem() == null) { //PICK UP
 				clickedSlot.pickUpItem();
 				world.setDraggedItem(clickedSlot.getSelectedItem());

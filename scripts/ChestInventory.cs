@@ -35,8 +35,6 @@ public partial class ChestInventory : Node2D
 	private Slot slotToDropItem;
 	private World world;
 	private InventoryItem draggedItem;
-	[Signal]
-	public delegate void pickedChestInventorySlotEventHandler(Slot slot); 
 
 	public override void _Ready()
 	{	
