@@ -30,12 +30,7 @@ public partial class ChestInventory : Node2D
 	public Slot slot11;
 	[Export]
 	public Slot slot12;
-	[Export]
-	public Slot slot13;
-	[Export]
-	public Slot slot14;
-	[Export]
-	public Slot slot15;
+
 	private Slot clickedSlot;
 	private Slot slotToDropItem;
 	private World world;
@@ -46,7 +41,7 @@ public partial class ChestInventory : Node2D
 	public override void _Ready()
 	{	
 		world = (World)GetNode("/root/World");
-		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot12, slot12, slot13, slot14, slot15 };
+		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot12, slot12};
 		setSlotsIntoInventory();
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
@@ -57,8 +52,7 @@ public partial class ChestInventory : Node2D
 		PackedScene appleScene = GD.Load<PackedScene>("res://scenes/apple.tscn");
 		InventoryItem apple = (InventoryItem)appleScene.Instantiate();
 		slot1.addItemToArray(apple);
-		slot1.setIcon(apple.getIcon());
-		
+		slot1.setIcon(apple.getIcon());		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,9 +74,6 @@ public partial class ChestInventory : Node2D
 		slots[9] = slot10;
 		slots[10] = slot11;
 		slots[11] = slot12;
-		slots[12] = slot13;
-		slots[13] = slot14;
-		slots[14] = slot15;
 	}
 
 

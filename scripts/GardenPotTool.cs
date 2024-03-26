@@ -39,15 +39,19 @@ public partial class GardenPotTool : InventoryItem
 			GD.Print("out of reach");
 		}*/
 
-		int sourceId = 6;
+		if (player.getCanWater() && !player.getWatering()) {
+			player.setWatering(true);
+			player.setCanWater(false);
+			player.getWaterCoolDownTimer().Start();
+			int sourceId = 7;
+			Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
+			Vector2I tile = new Vector2I(2,0);
 
-		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-		Vector2I tile = new Vector2I(2,0);
-
-		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
-			tileMap.SetCell(0, tileMousePosition, sourceId, tile);
-		} else {
-			GD.Print("out of reach");
+			if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
+				tileMap.SetCell(0, tileMousePosition, sourceId, tile);
+			} else {
+				GD.Print("out of reach");
+			}
 		}
 
 	}		

@@ -17,6 +17,9 @@ public partial class Player : CharacterBody2D
 	private int hungerBar;
 	private bool canGetHit;
 	private bool attackCooldownTurnOn;
+	private bool waterCooldownTurnOn;
+	private bool hoeCooldownTurnOn;
+	private bool plantCooldownTurnOn;
 	private Timer attackCooldownTimer;
 	private Timer giveAttackCoolDownTimer;
 	private string enemyType;
@@ -31,6 +34,17 @@ public partial class Player : CharacterBody2D
 	private bool wantsToPlantSeed;
 
 	private FarmingManager farmingManager;
+	private World world;
+	private AnimationTree animationTree;
+	private Timer waterCoolDownTimer;
+	private Timer hoeCoolDownTimer;
+	private Timer plantCoolDownTimer;
+	private bool isWatering;
+	private bool isHoeing;
+	private bool isPlanting;
+	private bool canWater;
+	private bool canPlant;
+	private bool canHoe;
 
 	[Export]
 	public Inventory inventory;
@@ -50,32 +64,31 @@ public partial class Player : CharacterBody2D
 		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
 		healthbar = GetNode<ProgressBar>("healthbar");
-		//tileMap = GetNode<TileMap>("TileMap");
-		//tileMap = GetNode<TileMap>("../TileMap");
+		world = (World)GetNode("/root/World");
 		isIdle = true;
+		waterCoolDownTimer = GetNode<Timer>("water_cooldown");
+		hoeCoolDownTimer = GetNode<Timer>("hoe_cooldown");
+		plantCoolDownTimer = GetNode<Timer>("plant_cooldown");
+		isWatering = false;
+		isHoeing = false;
+		isPlanting = false;
+		canWater = true;
+		canHoe = true;
+		canPlant = true;
 	}
 
-    public override void _Process(double delta)
-    {
-        //changeCollision();
-    }
+	public override void _Process(double delta)
+	{
+		//changeCollision();
+	}
 
-    public override void _PhysicsProcess(double delta) {
+	public override void _PhysicsProcess(double delta) {
 		keyboardControl();
 		mouseControl();
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
 		manageHealthBar();
-	}
-
-	public void changeCollision() {
-		World world = (World)GetNode("/root/World");
-		if(world.getPlayerNearChest()) {
-			turnOffColision();
-		} else {
-			turnOnCollision();
-		}
 	}
 
 	public void setFarmingTool(String s) {
@@ -117,35 +130,21 @@ public partial class Player : CharacterBody2D
 			setRunning(true);
 		}
 
-		if(Input.IsActionJustPressed("pressed_q")) { //Prepisat na Q
+		if(Input.IsActionJustPressed("pressed_q")) {
 			inventory.deleteItem();
 		}
 
 		Position = position;
 		animator.Scale = scale;
-		//MoveAndSlide();
+		MoveAndSlide();
 	}
 
 	public void mouseControl() {
 		holdingItem = inventory.getHoldingItem();
-
-		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null) {
+		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null && !world.getPlayerOpenedChest()) {
 			holdingItem.useItem();
 		}
 	}
-
-	public void turnOffColision() {
-		GD.Print("Colision turned off");
-		//GetNode<CollisionShape2D>("player_hitbox/CollisionShape2D").SetDeferred("disabled", true);
-		
-	}
-
-	public void turnOnCollision() {
-		GD.Print("Colision turned on");
-		//GetNode<CollisionShape2D>("player_hitbox/CollisionShape2D").SetDeferred("disabled", false);
-		//GetNode<CollisionShape2D>("Collision_Feet").Disabled = false;
-	}
-
 
 	public Vector2 globalMousePosition() {
 		Vector2 mousePosition = GetGlobalMousePosition();
@@ -170,21 +169,79 @@ public partial class Player : CharacterBody2D
 		return canAttack;
 	}
 
+	public void setCanWater(bool b) {
+		canWater = b;
+	}
+
+	public bool getCanWater() {
+		return canWater;
+	}
+
+	public void setCanHoe(bool b) {
+		canHoe = b;
+	}
+
+	public bool getCanHoe() {
+		return canHoe;
+	}
+
+	public void setCanPlant(bool b) {
+		canPlant = b;
+	}
+
+	public bool getCanPlant() {
+		return canPlant;
+	}
+
 	public Timer getGiveAttackCoolDownTimer() {
 		return giveAttackCoolDownTimer;
 	}
 
-	private void _on_give_attack_cooldown_timeout(){
-		setAttacking(false);
-		canAttack = true;
+	public Timer getWaterCoolDownTimer() {
+		return waterCoolDownTimer;
+	}
+
+	public Timer getHoeCoolDownTimer() {
+		return hoeCoolDownTimer;
+	}
+
+	public Timer getPlantCoolDownTimer() {
+		return plantCoolDownTimer;
 	}
 	
 	public bool getAttacking() {
 		return this.isAttacking; 
 	}
 
+	public bool getWatering() {
+		return this.isWatering; 
+	}
+
+	public bool getHoeing() {
+		return this.isHoeing; 
+	}
+
+	public bool getPlanting() {
+		return this.isPlanting; 
+	}
+
 	public int getDamage() {
 		return this.damage;
+	}
+
+	public void setWatering(bool value) {
+		isWatering = value;
+		isIdle = !value;
+	}
+
+	public void setHoeing(bool value) {
+		isHoeing = value;
+		isIdle = !value;
+	}
+
+	public void setPlanting(bool value) {
+		isPlanting = value;
+		isIdle = !value;
 	}
 
 	public void setRunning(bool value) {
@@ -200,11 +257,51 @@ public partial class Player : CharacterBody2D
 	public void setAnimation(){
 		if(isAttacking) {
 			animator.Play("attack");
+		} else if(isWatering) {
+			animator.Play("water");
+		} else if(isHoeing) {
+			animator.Play("hoe");
+		} else if(isPlanting) {
+			animator.Play("plant");
 		} else if (isIdle) {
 			animator.Play("idle");
 		} else if (isRunning) {
 			animator.Play("run");
 		}
+	}
+
+	private void _on_water_cooldown_timeout()
+	{
+		setWatering(false);
+		canWater = true;
+	}
+
+
+	private void _on_hoe_cooldown_timeout()
+	{
+		setHoeing(false);
+		canHoe = true;
+	}
+
+
+	private void _on_plant_cooldown_timeout()
+	{
+		setPlanting(false);
+		canPlant = true;
+	}
+	
+	private void _on_give_attack_cooldown_timeout(){
+		setAttacking(false);
+		canAttack = true;
+	}
+
+	public void dealDamage(int damage) {
+		if (!attackCooldownTurnOn) {
+			health -= damage;
+			attackCooldownTurnOn = true;
+			attackCooldownTimer.Start();
+		}
+
 	}
 
 	private void _on_player_hitbox_body_entered(CharacterBody2D body) {
@@ -222,21 +319,26 @@ public partial class Player : CharacterBody2D
 
 	}
 
-
-	public void dealDamage(int damage) {
-		if (!attackCooldownTurnOn) {
-			health -= damage;
-			attackCooldownTurnOn = true;
-			attackCooldownTimer.Start();
-		}
+	public void water() {
 
 	}
+
+	public void plant() {
+
+	}
+
+	public void hoe() {
+
+	}
+
 
 	public void addItemToInventory(InventoryItem item) {
 		inventory.addItem(item);
 	}
 
 	private void _on_player_collision_body_entered(Node2D body) {
+	
+	
 	}
 
 	public void checkForBeingHit() {

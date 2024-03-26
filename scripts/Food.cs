@@ -13,7 +13,7 @@ public partial class Food : InventoryItem
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+		base._Process(delta);
 	}
 
 	public void setPlayer(Player p){

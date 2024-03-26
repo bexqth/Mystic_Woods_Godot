@@ -8,14 +8,22 @@ public partial class World : Node
 	private InventoryItem draggedItem;
 	private bool playerNearChest;
 	private bool playerOpenedChest;
+	//private Crosshair crosshair;
+	//private PackedScene crosshairScene;
+	//private TileMap tileMap;
 	public override void _Ready() {
 		playerNearChest = false;
 		playerOpenedChest = false;
+		//GD.Print(tileMap);
+		//crosshairScene = GD.Load<PackedScene>("res://scenes/crosshair.tscn");
+		//crosshair = (Crosshair)crosshairScene.Instantiate();
+		//AddChild(crosshair);
+		//crosshair.setTileMap(GetNode<TileMap>("TileMap"));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-
+		//crosshair.followMouse();
 	}
 
 	public void setDraggedItem(InventoryItem dr) {
@@ -41,6 +49,5 @@ public partial class World : Node
 	public bool getPlayerOpenedChest() {
 		return playerOpenedChest;
 	}
-
 
 }

@@ -19,10 +19,15 @@ public partial class HoeTool : InventoryItem
 	}
 
 	public override void useItem() {
-		int sourceIdGrass = 1;
-		Vector2I grassTile = new Vector2I(0,0);	
-		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-		tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);	
+		if (player.getCanHoe() && !player.getHoeing()) {
+			player.setHoeing(true);
+			player.setCanHoe(false);
+			player.getHoeCoolDownTimer().Start();
+			int sourceIdGrass = 0;
+			Vector2I grassTile = new Vector2I(1,1);	
+			Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
+			tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);	
+		}
 	}
 }
 

@@ -12,7 +12,7 @@ radius = 3.54336
 height = 11.3333
 
 [node name="potato" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_4g0rq")
 itemName = "Potato"
 stackable = true

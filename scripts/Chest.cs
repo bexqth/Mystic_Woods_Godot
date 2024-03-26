@@ -47,7 +47,6 @@ public partial class Chest : Node2D
 			canOpenChest = true;
 			//world.setPlayerNearChest(true);
 		}
-
 	}
 
 	private void _on_area_2d_body_exited(Node2D body)

@@ -144,6 +144,7 @@ public partial class Slot : Button
 			if (items.Count > 0) {
 				selectedItem = items[0];
 				selectedItem.turnOffColision();
+				selectedItem.ZIndex = 5;
 				items.Remove(selectedItem);
 				setSlotItemName(selectedItem.getItemName());
 				GetTree().CurrentScene.AddChild(selectedItem);
@@ -167,35 +168,16 @@ public partial class Slot : Button
 	}
 
 	public void storeItem(InventoryItem item) {
-		/*InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-		setIcon(itemCopy.getIcon()); 
-		addItemToArray(itemCopy); 
-		item.QueueFree(); */
-
-		/*selectedItem = item;
-		addItemToArray(selectedItem); 
-
-		setIcon(selectedItem.getIcon()); 
-		
-		selectedItem.setInInventory(true);
-		setSlotItemName(selectedItem.getItemName());
-		selectedItem.setSelected(false);
-		selectedItem = null;
-
-		//GetTree().CurrentScene.RemoveChild(item);
-		//item.QueueFree();*/
 		if(world.getPlayerOpenedChest()) {
-			GD.Print("Slot name " + getSlotItemName());
-			GD.Print("Placing item name " + item.getItemName());
 			if(getSlotItemName() == item.getItemName() || items.Count == 0) {
 				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-				GD.Print("store " + item.printCollision());
 				setIcon(itemCopy.getIcon());
 				addItemToArray(itemCopy);
 				setSlotItemName(itemCopy.getItemName());
 				world.setDraggedItem(null);
 				itemCopy.setInInventory(true);
 				itemCopy.turnOnCollision();
+				itemCopy.ZIndex = 1;
 				setFree(false);
 				GetTree().CurrentScene.RemoveChild(item);
 				item.QueueFree();		

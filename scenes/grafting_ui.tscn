@@ -1,0 +1,402 @@
+[gd_scene load_steps=4 format=3 uid="uid://blxle7nuqq8es"]
+
+[ext_resource type="Texture2D" uid="uid://dh0268e7w2lr3" path="res://art/UI/Crafting no3.png" id="1_cynd0"]
+[ext_resource type="Theme" uid="uid://dj0iofti11vkk" path="res://themes/empty_button.tres" id="2_fh6sc"]
+[ext_resource type="Script" path="res://scripts/Slot.cs" id="2_jnijq"]
+
+[node name="grafting_ui" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -111.5
+offset_right = 147.0
+offset_bottom = 111.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cynd0")
+
+[node name="Slot1" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 74.0
+offset_bottom = 73.0
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot2" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 86.0
+offset_top = 23.0
+offset_right = 137.0
+offset_bottom = 73.0
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot3" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 149.42
+offset_top = 23.3679
+offset_right = 200.42
+offset_bottom = 73.3679
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot4" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 22.6212
+offset_top = 86.5445
+offset_right = 73.6212
+offset_bottom = 136.544
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot5" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 86.0952
+offset_top = 86.5445
+offset_right = 137.095
+offset_bottom = 136.544
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot6" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 149.42
+offset_top = 86.5445
+offset_right = 200.42
+offset_bottom = 136.544
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot7" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 22.6212
+offset_top = 150.018
+offset_right = 73.6212
+offset_bottom = 200.018
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot8" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 86.0951
+offset_top = 149.721
+offset_right = 137.095
+offset_bottom = 199.721
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot9" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 149.42
+offset_top = 149.721
+offset_right = 200.42
+offset_bottom = 199.721
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot9"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[node name="Slot10" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 220.178
+offset_top = 149.87
+offset_right = 271.178
+offset_bottom = 199.87
+focus_mode = 1
+theme = ExtResource("2_fh6sc")
+script = ExtResource("2_jnijq")
+
+[node name="slotItemIcon" type="TextureRect" parent="TextureRect/Slot10"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="countLabel" type="Label" parent="TextureRect/Slot10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.54
+anchor_right = 0.02
+anchor_bottom = 0.54
+offset_left = 3.0
+offset_right = 35.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="TextureRect/Slot1" to="TextureRect/Slot1" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot2" to="TextureRect/Slot2" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot3" to="TextureRect/Slot3" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot4" to="TextureRect/Slot4" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot5" to="TextureRect/Slot5" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot6" to="TextureRect/Slot6" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot7" to="TextureRect/Slot7" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot8" to="TextureRect/Slot8" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot9" to="TextureRect/Slot9" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Slot10" to="TextureRect/Slot10" method="_on_pressed"]

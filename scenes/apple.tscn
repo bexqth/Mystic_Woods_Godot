@@ -4,16 +4,16 @@
 [ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_4xnpf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tl6b8"]
-radius = 22.0
-height = 56.0
+radius = 42.0
+height = 92.0
 
 [node name="apple" type="Node2D"]
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_4xnpf")
 icon = ExtResource("1_02h83")
 stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_02h83")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -22,6 +22,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_tl6b8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

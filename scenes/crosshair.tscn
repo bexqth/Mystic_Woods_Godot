@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0rmhftf8v7is"]
+
+[ext_resource type="Texture2D" uid="uid://c5lxq6sa7m8va" path="res://art/UI/Crosshair Pack.png" id="1_pce37"]
+[ext_resource type="Script" path="res://scripts/Crosshair.cs" id="1_ug1sr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ade21"]
+atlas = ExtResource("1_pce37")
+region = Rect2(96, 0, 16, 16)
+
+[node name="crosshair" type="Node2D"]
+script = ExtResource("1_ug1sr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_ade21")

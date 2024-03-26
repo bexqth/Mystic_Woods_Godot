@@ -1,34 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccooo1l8iym0h"]
+[gd_scene load_steps=5 format=3 uid="uid://ccooo1l8iym0h"]
 
 [ext_resource type="Script" path="res://scripts/Inventory.cs" id="1_xstrd"]
+[ext_resource type="Theme" uid="uid://beuqysahr2rri" path="res://themes/inventory_slot.tres" id="2_4neyl"]
 [ext_resource type="Script" path="res://scripts/Slot.cs" id="2_kl7pf"]
+[ext_resource type="Texture2D" uid="uid://c8mlhes1a7htr" path="res://art/UI/dialogues2.png" id="2_l7s04"]
 
 [node name="Inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5")]
 z_index = 2
 script = ExtResource("1_xstrd")
-slot1 = NodePath("TextureRect/GridContainer/Slot1")
-slot2 = NodePath("TextureRect/GridContainer/Slot2")
-slot3 = NodePath("TextureRect/GridContainer/Slot3")
-slot4 = NodePath("TextureRect/GridContainer/Slot4")
-slot5 = NodePath("TextureRect/GridContainer/Slot5")
+slot1 = NodePath("GridContainer/Slot1")
+slot2 = NodePath("GridContainer/Slot2")
+slot3 = NodePath("GridContainer/Slot3")
+slot4 = NodePath("GridContainer/Slot4")
+slot5 = NodePath("GridContainer/Slot5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -6.0
+offset_top = -15.0
 offset_right = 268.0
-offset_bottom = 51.0
+offset_bottom = 46.0
+texture = ExtResource("2_l7s04")
+expand_mode = 1
 
-[node name="GridContainer" type="GridContainer" parent="TextureRect"]
-layout_mode = 0
-offset_right = 40.0
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = -2.0
+offset_top = -10.0
+offset_right = 264.0
 offset_bottom = 40.0
 columns = 5
 
-[node name="Slot1" type="Button" parent="TextureRect/GridContainer"]
+[node name="Slot1" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 1
+theme = ExtResource("2_4neyl")
 script = ExtResource("2_kl7pf")
 
-[node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot1"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,23 +51,25 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot1"]
+[node name="countLabel" type="Label" parent="GridContainer/Slot1"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
+offset_left = 2.0
 offset_right = 32.0
 offset_bottom = 23.0
 
-[node name="Slot2" type="Button" parent="TextureRect/GridContainer"]
+[node name="Slot2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 1
+theme = ExtResource("2_4neyl")
 script = ExtResource("2_kl7pf")
 
-[node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot2"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,23 +84,25 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot2"]
+[node name="countLabel" type="Label" parent="GridContainer/Slot2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
+offset_left = 2.0
 offset_right = 32.0
 offset_bottom = 23.0
 
-[node name="Slot3" type="Button" parent="TextureRect/GridContainer"]
+[node name="Slot3" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 1
+theme = ExtResource("2_4neyl")
 script = ExtResource("2_kl7pf")
 
-[node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot3"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,23 +117,25 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot3"]
+[node name="countLabel" type="Label" parent="GridContainer/Slot3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
+offset_left = 2.0
 offset_right = 32.0
 offset_bottom = 23.0
 
-[node name="Slot4" type="Button" parent="TextureRect/GridContainer"]
+[node name="Slot4" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 1
+theme = ExtResource("2_4neyl")
 script = ExtResource("2_kl7pf")
 
-[node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot4"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -136,23 +150,25 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot4"]
+[node name="countLabel" type="Label" parent="GridContainer/Slot4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
+offset_left = 2.0
 offset_right = 32.0
 offset_bottom = 23.0
 
-[node name="Slot5" type="Button" parent="TextureRect/GridContainer"]
+[node name="Slot5" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 1
+theme = ExtResource("2_4neyl")
 script = ExtResource("2_kl7pf")
 
-[node name="slotItemIcon" type="TextureRect" parent="TextureRect/GridContainer/Slot5"]
+[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot5"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,18 +183,19 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="TextureRect/GridContainer/Slot5"]
+[node name="countLabel" type="Label" parent="GridContainer/Slot5"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
+offset_left = 2.0
 offset_right = 32.0
 offset_bottom = 23.0
 
-[connection signal="pressed" from="TextureRect/GridContainer/Slot1" to="TextureRect/GridContainer/Slot1" method="_on_pressed"]
-[connection signal="pressed" from="TextureRect/GridContainer/Slot2" to="TextureRect/GridContainer/Slot2" method="_on_pressed"]
-[connection signal="pressed" from="TextureRect/GridContainer/Slot3" to="TextureRect/GridContainer/Slot3" method="_on_pressed"]
-[connection signal="pressed" from="TextureRect/GridContainer/Slot4" to="TextureRect/GridContainer/Slot4" method="_on_pressed"]
-[connection signal="pressed" from="TextureRect/GridContainer/Slot5" to="TextureRect/GridContainer/Slot5" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Slot1" to="GridContainer/Slot1" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Slot2" to="GridContainer/Slot2" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Slot3" to="GridContainer/Slot3" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Slot4" to="GridContainer/Slot4" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Slot5" to="GridContainer/Slot5" method="_on_pressed"]

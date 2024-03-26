@@ -1,50 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://ymjxa6tlctj7"]
+[gd_scene load_steps=5 format=3 uid="uid://ymjxa6tlctj7"]
 
 [ext_resource type="Script" path="res://scripts/Slot.cs" id="1_f1eki"]
 [ext_resource type="Script" path="res://scripts/ChestInventory.cs" id="1_fvjha"]
+[ext_resource type="Texture2D" uid="uid://dec8u6dbt3st3" path="res://art/UI/chest2.png" id="2_16buk"]
+[ext_resource type="Theme" uid="uid://dj0iofti11vkk" path="res://themes/empty_button.tres" id="3_dyplb"]
 
-[node name="chest_inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10", "slot11", "slot12", "slot13", "slot14", "slot15")]
+[node name="chest_inventory" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10", "slot11", "slot12")]
 z_index = 2
-scale = Vector2(0.4, 0.4)
+position = Vector2(-1, 9)
+scale = Vector2(0.35, 0.35)
 script = ExtResource("1_fvjha")
-slot1 = NodePath("GridContainer/Slot1")
-slot2 = NodePath("GridContainer/Slot2")
-slot3 = NodePath("GridContainer/Slot3")
-slot4 = NodePath("GridContainer/Slot4")
-slot5 = NodePath("GridContainer/Slot5")
-slot6 = NodePath("GridContainer/Slot6")
-slot7 = NodePath("GridContainer/Slot7")
-slot8 = NodePath("GridContainer/Slot8")
-slot9 = NodePath("GridContainer/Slot9")
-slot10 = NodePath("GridContainer/Slot10")
-slot11 = NodePath("GridContainer/Slot11")
-slot12 = NodePath("GridContainer/Slot12")
-slot13 = NodePath("GridContainer/Slot13")
-slot14 = NodePath("GridContainer/Slot14")
-slot15 = NodePath("GridContainer/Slot15")
+slot1 = NodePath("Slot1")
+slot2 = NodePath("Slot2")
+slot3 = NodePath("Slot3")
+slot4 = NodePath("Slot4")
+slot5 = NodePath("Slot5")
+slot6 = NodePath("Slot6")
+slot7 = NodePath("Slot7")
+slot8 = NodePath("Slot8")
+slot9 = NodePath("Slot9")
+slot10 = NodePath("Slot10")
+slot11 = NodePath("Slot11")
+slot12 = NodePath("Slot12")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -133.0
-offset_top = -79.0
-offset_right = 133.0
-offset_bottom = 79.0
+offset_left = -143.5
+offset_top = -111.0
+offset_right = 143.5
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-columns = 5
+texture = ExtResource("2_16buk")
+expand_mode = 1
 
-[node name="Slot1" type="Button" parent="GridContainer"]
+[node name="Slot1" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = -120.138
+offset_top = -87.8953
+offset_right = -69.1378
+offset_bottom = -37.8953
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot1"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,23 +63,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot1"]
+[node name="countLabel" type="Label" parent="Slot1"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot2" type="Button" parent="GridContainer"]
+[node name="Slot2" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = -56.9168
+offset_top = -88.2328
+offset_right = -5.9168
+offset_bottom = -38.2328
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot2"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,23 +99,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot2"]
+[node name="countLabel" type="Label" parent="Slot2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot3" type="Button" parent="GridContainer"]
+[node name="Slot3" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = 6.52923
+offset_top = -88.1203
+offset_right = 57.5292
+offset_bottom = -38.1203
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot3"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,23 +135,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot3"]
+[node name="countLabel" type="Label" parent="Slot3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot4" type="Button" parent="GridContainer"]
+[node name="Slot4" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = 69.8627
+offset_top = -88.1203
+offset_right = 120.863
+offset_bottom = -38.1203
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot4"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,23 +171,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot4"]
+[node name="countLabel" type="Label" parent="Slot4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot5" type="Button" parent="GridContainer"]
+[node name="Slot5" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = -119.771
+offset_top = -25.4392
+offset_right = -68.7714
+offset_bottom = 24.5608
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot5"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot5"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -183,23 +207,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot5"]
+[node name="countLabel" type="Label" parent="Slot5"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot6" type="Button" parent="GridContainer"]
+[node name="Slot6" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = -56.7721
+offset_top = -25.1211
+offset_right = -5.77213
+offset_bottom = 24.8789
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot6"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot6"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -214,23 +243,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot6"]
+[node name="countLabel" type="Label" parent="Slot6"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot7" type="Button" parent="GridContainer"]
+[node name="Slot7" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = 6.38622
+offset_top = -25.2802
+offset_right = 57.3862
+offset_bottom = 24.7198
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot7"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot7"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -245,23 +279,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot7"]
+[node name="countLabel" type="Label" parent="Slot7"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot8" type="Button" parent="GridContainer"]
+[node name="Slot8" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = 70.0218
+offset_top = -25.4392
+offset_right = 121.022
+offset_bottom = 24.5608
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot8"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot8"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -276,23 +315,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot8"]
+[node name="countLabel" type="Label" parent="Slot8"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot9" type="Button" parent="GridContainer"]
+[node name="Slot9" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = -120.09
+offset_top = 37.7191
+offset_right = -69.0896
+offset_bottom = 87.7191
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot9"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot9"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -307,23 +351,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot9"]
+[node name="countLabel" type="Label" parent="Slot9"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot10" type="Button" parent="GridContainer"]
+[node name="Slot10" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = -56.9312
+offset_top = 37.56
+offset_right = -5.93122
+offset_bottom = 87.56
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot10"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot10"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -338,23 +387,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot10"]
+[node name="countLabel" type="Label" parent="Slot10"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot11" type="Button" parent="GridContainer"]
+[node name="Slot11" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = 6.38622
+offset_top = 37.8782
+offset_right = 57.3862
+offset_bottom = 87.8782
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot11"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot11"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -369,23 +423,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot11"]
+[node name="countLabel" type="Label" parent="Slot11"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot12" type="Button" parent="GridContainer"]
+[node name="Slot12" type="Button" parent="."]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+offset_left = 70.0218
+offset_top = 37.7191
+offset_right = 121.022
+offset_bottom = 87.7191
 focus_mode = 1
+theme = ExtResource("3_dyplb")
 script = ExtResource("1_f1eki")
 
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot12"]
+[node name="slotItemIcon" type="TextureRect" parent="Slot12"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -400,121 +459,26 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="countLabel" type="Label" parent="GridContainer/Slot12"]
+[node name="countLabel" type="Label" parent="Slot12"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.54
 anchor_right = 0.02
 anchor_bottom = 0.54
-offset_right = 32.0
+offset_left = 3.0
+offset_right = 35.0
 offset_bottom = 23.0
 
-[node name="Slot13" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-focus_mode = 1
-script = ExtResource("1_f1eki")
-
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot13"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="countLabel" type="Label" parent="GridContainer/Slot13"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.02
-anchor_top = 0.54
-anchor_right = 0.02
-anchor_bottom = 0.54
-offset_right = 32.0
-offset_bottom = 23.0
-
-[node name="Slot14" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-focus_mode = 1
-script = ExtResource("1_f1eki")
-
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot14"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="countLabel" type="Label" parent="GridContainer/Slot14"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.02
-anchor_top = 0.54
-anchor_right = 0.02
-anchor_bottom = 0.54
-offset_right = 32.0
-offset_bottom = 23.0
-
-[node name="Slot15" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-focus_mode = 1
-script = ExtResource("1_f1eki")
-
-[node name="slotItemIcon" type="TextureRect" parent="GridContainer/Slot15"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="countLabel" type="Label" parent="GridContainer/Slot15"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.02
-anchor_top = 0.54
-anchor_right = 0.02
-anchor_bottom = 0.54
-offset_right = 32.0
-offset_bottom = 23.0
-
-[connection signal="pressed" from="GridContainer/Slot1" to="GridContainer/Slot1" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot2" to="GridContainer/Slot2" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot3" to="GridContainer/Slot3" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot4" to="GridContainer/Slot4" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot5" to="GridContainer/Slot5" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot6" to="GridContainer/Slot6" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot7" to="GridContainer/Slot7" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot8" to="GridContainer/Slot8" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot9" to="GridContainer/Slot9" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot10" to="GridContainer/Slot10" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot11" to="GridContainer/Slot11" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot12" to="GridContainer/Slot12" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot13" to="GridContainer/Slot13" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot14" to="GridContainer/Slot14" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Slot15" to="GridContainer/Slot15" method="_on_pressed"]
+[connection signal="pressed" from="Slot1" to="Slot1" method="_on_pressed"]
+[connection signal="pressed" from="Slot2" to="Slot2" method="_on_pressed"]
+[connection signal="pressed" from="Slot3" to="Slot3" method="_on_pressed"]
+[connection signal="pressed" from="Slot4" to="Slot4" method="_on_pressed"]
+[connection signal="pressed" from="Slot5" to="Slot5" method="_on_pressed"]
+[connection signal="pressed" from="Slot6" to="Slot6" method="_on_pressed"]
+[connection signal="pressed" from="Slot7" to="Slot7" method="_on_pressed"]
+[connection signal="pressed" from="Slot8" to="Slot8" method="_on_pressed"]
+[connection signal="pressed" from="Slot9" to="Slot9" method="_on_pressed"]
+[connection signal="pressed" from="Slot10" to="Slot10" method="_on_pressed"]
+[connection signal="pressed" from="Slot11" to="Slot11" method="_on_pressed"]
+[connection signal="pressed" from="Slot12" to="Slot12" method="_on_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jbcgtsmvtdqf"
-path="res://.godot/imported/wooden.png-9b24d596a851e3b7f93b1ae77d911301.ctex"
+uid="uid://bukgnhmj7kwky"
+path="res://.godot/imported/autotiles hill.png-4aef8f2659bfa2f06481f955d7c93c66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/background/wooden.png"
-dest_files=["res://.godot/imported/wooden.png-9b24d596a851e3b7f93b1ae77d911301.ctex"]
+source_file="res://art/background/autotiles/autotiles hill.png"
+dest_files=["res://.godot/imported/autotiles hill.png-4aef8f2659bfa2f06481f955d7c93c66.ctex"]
 
 [params]
 
