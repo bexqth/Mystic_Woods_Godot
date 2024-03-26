@@ -8,6 +8,7 @@ public partial class World : Node
 	private InventoryItem draggedItem;
 	private bool playerNearChest;
 	private bool playerOpenedChest;
+	private bool playerUsingCraftingTable;
 	//private Crosshair crosshair;
 	//private PackedScene crosshairScene;
 	//private TileMap tileMap;
@@ -48,6 +49,14 @@ public partial class World : Node
 
 	public bool getPlayerOpenedChest() {
 		return playerOpenedChest;
+	}
+
+	public void setPlayerUsingTable(bool b) {
+		this.playerUsingCraftingTable = b;
+	}
+
+	public bool getPlayerUsingTable() {
+		return this.playerUsingCraftingTable;
 	}
 
 }

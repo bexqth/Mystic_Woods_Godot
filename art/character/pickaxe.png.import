@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sdu7n07cuy88"
-path="res://.godot/imported/chest_01.png-33f3db99742df5c33432c5791e1902a5.ctex"
+uid="uid://keb5tvxfk8px"
+path="res://.godot/imported/pickaxe.png-e50c4b83044cfc384d40680d4c0f3d9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/objects/chest_01.png"
-dest_files=["res://.godot/imported/chest_01.png-33f3db99742df5c33432c5791e1902a5.ctex"]
+source_file="res://art/character/pickaxe.png"
+dest_files=["res://.godot/imported/pickaxe.png-e50c4b83044cfc384d40680d4c0f3d9d.ctex"]
 
 [params]
 

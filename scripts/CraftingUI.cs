@@ -1,10 +1,9 @@
 using Godot;
 using System;
 
-public partial class ChestInventory : Node2D
+public partial class CraftingUI : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
-	private int inventorySize = 15;
 	private Slot[] slots;
 	[Export]
 	public Slot slot1;
@@ -26,39 +25,22 @@ public partial class ChestInventory : Node2D
 	public Slot slot9;
 	[Export]
 	public Slot slot10;
-	[Export]
-	public Slot slot11;
-	[Export]
-	public Slot slot12;
-
 	private Slot clickedSlot;
-	private Slot slotToDropItem;
 	private World world;
-	private InventoryItem draggedItem;
-	[Signal]
-	public delegate void pickedChestInventorySlotEventHandler(Slot slot); 
-
 	public override void _Ready()
-	{	
+	{
 		world = (World)GetNode("/root/World");
-		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot12, slot12};
+		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10};
 		setSlotsIntoInventory();
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 			slot.FocusMode = Control.FocusModeEnum.None;
 		}
-
-		//TEST OBJECT
-		PackedScene appleScene = GD.Load<PackedScene>("res://scenes/apple.tscn");
-		InventoryItem apple = (InventoryItem)appleScene.Instantiate();
-		slot1.addItemToArray(apple);
-		slot1.setIcon(apple.getIcon());		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
 	}
 
 	public void setSlotsIntoInventory() {
@@ -72,10 +54,7 @@ public partial class ChestInventory : Node2D
 		slots[7] = slot8;
 		slots[8] = slot9;
 		slots[9] = slot10;
-		slots[10] = slot11;
-		slots[11] = slot12;
 	}
-
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
@@ -89,4 +68,6 @@ public partial class ChestInventory : Node2D
 		}
 	}
 
+
+	
 }

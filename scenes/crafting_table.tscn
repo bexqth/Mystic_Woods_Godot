@@ -1,7 +1,124 @@
-[gd_scene format=3 uid="uid://um7m1d13v00o"]
+[gd_scene load_steps=15 format=3 uid="uid://cyhb6ba4d8rky"]
+
+[ext_resource type="Texture2D" uid="uid://dcnxqhh4ot1ks" path="res://art/objects/crate.png" id="1_k71vd"]
+[ext_resource type="Script" path="res://scripts/CraftingTable.cs" id="1_uokfr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrfyt"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tl2e"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt3ah"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqaf2"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu510"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyc4v"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vkr7"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puyox"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp2dd"]
+atlas = ExtResource("1_k71vd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cnud3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrfyt")
+}],
+"loop": true,
+"name": &"notUsing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tl2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt3ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqaf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu510")
+}],
+"loop": false,
+"name": &"unUsing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyc4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vkr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puyox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp2dd")
+}],
+"loop": false,
+"name": &"using",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_llbpo"]
+radius = 21.6667
+
+[sub_resource type="FontFile" id="FontFile_2d8on"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="crafting_table" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_uokfr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7.33333)
+sprite_frames = SubResource("SpriteFrames_cnud3")
+animation = &"notUsing"
 
 [node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_llbpo")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -28.3333
+offset_top = -17.6667
+offset_right = 177.667
+offset_bottom = 22.3333
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = SubResource("FontFile_2d8on")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

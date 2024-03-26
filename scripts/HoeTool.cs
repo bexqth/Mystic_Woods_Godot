@@ -26,7 +26,13 @@ public partial class HoeTool : InventoryItem
 			int sourceIdGrass = 0;
 			Vector2I grassTile = new Vector2I(1,1);	
 			Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-			tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);	
+
+			if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
+				tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);
+			} else{
+				GD.Print("out of reach");
+			}
+				
 		}
 	}
 }

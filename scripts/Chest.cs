@@ -11,8 +11,6 @@ public partial class Chest : Node2D
 	private Label text;
 	private PackedScene chestInventoryScene;
 	private ChestInventory chestInventory;
-	///private PackedScene chestInventoryScene;
-	//private Inventory chestInventory;
 	private bool chestInventoryIsVisible;
 	private bool canOpenChest;
 	private bool isOpen;

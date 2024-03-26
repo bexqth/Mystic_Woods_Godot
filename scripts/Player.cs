@@ -1,8 +1,10 @@
 using Godot;
+using Godot.NativeInterop;
 using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Numerics;
 using System.Reflection.Metadata;
 
 public partial class Player : CharacterBody2D
@@ -12,7 +14,6 @@ public partial class Player : CharacterBody2D
 	private bool isRunning;
 	private bool isAttacking;
 	private bool isDead;
-	private int direction;
 	private int health;
 	private int hungerBar;
 	private bool canGetHit;
@@ -32,7 +33,6 @@ public partial class Player : CharacterBody2D
 
 	private String farmingTool;
 	private bool wantsToPlantSeed;
-
 	private FarmingManager farmingManager;
 	private World world;
 	private AnimationTree animationTree;
@@ -45,6 +45,7 @@ public partial class Player : CharacterBody2D
 	private bool canWater;
 	private bool canPlant;
 	private bool canHoe;
+	private String direction;
 
 	[Export]
 	public Inventory inventory;
@@ -65,7 +66,6 @@ public partial class Player : CharacterBody2D
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
 		healthbar = GetNode<ProgressBar>("healthbar");
 		world = (World)GetNode("/root/World");
-		isIdle = true;
 		waterCoolDownTimer = GetNode<Timer>("water_cooldown");
 		hoeCoolDownTimer = GetNode<Timer>("hoe_cooldown");
 		plantCoolDownTimer = GetNode<Timer>("plant_cooldown");
@@ -75,6 +75,8 @@ public partial class Player : CharacterBody2D
 		canWater = true;
 		canHoe = true;
 		canPlant = true;
+		isIdle = true;
+		direction = "down";
 	}
 
 	public override void _Process(double delta)
@@ -85,6 +87,7 @@ public partial class Player : CharacterBody2D
 	public override void _PhysicsProcess(double delta) {
 		keyboardControl();
 		mouseControl();
+		changeDirectionOnMouse();
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
@@ -111,31 +114,36 @@ public partial class Player : CharacterBody2D
 		if(!isAttacking) {
 			setRunning(false);
 		}
-		Vector2 position = Position;
-		Vector2 scale = animator.Scale;
+		Godot.Vector2 position = Position;
+		//Godot.Vector2 scale = animator.Scale;
 
 		if(Input.IsActionPressed("pressed_a")) {
 			position.X -= speed;
-			scale.X = -1;
-			setRunning(true);	
+			//scale.X = -1;
+			setRunning(true);
+			direction = "left";
 		} else if(Input.IsActionPressed("pressed_d")) {
 			position.X += speed;
-			scale.X = 1;
+			//scale.X = 1;
 			setRunning(true);
+			direction = "right";
 		} else if (Input.IsActionPressed("pressed_w")) {
 			position.Y -= speed;
 			setRunning(true);
+			direction = "up";
 		} else if(Input.IsActionPressed("pressed_s")) {
 			position.Y += speed;	
 			setRunning(true);
+			direction = "down";
 		}
 
 		if(Input.IsActionJustPressed("pressed_q")) {
 			inventory.deleteItem();
 		}
+		//GD.Print(direction);
 
 		Position = position;
-		animator.Scale = scale;
+		//animator.Scale = scale;
 		MoveAndSlide();
 	}
 
@@ -146,11 +154,11 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public Vector2 globalMousePosition() {
-		Vector2 mousePosition = GetGlobalMousePosition();
+	public Godot.Vector2 globalMousePosition() {
+		Godot.Vector2 mousePosition = GetGlobalMousePosition();
 		int mouseX = (int)(mousePosition.X / 3);
 		int mouseY = (int)(mousePosition.Y / 3);
-		Vector2 newMousePosition = new Vector2(mouseX, mouseY);
+		Godot.Vector2 newMousePosition = new Godot.Vector2(mouseX, mouseY);
 		return newMousePosition;
 	}
 
@@ -256,19 +264,72 @@ public partial class Player : CharacterBody2D
 
 	public void setAnimation(){
 		if(isAttacking) {
-			animator.Play("attack");
+			if(direction == "up") {
+				animator.Play("attack_up");
+			} else if(direction == "down") {
+				animator.Play("attack_down");
+			} else if(direction == "left") {
+				animator.Play("attack_left");
+			} else if(direction == "right"){
+				animator.Play("attack_right");
+			}
 		} else if(isWatering) {
-			animator.Play("water");
+			if(direction == "up") {
+				animator.Play("water_up");
+			} else if(direction == "down") {
+				animator.Play("water_down");
+			} else if(direction == "left") {
+				animator.Play("water_left");
+			} else if(direction == "right"){
+				animator.Play("water_right");
+			}
 		} else if(isHoeing) {
-			animator.Play("hoe");
+			if(direction == "up") {
+				animator.Play("hoe_up");
+			} else if(direction == "down") {
+				animator.Play("hoe_down");
+			} else if(direction == "left") {
+				animator.Play("hoe_left");
+			} else if(direction == "right"){
+				animator.Play("hoe_right");
+			}
 		} else if(isPlanting) {
-			animator.Play("plant");
+			if(direction == "up") {
+				animator.Play("plant_up");
+			} else if(direction == "down") {
+				animator.Play("plant_down");
+			} else if(direction == "left") {
+				animator.Play("plant_left");
+			} else if(direction == "right"){
+				animator.Play("plant_right");
+			}
 		} else if (isIdle) {
-			animator.Play("idle");
+			if(direction == "up") {
+				animator.Play("idle_up");
+			} else if(direction == "down") {
+				animator.Play("idle_down");
+			} else if(direction == "left") {
+				animator.Play("idle_left");
+			} else if(direction == "right"){
+				animator.Play("idle_right");
+			}
 		} else if (isRunning) {
-			animator.Play("run");
+			if(direction == "up") {
+				animator.Play("run_up");
+			} else if(direction == "down") {
+				animator.Play("run_down");
+			} else if(direction == "left") {
+				animator.Play("run_left");
+			} else if(direction == "right"){
+				animator.Play("run_right");
+			}
 		}
 	}
+
+	public void changeDirectionOnMouse() {
+		
+	}
+
 
 	private void _on_water_cooldown_timeout()
 	{

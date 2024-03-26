@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=61 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bovv46jde5cxl" path="res://art/background/grass.png" id="1_6ilq0"]
 [ext_resource type="Texture2D" uid="uid://blnb0mo6aimr2" path="res://art/background/grass-path.png" id="4_1bd58"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bj4vi5fr5b7ec" path="res://scenes/potato_seed.tscn" id="25_cd558"]
 [ext_resource type="PackedScene" uid="uid://t2hdm1q22rvb" path="res://scenes/radish_seed.tscn" id="26_vraqb"]
 [ext_resource type="PackedScene" uid="uid://d0rmhftf8v7is" path="res://scenes/crosshair.tscn" id="27_bpce6"]
+[ext_resource type="PackedScene" uid="uid://cyhb6ba4d8rky" path="res://scenes/crafting_table.tscn" id="27_gavxf"]
 [ext_resource type="PackedScene" uid="uid://d0ktefind1kxn" path="res://scenes/turnip_seed.tscn" id="27_kvyea"]
 [ext_resource type="PackedScene" uid="uid://bcbeo5ba8uy10" path="res://scenes/player.tscn" id="28_da38h"]
 [ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="30_qgth6"]
@@ -908,7 +909,7 @@ player = NodePath("../Player")
 position = Vector2(-222, -36)
 player = NodePath("../Player")
 
-[node name="CarrotSeed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("24_qa881")]
+[node name="carrot_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("24_qa881")]
 position = Vector2(399, -23)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
@@ -929,7 +930,10 @@ tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="chest" parent="." instance=ExtResource("30_qgth6")]
-position = Vector2(174, -81)
+position = Vector2(-248, -175)
+
+[node name="crafting_table" parent="." instance=ExtResource("27_gavxf")]
+position = Vector2(-19, -191)
 
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]
