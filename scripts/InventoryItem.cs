@@ -21,11 +21,11 @@ public partial class InventoryItem : Node2D
 	private int count;
 	private bool isSelected;
 	private bool onFloor;
-	private World world;
+	//private World world;
 	public override void _Ready()
 	{
 		icon = GetNode<Sprite2D>("Sprite2D").Texture;
-		world = (World)GetNode("/root/World");
+		//world = (World)GetNode("/root/World");
 		//GD.Print("icon of inventory item is " + icon);
 	}
 

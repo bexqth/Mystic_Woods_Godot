@@ -9,10 +9,11 @@ public partial class World : Node
 	private bool playerNearChest;
 	private bool playerOpenedChest;
 	private bool playerUsingCraftingTable;
+	private bool playerUsingAxe;
 	public override void _Ready() {
 		playerNearChest = false;
 		playerOpenedChest = false;
-
+		playerUsingAxe = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,6 +51,14 @@ public partial class World : Node
 
 	public bool getPlayerUsingTable() {
 		return this.playerUsingCraftingTable;
+	}
+
+	public bool getPlayerUsingAxe() {
+		return this.playerUsingAxe;
+	}
+
+	public void setPlayerUsingAxe(bool b) {
+		this.playerUsingAxe = b;
 	}
 
 }

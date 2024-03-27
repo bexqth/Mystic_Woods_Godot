@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=62 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bovv46jde5cxl" path="res://art/background/grass.png" id="1_6ilq0"]
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_x13f4"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cyhb6ba4d8rky" path="res://scenes/crafting_table.tscn" id="27_gavxf"]
 [ext_resource type="PackedScene" uid="uid://d0ktefind1kxn" path="res://scenes/turnip_seed.tscn" id="27_kvyea"]
 [ext_resource type="PackedScene" uid="uid://bcbeo5ba8uy10" path="res://scenes/player.tscn" id="28_da38h"]
+[ext_resource type="PackedScene" uid="uid://bt70v736lywr0" path="res://scenes/tree.tscn" id="29_q4jtk"]
 [ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="30_qgth6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28axj"]
@@ -894,6 +895,9 @@ position = Vector2(-248, -175)
 
 [node name="crafting_table" parent="." instance=ExtResource("27_gavxf")]
 position = Vector2(-19, -191)
+
+[node name="tree" parent="." instance=ExtResource("29_q4jtk")]
+position = Vector2(-444, -180)
 
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]

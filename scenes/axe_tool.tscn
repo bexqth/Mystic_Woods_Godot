@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://doywplsv7fvc"]
 
-[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_hodci"]
+[ext_resource type="Script" path="res://scripts/AxeTool.cs" id="1_nh0e3"]
 [ext_resource type="Texture2D" uid="uid://cscclx7e6blih" path="res://art/objects/Farming Tools spritesheet.png" id="2_1dgbu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyhy1"]
@@ -13,14 +13,13 @@ height = 19.2638
 
 [node name="axe_tool" type="Node2D"]
 scale = Vector2(2.5, 2.5)
-script = ExtResource("1_hodci")
-itemName = "axe"
+script = ExtResource("1_nh0e3")
+itemName = "Axe"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_iyhy1")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.8, 1.2)

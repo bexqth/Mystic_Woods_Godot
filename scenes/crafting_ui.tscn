@@ -37,6 +37,7 @@ texture = ExtResource("1_k7hwv")
 
 [node name="Slot1" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 24.0
 offset_top = 25.0
 offset_right = 75.0002
@@ -73,6 +74,7 @@ offset_bottom = 23.0
 
 [node name="Slot2" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 89.0
 offset_top = 25.0
 offset_right = 140.0
@@ -109,6 +111,7 @@ offset_bottom = 23.0
 
 [node name="Slot3" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 153.0
 offset_top = 25.0
 offset_right = 204.0
@@ -145,6 +148,7 @@ offset_bottom = 23.0
 
 [node name="Slot4" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 24.0
 offset_top = 90.0
 offset_right = 75.0002
@@ -181,6 +185,7 @@ offset_bottom = 23.0
 
 [node name="Slot5" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 88.0
 offset_top = 90.0
 offset_right = 139.0
@@ -217,6 +222,7 @@ offset_bottom = 23.0
 
 [node name="Slot6" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 153.0
 offset_top = 90.0
 offset_right = 204.0
@@ -253,6 +259,7 @@ offset_bottom = 23.0
 
 [node name="Slot7" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 24.0
 offset_top = 155.0
 offset_right = 75.0002
@@ -289,6 +296,7 @@ offset_bottom = 23.0
 
 [node name="Slot8" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 88.0
 offset_top = 154.0
 offset_right = 139.0
@@ -325,6 +333,7 @@ offset_bottom = 23.0
 
 [node name="Slot9" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 153.0
 offset_top = 155.0
 offset_right = 204.0
@@ -361,6 +370,7 @@ offset_bottom = 23.0
 
 [node name="Slot10" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_left = 225.0
 offset_top = 155.0
 offset_right = 276.0

@@ -1,17 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt70v736lywr0"]
+[gd_scene load_steps=5 format=3 uid="uid://bt70v736lywr0"]
 
+[ext_resource type="Script" path="res://scripts/Tree.cs" id="1_fdip3"]
 [ext_resource type="Texture2D" uid="uid://syimoxmtyn6g" path="res://art/background/extras/props.png" id="1_qem0b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lnldb"]
 atlas = ExtResource("1_qem0b")
 region = Rect2(64, 0, 32, 48)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwdwt"]
+radius = 31.0
+height = 112.0
+
 [node name="tree" type="Node2D"]
+script = ExtResource("1_fdip3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -54)
 scale = Vector2(3, 3)
 texture = SubResource("AtlasTexture_lnldb")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -39)
+shape = SubResource("CapsuleShape2D_bwdwt")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

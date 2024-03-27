@@ -39,12 +39,15 @@ public partial class Player : CharacterBody2D
 	private Timer waterCoolDownTimer;
 	private Timer hoeCoolDownTimer;
 	private Timer plantCoolDownTimer;
+	private Timer axeCoolDownTimer;
 	private bool isWatering;
 	private bool isHoeing;
 	private bool isPlanting;
+	private bool isAxing;
 	private bool canWater;
 	private bool canPlant;
 	private bool canHoe;
+	private bool canAxe;
 	private String direction;
 
 	[Export]
@@ -69,12 +72,15 @@ public partial class Player : CharacterBody2D
 		waterCoolDownTimer = GetNode<Timer>("water_cooldown");
 		hoeCoolDownTimer = GetNode<Timer>("hoe_cooldown");
 		plantCoolDownTimer = GetNode<Timer>("plant_cooldown");
+		axeCoolDownTimer = GetNode<Timer>("axe_cooldown");
 		isWatering = false;
 		isHoeing = false;
 		isPlanting = false;
+		isAxing = false;
 		canWater = true;
 		canHoe = true;
 		canPlant = true;
+		canAxe = true;
 		isIdle = true;
 		direction = "down";
 	}
@@ -201,6 +207,14 @@ public partial class Player : CharacterBody2D
 		return canPlant;
 	}
 
+	public bool getCanAxe() {
+		return this.canAxe;
+	}
+
+	public void setCanAxe(bool b) {
+		canAxe = b;
+	}
+
 	public Timer getGiveAttackCoolDownTimer() {
 		return giveAttackCoolDownTimer;
 	}
@@ -215,6 +229,10 @@ public partial class Player : CharacterBody2D
 
 	public Timer getPlantCoolDownTimer() {
 		return plantCoolDownTimer;
+	}
+
+	public Timer getAxeCoolDownTimer() {
+		return axeCoolDownTimer;
 	}
 	
 	public bool getAttacking() {
@@ -233,8 +251,17 @@ public partial class Player : CharacterBody2D
 		return this.isPlanting; 
 	}
 
+	public bool getAxing() {
+		return this.isAxing;
+	}
+
 	public int getDamage() {
 		return this.damage;
+	}
+
+	public void setAxing(bool value) {
+		isAxing = value;
+		isIdle = !value;
 	}
 
 	public void setWatering(bool value) {
@@ -303,6 +330,17 @@ public partial class Player : CharacterBody2D
 			} else if(direction == "right"){
 				animator.Play("plant_right");
 			}
+		} else if(isAxing) {
+			if(direction == "up") {
+				animator.Play("axe_up");
+			} else if(direction == "down") {
+				animator.Play("axe_down");
+			} else if(direction == "left") {
+				animator.Play("axe_left");
+			} else if(direction == "right"){
+				animator.Play("axe_right");
+			}
+			world.setPlayerUsingAxe(true);
 		} else if (isIdle) {
 			if(direction == "up") {
 				animator.Play("idle_up");
@@ -356,6 +394,13 @@ public partial class Player : CharacterBody2D
 		canAttack = true;
 	}
 
+	private void _on_axe_cooldown_timeout()
+	{
+		setAxing(false);
+		canAxe = true;
+		world.setPlayerUsingAxe(false);
+	}
+
 	public void dealDamage(int damage) {
 		if (!attackCooldownTurnOn) {
 			health -= damage;
@@ -377,21 +422,7 @@ public partial class Player : CharacterBody2D
 		if(body.Name == "SlimeEnemy") {
 			canGetHit = false;
 		}
-
 	}
-
-	public void water() {
-
-	}
-
-	public void plant() {
-
-	}
-
-	public void hoe() {
-
-	}
-
 
 	public void addItemToInventory(InventoryItem item) {
 		inventory.addItem(item);
