@@ -14,6 +14,7 @@ height = 14.6297
 [node name="Log" type="Node2D"]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_pq26v")
+stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_225co")

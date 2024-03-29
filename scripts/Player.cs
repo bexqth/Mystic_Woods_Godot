@@ -149,6 +149,7 @@ public partial class Player : CharacterBody2D
 		//GD.Print(direction);
 
 		Position = position;
+		world.setPlayerPosition(this.Position);
 		//animator.Scale = scale;
 		MoveAndSlide();
 	}
@@ -166,6 +167,10 @@ public partial class Player : CharacterBody2D
 		int mouseY = (int)(mousePosition.Y / 3);
 		Godot.Vector2 newMousePosition = new Godot.Vector2(mouseX, mouseY);
 		return newMousePosition;
+	}
+
+	public InventoryItem getHoldingItem() {
+		return this.holdingItem;
 	}
 
 	public String getNameHoldingItem() {
@@ -340,7 +345,7 @@ public partial class Player : CharacterBody2D
 			} else if(direction == "right"){
 				animator.Play("axe_right");
 			}
-			world.setPlayerUsingAxe(true);
+			
 		} else if (isIdle) {
 			if(direction == "up") {
 				animator.Play("idle_up");
@@ -398,7 +403,6 @@ public partial class Player : CharacterBody2D
 	{
 		setAxing(false);
 		canAxe = true;
-		world.setPlayerUsingAxe(false);
 	}
 
 	public void dealDamage(int damage) {
@@ -426,11 +430,6 @@ public partial class Player : CharacterBody2D
 
 	public void addItemToInventory(InventoryItem item) {
 		inventory.addItem(item);
-	}
-
-	private void _on_player_collision_body_entered(Node2D body) {
-	
-	
 	}
 
 	public void checkForBeingHit() {
@@ -475,5 +474,23 @@ public partial class Player : CharacterBody2D
 	public void addHealth(int howMuch) {
 		this.health += howMuch;
 	}
+
+	private void _on_player_collision_body_entered(Node2D body)
+	{
+		/*GD.Print(body.GetType());
+		if(body.GetParent() is InventoryItem newItem) {
+			//this.inventory.addItem(newItem);
+			GD.Print("Collision with inventory item");
+		}*/
+	}
+
+	private void _on_player_collision_area_entered(Area2D area)
+	{
+		if(area.GetParent() is InventoryItem newItem) {
+			this.addItemToInventory(newItem);
+			//GD.Print("Collision with inventory item");
+		}
+	}
+
 }
 

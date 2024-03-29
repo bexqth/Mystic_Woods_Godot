@@ -1274,7 +1274,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4xis3"]
-radius = 4.0
+radius = 1.33334
 height = 11.3333
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6khb"]
@@ -1293,13 +1293,14 @@ inventory = NodePath("Camera2D/Inventory")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6.33332)
 sprite_frames = SubResource("SpriteFrames_w31n5")
-animation = &"idle_left"
+animation = &"idle_down"
 speed_scale = 1.6
 
 [node name="player_collision" type="Area2D" parent="."]
 
 [node name="player_collisionShape" type="CollisionShape2D" parent="player_collision"]
-position = Vector2(0.666666, -6)
+position = Vector2(0.333333, -2.66667)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4xis3")
 
 [node name="Collision_Feet" type="CollisionShape2D" parent="."]
@@ -1356,6 +1357,8 @@ wait_time = 0.7
 [node name="axe_cooldown" type="Timer" parent="."]
 wait_time = 0.7
 
+[connection signal="area_entered" from="player_collision" to="." method="_on_player_collision_area_entered"]
+[connection signal="body_entered" from="player_collision" to="." method="_on_player_collision_body_entered"]
 [connection signal="timeout" from="give_attack_cooldown" to="." method="_on_give_attack_cooldown_timeout"]
 [connection signal="timeout" from="water_cooldown" to="." method="_on_water_cooldown_timeout"]
 [connection signal="timeout" from="hoe_cooldown" to="." method="_on_hoe_cooldown_timeout"]

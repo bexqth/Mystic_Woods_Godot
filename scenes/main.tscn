@@ -866,9 +866,8 @@ position = Vector2(-36, -35)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
-[node name="sword_tool" parent="." node_paths=PackedStringArray("player") instance=ExtResource("23_f0x6a")]
+[node name="sword_tool" parent="." instance=ExtResource("23_f0x6a")]
 position = Vector2(-222, -36)
-player = NodePath("../Player")
 
 [node name="carrot_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("24_qa881")]
 position = Vector2(399, -23)

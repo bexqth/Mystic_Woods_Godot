@@ -21,10 +21,15 @@ public partial class InventoryItem : Node2D
 	private int count;
 	private bool isSelected;
 	private bool onFloor;
+	private World world;
 	//private World world;
 	public override void _Ready()
 	{
 		icon = GetNode<Sprite2D>("Sprite2D").Texture;
+		world = (World)GetNode("/root/World");
+		this.player = GetTree().CurrentScene.GetNode<Player>("Player");
+		//this.player = world.getPlayer();
+		//player = world.getPlayer();
 		//world = (World)GetNode("/root/World");
 		//GD.Print("icon of inventory item is " + icon);
 	}
@@ -35,6 +40,10 @@ public partial class InventoryItem : Node2D
 		if(isSelected) {
 			followMouse();
 		}
+	}
+
+	public World GetWorld() {
+		return this.world;
 	}
 
 	public void setIsInInventory(bool b) {
@@ -52,9 +61,9 @@ public partial class InventoryItem : Node2D
 
 	private void _on_area_2d_body_entered(Node2D body)
 	{
-		if(body.Name == "Player") {
+		/*if(body.Name == "Player") {
 			player.addItemToInventory(this);
-		}
+		}*/
 	}
 
 	public String getItemName() {
@@ -84,6 +93,8 @@ public partial class InventoryItem : Node2D
 
 	public void setPositionAfterDeletingFromItem() {
 		Vector2 position = Position;
+		//position.X = world.getPlayerPosition().X;
+		//position.Y = world.getPlayerPosition().Y - 50;
 		position.X = player.Position.X;
 		position.Y = player.Position.Y - 50;
 		Position = position;
