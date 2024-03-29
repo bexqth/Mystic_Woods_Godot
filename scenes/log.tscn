@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0yrhvb7tqkeo"]
 
 [ext_resource type="Script" path="res://scripts/Log.cs" id="1_pq26v"]
-[ext_resource type="Texture2D" uid="uid://syimoxmtyn6g" path="res://art/background/extras/props.png" id="1_ujkt2"]
+[ext_resource type="Texture2D" uid="uid://cqtfocivhsxr6" path="res://art/background/extras/trees-focused.png" id="2_6rmea"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_225co"]
-atlas = ExtResource("1_ujkt2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks0va"]
+atlas = ExtResource("2_6rmea")
 region = Rect2(240, 16, 16, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iem5a"]
@@ -17,7 +17,7 @@ script = ExtResource("1_pq26v")
 stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_225co")
+texture = SubResource("AtlasTexture_ks0va")
 
 [node name="Area2D" type="Area2D" parent="."]
 
