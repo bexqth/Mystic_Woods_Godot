@@ -528,7 +528,14 @@ public partial class Player : CharacterBody2D
 	}
 
 	public bool axeAnimationEnd() {
-		if(this.isAxing && this.animator.Frame ==  3) {
+		if(this.isAxing && this.animator.Frame ==  4) {
+			return true;
+		}
+		return false; 
+	}
+
+	public bool pickaxeAnimationEnd() {
+		if(this.isPickaxing && this.animator.Frame ==  4) {
 			return true;
 		}
 		return false; 

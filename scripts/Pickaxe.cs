@@ -3,6 +3,7 @@ using System;
 
 public partial class Pickaxe : InventoryItem
 {
+	private int axeDamage = 20;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,4 +24,10 @@ public partial class Pickaxe : InventoryItem
 			player.getPickaxeCoolDownTimer().Start();
 		}
     }
+
+	public int getDamage() {
+		return this.axeDamage;
+	}
+
+	
 }

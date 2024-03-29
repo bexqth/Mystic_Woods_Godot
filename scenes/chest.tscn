@@ -146,7 +146,7 @@ script = ExtResource("1_f5fdr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3x1xo")
-animation = &"closing"
+animation = &"closed"
 speed_scale = 1.8
 
 [node name="Area2D" type="Area2D" parent="."]

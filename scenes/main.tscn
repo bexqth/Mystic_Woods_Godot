@@ -1,20 +1,20 @@
-[gd_scene load_steps=62 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=63 format=3 uid="uid://bkdaw4ijjwcsv"]
 
-[ext_resource type="Texture2D" uid="uid://bovv46jde5cxl" path="res://art/background/grass.png" id="1_6ilq0"]
+[ext_resource type="Texture2D" uid="uid://bovv46jde5cxl" path="res://art/background/Island/grass.png" id="1_6ilq0"]
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_x13f4"]
-[ext_resource type="Texture2D" uid="uid://blnb0mo6aimr2" path="res://art/background/grass-path.png" id="4_1bd58"]
-[ext_resource type="Texture2D" uid="uid://bhwwmooaag1kw" path="res://art/background/grass-water.png" id="5_lvtjc"]
-[ext_resource type="Texture2D" uid="uid://syimoxmtyn6g" path="res://art/background/extras/props.png" id="6_5px40"]
-[ext_resource type="Texture2D" uid="uid://5mdw4mob6cs2" path="res://art/background/hill - path.png" id="7_glqch"]
-[ext_resource type="Texture2D" uid="uid://bil8alw7igoya" path="res://art/background/misc.png" id="7_rxu21"]
-[ext_resource type="Texture2D" uid="uid://demae7no3uu8p" path="res://art/background/hill - water2.png" id="8_ayfvp"]
+[ext_resource type="Texture2D" uid="uid://blnb0mo6aimr2" path="res://art/background/Island/grass-path.png" id="4_1bd58"]
+[ext_resource type="Texture2D" uid="uid://bhwwmooaag1kw" path="res://art/background/Island/grass-water.png" id="5_lvtjc"]
+[ext_resource type="Texture2D" uid="uid://syimoxmtyn6g" path="res://art/background/Island/extras/props.png" id="6_5px40"]
+[ext_resource type="Texture2D" uid="uid://5mdw4mob6cs2" path="res://art/background/Island/hill - path.png" id="7_glqch"]
+[ext_resource type="Texture2D" uid="uid://bil8alw7igoya" path="res://art/background/Island/misc.png" id="7_rxu21"]
+[ext_resource type="Texture2D" uid="uid://demae7no3uu8p" path="res://art/background/Island/hill - water2.png" id="8_ayfvp"]
 [ext_resource type="Script" path="res://scripts/Enemy.cs" id="8_nod51"]
 [ext_resource type="Texture2D" uid="uid://bjh1ynwrm66lu" path="res://art/character/slime.png" id="9_cx54d"]
-[ext_resource type="Texture2D" uid="uid://bk52vb3yirhn7" path="res://art/background/hill - water.png" id="9_v28or"]
-[ext_resource type="Texture2D" uid="uid://1eu70sw1ih24" path="res://art/background/hill.png" id="10_6vh5b"]
+[ext_resource type="Texture2D" uid="uid://bk52vb3yirhn7" path="res://art/background/Island/hill - water.png" id="9_v28or"]
+[ext_resource type="Texture2D" uid="uid://1eu70sw1ih24" path="res://art/background/Island/hill.png" id="10_6vh5b"]
 [ext_resource type="PackedScene" uid="uid://dl04b6y2tctv8" path="res://scenes/apple.tscn" id="11_ghngm"]
-[ext_resource type="Texture2D" uid="uid://d0sbcb7ihcgd7" path="res://art/background/texture.png" id="12_yg58o"]
-[ext_resource type="Texture2D" uid="uid://br3r8j3qmgcwj" path="res://art/background/water.png" id="13_djqko"]
+[ext_resource type="Texture2D" uid="uid://d0sbcb7ihcgd7" path="res://art/background/Island/texture.png" id="12_yg58o"]
+[ext_resource type="Texture2D" uid="uid://br3r8j3qmgcwj" path="res://art/background/Island/water.png" id="13_djqko"]
 [ext_resource type="PackedScene" uid="uid://ch6uvgtrqbfiq" path="res://scenes/health_potion.tscn" id="13_qpr2y"]
 [ext_resource type="PackedScene" uid="uid://dwd8bva0o7px1" path="res://scenes/hoe_tool.tscn" id="18_0drt5"]
 [ext_resource type="PackedScene" uid="uid://doywplsv7fvc" path="res://scenes/axe_tool.tscn" id="19_rqtx2"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ktefind1kxn" path="res://scenes/turnip_seed.tscn" id="27_kvyea"]
 [ext_resource type="PackedScene" uid="uid://bcbeo5ba8uy10" path="res://scenes/player.tscn" id="28_da38h"]
 [ext_resource type="PackedScene" uid="uid://bt70v736lywr0" path="res://scenes/tree.tscn" id="29_q4jtk"]
+[ext_resource type="PackedScene" uid="uid://cg8dpa73tvntf" path="res://scenes/coal_ore.tscn" id="30_ij4sd"]
 [ext_resource type="PackedScene" uid="uid://biboltthmw2gv" path="res://scenes/pickaxe.tscn" id="30_ixbi1"]
 [ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="30_qgth6"]
 
@@ -897,6 +898,9 @@ position = Vector2(-444, -180)
 
 [node name="pickaxe" parent="." instance=ExtResource("30_ixbi1")]
 position = Vector2(-372, -39)
+
+[node name="coal_ore" parent="." instance=ExtResource("30_ij4sd")]
+position = Vector2(-500, -89)
 
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]

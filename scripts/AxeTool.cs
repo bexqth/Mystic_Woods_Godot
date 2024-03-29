@@ -16,16 +16,16 @@ public partial class AxeTool : InventoryItem
 		base._Process(delta);
 	}
 
-	public int getDamage() {
-		return this.axeDamage;
-	}
-
 	public override void useItem() {
 		if (player.getCanAxe() && !player.getAxing()) {
 			player.setAxing(true);
 			player.setCanAxe(false);		
 			player.getAxeCoolDownTimer().Start();
 		}
+	}
+
+	public int getDamage() {
+		return this.axeDamage;
 	}
 
 }
