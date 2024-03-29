@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://dwd8bva0o7px1" path="res://scenes/hoe_tool.tscn" id="18_0drt5"]
 [ext_resource type="PackedScene" uid="uid://doywplsv7fvc" path="res://scenes/axe_tool.tscn" id="19_rqtx2"]
 [ext_resource type="PackedScene" uid="uid://bbouwbftyvg3i" path="res://scenes/garden_pot_tool.tscn" id="20_at6bo"]
-[ext_resource type="PackedScene" uid="uid://dtrpt5vpnu6bh" path="res://scenes/sword_tool.tscn" id="23_f0x6a"]
 [ext_resource type="PackedScene" uid="uid://dwgq8sjp7ubk5" path="res://scenes/carrot_seed.tscn" id="24_qa881"]
 [ext_resource type="PackedScene" uid="uid://bj4vi5fr5b7ec" path="res://scenes/potato_seed.tscn" id="25_cd558"]
 [ext_resource type="PackedScene" uid="uid://t2hdm1q22rvb" path="res://scenes/radish_seed.tscn" id="26_vraqb"]
@@ -28,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ktefind1kxn" path="res://scenes/turnip_seed.tscn" id="27_kvyea"]
 [ext_resource type="PackedScene" uid="uid://bcbeo5ba8uy10" path="res://scenes/player.tscn" id="28_da38h"]
 [ext_resource type="PackedScene" uid="uid://bt70v736lywr0" path="res://scenes/tree.tscn" id="29_q4jtk"]
+[ext_resource type="PackedScene" uid="uid://biboltthmw2gv" path="res://scenes/pickaxe.tscn" id="30_ixbi1"]
 [ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="30_qgth6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28axj"]
@@ -866,9 +866,6 @@ position = Vector2(-36, -35)
 tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
-[node name="sword_tool" parent="." instance=ExtResource("23_f0x6a")]
-position = Vector2(-222, -36)
-
 [node name="carrot_seed" parent="." node_paths=PackedStringArray("tileMap", "player") instance=ExtResource("24_qa881")]
 position = Vector2(399, -23)
 tileMap = NodePath("../TileMap")
@@ -897,6 +894,9 @@ position = Vector2(-19, -191)
 
 [node name="tree" parent="." instance=ExtResource("29_q4jtk")]
 position = Vector2(-444, -180)
+
+[node name="pickaxe" parent="." instance=ExtResource("30_ixbi1")]
+position = Vector2(-372, -39)
 
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]

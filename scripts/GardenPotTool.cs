@@ -27,18 +27,6 @@ public partial class GardenPotTool : InventoryItem
 	}
 
 	public override void useItem() {
-		/*PackedScene farmTileScene = GD.Load<PackedScene>("res://scenes/farm_tile.tscn");
-		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-
-		if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
-			FarmTile farmTile = (FarmTile)farmTileScene.Instantiate();
-			farmTile.Position = new Vector2(tileMousePosition.X * 48, tileMousePosition.Y * 48);
-			player.GetParent().GetTree().CurrentScene.AddChild(farmTile);
-			GD.Print(player.GetParent().GetTree().CurrentScene.GetChildCount());
-		} else {
-			GD.Print("out of reach");
-		}*/
-
 		if (player.getCanWater() && !player.getWatering()) {
 			player.setWatering(true);
 			player.setCanWater(false);

@@ -8,6 +8,8 @@ public partial class Tree : ResourceNode
 	private PackedScene resourceItemScene;
 	private int resourceItemCount;
 	private bool canBeHit;
+	private bool dealtDamage;
+	private int recievedDamage;
 	private Player player;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -26,21 +28,30 @@ public partial class Tree : ResourceNode
 		//GD.PrintT("using axe " + world.getPlayerUsingAxe());
 		//GD.Print(world.getPlayerUsingAxe());
 		base._Process(delta);
+		dealDamage();
 	}
 
 	public void dealDamage() {
-		if(this.canBeHit && this.player.getCanAxe()) {
-			if(this.player.getHoldingItem() is AxeTool axeTool) {
-				this.reduceLife(axeTool.getDamage());
+		if(dealtDamage) {
+			if(player.axeAnimationEnd()) {
+				reduceLife(recievedDamage);
 				GD.Print("life is " + this.getLife());
+				dealtDamage = false;
 			}
+		}
+	}
+
+	public void setDamageValues() {
+		if(player.getHoldingItem() is AxeTool axeTool) {
+			dealtDamage = true;
+			recievedDamage = axeTool.getDamage();
 		}
 	}
 
 	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx)
 	{
-		if(Input.IsActionJustPressed("on_left_click")) {
-			dealDamage();
+		if(Input.IsActionJustPressed("on_left_click") && this.canBeHit && player.getCanAxe()) {
+			setDamageValues();
 		}
 	}
 	

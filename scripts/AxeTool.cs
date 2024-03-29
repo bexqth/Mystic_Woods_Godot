@@ -9,7 +9,6 @@ public partial class AxeTool : InventoryItem
 	public override void _Ready()
 	{
 		base._Ready();
-		//world = (World)GetNode("/root/World");
 	}
 
 	public override void _Process(double delta)

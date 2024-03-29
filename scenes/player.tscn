@@ -1357,6 +1357,9 @@ wait_time = 0.7
 [node name="axe_cooldown" type="Timer" parent="."]
 wait_time = 0.7
 
+[node name="pickaxe_cooldown" type="Timer" parent="."]
+wait_time = 0.7
+
 [connection signal="area_entered" from="player_collision" to="." method="_on_player_collision_area_entered"]
 [connection signal="body_entered" from="player_collision" to="." method="_on_player_collision_body_entered"]
 [connection signal="timeout" from="give_attack_cooldown" to="." method="_on_give_attack_cooldown_timeout"]
@@ -1364,3 +1367,4 @@ wait_time = 0.7
 [connection signal="timeout" from="hoe_cooldown" to="." method="_on_hoe_cooldown_timeout"]
 [connection signal="timeout" from="plant_cooldown" to="." method="_on_plant_cooldown_timeout"]
 [connection signal="timeout" from="axe_cooldown" to="." method="_on_axe_cooldown_timeout"]
+[connection signal="timeout" from="pickaxe_cooldown" to="." method="_on_pickaxe_cooldown_timeout"]

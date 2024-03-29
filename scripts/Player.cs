@@ -40,14 +40,17 @@ public partial class Player : CharacterBody2D
 	private Timer hoeCoolDownTimer;
 	private Timer plantCoolDownTimer;
 	private Timer axeCoolDownTimer;
+	private Timer pickaxeCoolDownTimer;
 	private bool isWatering;
 	private bool isHoeing;
 	private bool isPlanting;
 	private bool isAxing;
+	private bool isPickaxing;
 	private bool canWater;
 	private bool canPlant;
 	private bool canHoe;
 	private bool canAxe;
+	private bool canPickaxe;
 	private String direction;
 
 	[Export]
@@ -73,14 +76,18 @@ public partial class Player : CharacterBody2D
 		hoeCoolDownTimer = GetNode<Timer>("hoe_cooldown");
 		plantCoolDownTimer = GetNode<Timer>("plant_cooldown");
 		axeCoolDownTimer = GetNode<Timer>("axe_cooldown");
+		pickaxeCoolDownTimer = GetNode<Timer>("pickaxe_cooldown");
+
 		isWatering = false;
 		isHoeing = false;
 		isPlanting = false;
 		isAxing = false;
+		isPickaxing = false;
 		canWater = true;
 		canHoe = true;
 		canPlant = true;
 		canAxe = true;
+		canPickaxe = true;
 		isIdle = true;
 		direction = "down";
 	}
@@ -220,6 +227,14 @@ public partial class Player : CharacterBody2D
 		canAxe = b;
 	}
 
+	public bool getCanPickaxe() {
+		return this.canPickaxe;
+	}
+
+	public void setCanPickaxe(bool b) {
+		canPickaxe = b;
+	}
+
 	public Timer getGiveAttackCoolDownTimer() {
 		return giveAttackCoolDownTimer;
 	}
@@ -238,6 +253,10 @@ public partial class Player : CharacterBody2D
 
 	public Timer getAxeCoolDownTimer() {
 		return axeCoolDownTimer;
+	}
+
+	public Timer getPickaxeCoolDownTimer() {
+		return pickaxeCoolDownTimer;
 	}
 	
 	public bool getAttacking() {
@@ -260,8 +279,17 @@ public partial class Player : CharacterBody2D
 		return this.isAxing;
 	}
 
+	public bool getPickaxing() {
+		return this.isPickaxing; 
+	}
+
 	public int getDamage() {
 		return this.damage;
+	}
+
+	public void setPickaxing(bool value) {
+		isPickaxing = value;
+		isIdle = !value;
 	}
 
 	public void setAxing(bool value) {
@@ -345,7 +373,16 @@ public partial class Player : CharacterBody2D
 			} else if(direction == "right"){
 				animator.Play("axe_right");
 			}
-			
+		} else if(isPickaxing) {
+			if(direction == "up") {
+				animator.Play("pickaxe_up");
+			} else if(direction == "down") {
+				animator.Play("pickaxe_down");
+			} else if(direction == "left") {
+				animator.Play("pickaxe_left");
+			} else if(direction == "right"){
+				animator.Play("pickaxe_right");
+			} 
 		} else if (isIdle) {
 			if(direction == "up") {
 				animator.Play("idle_up");
@@ -403,6 +440,12 @@ public partial class Player : CharacterBody2D
 	{
 		setAxing(false);
 		canAxe = true;
+	}
+	
+	private void _on_pickaxe_cooldown_timeout()
+	{
+		setPickaxing(false);
+		canPickaxe = true;
 	}
 
 	public void dealDamage(int damage) {
@@ -484,11 +527,21 @@ public partial class Player : CharacterBody2D
 		}*/
 	}
 
+	public bool axeAnimationEnd() {
+		if(this.isAxing && this.animator.Frame ==  3) {
+			return true;
+		}
+		return false; 
+	}
+
+	public AnimatedSprite2D getAnimator() {
+		return this.animator;
+	}
+
 	private void _on_player_collision_area_entered(Area2D area)
 	{
 		if(area.GetParent() is InventoryItem newItem) {
 			this.addItemToInventory(newItem);
-			//GD.Print("Collision with inventory item");
 		}
 	}
 
