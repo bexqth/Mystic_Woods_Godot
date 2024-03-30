@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dec8u6dbt3st3"
-path="res://.godot/imported/chest2.png-b67f68994a71ca0909a536cc62dc2b21.ctex"
+uid="uid://b881rjc1mtsvh"
+path="res://.godot/imported/infurnaceUI_8.png-828a7bb1e251de40e70dcd740c79e450.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/chest2.png"
-dest_files=["res://.godot/imported/chest2.png-b67f68994a71ca0909a536cc62dc2b21.ctex"]
+source_file="res://art/UI/furnace_UI/infurnaceUI_8.png"
+dest_files=["res://.godot/imported/infurnaceUI_8.png-828a7bb1e251de40e70dcd740c79e450.ctex"]
 
 [params]
 

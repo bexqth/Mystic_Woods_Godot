@@ -15,6 +15,7 @@ slot4 = NodePath("GridContainer/Slot4")
 slot5 = NodePath("GridContainer/Slot5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 offset_left = -6.0
 offset_top = -15.0
 offset_right = 268.0

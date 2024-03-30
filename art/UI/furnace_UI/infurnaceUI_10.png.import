@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh0268e7w2lr3"
-path="res://.godot/imported/Crafting no3.png-809a59c93bc37bdb512cd43259cdfc5d.ctex"
+uid="uid://ds1tjyy3dhtnm"
+path="res://.godot/imported/infurnaceUI_10.png-f189a56441a5bec308f0a49b19cf2da8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/UI/Crafting no3.png"
-dest_files=["res://.godot/imported/Crafting no3.png-809a59c93bc37bdb512cd43259cdfc5d.ctex"]
+source_file="res://art/UI/furnace_UI/infurnaceUI_10.png"
+dest_files=["res://.godot/imported/infurnaceUI_10.png-f189a56441a5bec308f0a49b19cf2da8.ctex"]
 
 [params]
 

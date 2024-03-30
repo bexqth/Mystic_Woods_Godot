@@ -36,7 +36,7 @@ public partial class ResourceNode : Node2D
 
 	public void spawnResourceItem() {
 		if(this.life <= 0) {
-			GD.Print(resourceItem);
+			//GD.Print(resourceItem);
 			resourceItem.Position = this.Position;
 			GetTree().CurrentScene.AddChild(resourceItem);
 			this.QueueFree();

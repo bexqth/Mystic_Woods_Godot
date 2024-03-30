@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkpnfr2vblw2"]
 
+[ext_resource type="Script" path="res://scripts/ResourceItem.cs" id="1_01rsc"]
 [ext_resource type="Texture2D" uid="uid://8unb14ql0r7p" path="res://art/background/Mining/ores.png" id="1_3xnus"]
-[ext_resource type="Script" path="res://scripts/Coal.cs" id="1_nmgiw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqidx"]
 atlas = ExtResource("1_3xnus")
@@ -12,7 +12,7 @@ radius = 5.33333
 
 [node name="coal" type="Node2D"]
 scale = Vector2(3, 3)
-script = ExtResource("1_nmgiw")
+script = ExtResource("1_01rsc")
 itemName = "Coal"
 stackable = true
 

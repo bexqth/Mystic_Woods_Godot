@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0yrhvb7tqkeo"]
 
-[ext_resource type="Script" path="res://scripts/Log.cs" id="1_pq26v"]
+[ext_resource type="Script" path="res://scripts/ResourceItem.cs" id="1_rpl7s"]
 [ext_resource type="Texture2D" uid="uid://d03n7bhffhog7" path="res://art/background/Island/extras/trees-focused.png" id="2_6rmea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ikih"]
@@ -13,7 +13,7 @@ height = 14.6297
 
 [node name="Log" type="Node2D"]
 scale = Vector2(2.5, 2.5)
-script = ExtResource("1_pq26v")
+script = ExtResource("1_rpl7s")
 itemName = "Log"
 stackable = true
 

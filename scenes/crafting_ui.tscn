@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djkoy6fycgqp3"]
 
 [ext_resource type="Script" path="res://scripts/CraftingUI.cs" id="1_bxhs6"]
-[ext_resource type="Texture2D" uid="uid://dh0268e7w2lr3" path="res://art/UI/Crafting no3.png" id="1_k7hwv"]
+[ext_resource type="Texture2D" uid="uid://804kpb3fry88" path="res://art/UI/new_craftingUI.png" id="2_18j34"]
 [ext_resource type="Theme" uid="uid://dj0iofti11vkk" path="res://themes/empty_button.tres" id="2_225xl"]
 [ext_resource type="Script" path="res://scripts/Slot.cs" id="3_ae1na"]
 
@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_k7hwv")
+texture = ExtResource("2_18j34")
 
 [node name="Slot1" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(50, 50)

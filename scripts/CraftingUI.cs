@@ -36,13 +36,7 @@ public partial class CraftingUI : Node2D
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 			slot.FocusMode = Control.FocusModeEnum.None;
-		}
-
-		//TEST OBJECT
-		PackedScene appleScene = GD.Load<PackedScene>("res://scenes/apple.tscn");
-		InventoryItem apple = (InventoryItem)appleScene.Instantiate();
-		slot1.addItemToArray(apple);
-		slot1.setIcon(apple.getIcon());		
+		}	
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

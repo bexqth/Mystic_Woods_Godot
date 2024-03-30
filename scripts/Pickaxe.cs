@@ -16,14 +16,14 @@ public partial class Pickaxe : InventoryItem
 		base._Process(delta);
 	}
 
-    public override void useItem()
-    {
-        if (player.getCanPickaxe() && !player.getPickaxing()) {
+	public override void useItem()
+	{
+		if (player.getCanPickaxe() && !player.getPickaxing()) {
 			player.setPickaxing(true);
 			player.setCanPickaxe(false);		
 			player.getPickaxeCoolDownTimer().Start();
 		}
-    }
+	}
 
 	public int getDamage() {
 		return this.axeDamage;

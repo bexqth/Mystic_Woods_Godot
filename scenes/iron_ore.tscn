@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://f3b0dc0o14yo"]
+
+[ext_resource type="Script" path="res://scripts/ResourceNodePickaxble.cs" id="1_fh1h1"]
+[ext_resource type="Texture2D" uid="uid://8unb14ql0r7p" path="res://art/background/Mining/ores.png" id="2_52sxk"]
+[ext_resource type="Texture2D" uid="uid://bb6k146e7hnmr" path="res://art/background/Mining/ores-focused.png" id="3_8k1gw"]
+[ext_resource type="Texture2D" uid="uid://c6eucygo01uh3" path="res://art/background/Mining/ores-hit.png" id="4_caj6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w66on"]
+atlas = ExtResource("2_52sxk")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2syov"]
+atlas = ExtResource("3_8k1gw")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ietj2"]
+atlas = ExtResource("4_caj6v")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr301"]
+radius = 5.33
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uly1"]
+radius = 14.33
+
+[node name="iron_ore" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_fh1h1")
+
+[node name="Sprite2D_default" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_w66on")
+
+[node name="Sprite2D_focused" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_2syov")
+
+[node name="Sprite2D_hit" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_ietj2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qr301")
+
+[node name="Area2D_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_range"]
+shape = SubResource("CircleShape2D_5uly1")
+
+[node name="sprite_changing_Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Area2D_range" to="." method="_on_area_2d_range_body_entered"]
+[connection signal="body_exited" from="Area2D_range" to="." method="_on_area_2d_range_body_exited"]
+[connection signal="timeout" from="sprite_changing_Timer" to="." method="_on_sprite_changing_timer_timeout"]
