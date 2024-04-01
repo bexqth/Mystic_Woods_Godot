@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxsv7r71uxa14"]
+[gd_scene load_steps=6 format=3 uid="uid://cxsv7r71uxa14"]
 
 [ext_resource type="Texture2D" uid="uid://8unb14ql0r7p" path="res://art/background/Mining/ores.png" id="1_74382"]
+[ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_lmj7p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnf7y"]
+atlas = ExtResource("1_74382")
+region = Rect2(80, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7gj8"]
 atlas = ExtResource("1_74382")
@@ -11,6 +16,10 @@ size = Vector2(8.11989, 11)
 
 [node name="iron" type="Node2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_lmj7p")
+itemName = "Iron"
+icon = SubResource("AtlasTexture_nnf7y")
+stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_q7gj8")

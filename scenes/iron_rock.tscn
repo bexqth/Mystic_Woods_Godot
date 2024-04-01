@@ -13,7 +13,8 @@ radius = 5.33333
 [node name="iron_rock" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_vqq1e")
-itemName = "ironRock"
+cookingTime = 1
+itemName = "IronRock"
 stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

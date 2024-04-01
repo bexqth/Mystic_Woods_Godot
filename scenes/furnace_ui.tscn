@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://uiimjokawn55"]
+[gd_scene load_steps=18 format=3 uid="uid://uiimjokawn55"]
 
+[ext_resource type="Script" path="res://scripts/FurnaceUI.cs" id="1_6tpvs"]
 [ext_resource type="Texture2D" uid="uid://de6qfilukfm7f" path="res://art/UI/furnace_UI/infurnaceUI_1.png" id="1_biw2x"]
 [ext_resource type="Texture2D" uid="uid://du0wiygl76q86" path="res://art/UI/furnace_UI/infurnaceUI_2.png" id="2_ab7bi"]
 [ext_resource type="Texture2D" uid="uid://cg2k0xbi3ffex" path="res://art/UI/furnace_UI/infurnaceUI_3.png" id="3_02oqk"]
@@ -68,7 +69,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="furnace_UI" type="Node2D"]
+[node name="furnace_UI" type="Node2D" node_paths=PackedStringArray("materialItem", "lightSource", "resultItem")]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_6tpvs")
+materialItem = NodePath("Slot1")
+lightSource = NodePath("Slot2")
+resultItem = NodePath("Slot3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3.43333, 3.43333)

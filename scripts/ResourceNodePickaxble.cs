@@ -6,10 +6,6 @@ public partial class ResourceNodePickaxble : ResourceNode
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		//this.resourceItemScene = GD.Load<PackedScene>("res://scenes/coal.tscn");
-		//this.resourceItem = (ResourceItem)resourceItemScene.Instantiate();
-		//this.setresourceItem(this.resourceItem);
-		//this.setresourceItemScene(this.resourceItemScene);
 		this.assignResourceItem();
 		base._Ready();
 	}

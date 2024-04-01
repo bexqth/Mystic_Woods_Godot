@@ -31,7 +31,7 @@ public partial class Inventory : Node2D
 	public override void _Ready()
 	{
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5 };
-		setSlotsIntoInventory();
+		//setSlotsIntoInventory();
 		focusIndex = 0;	
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
@@ -56,7 +56,7 @@ public partial class Inventory : Node2D
 
 	public void onSlotClicked(Slot slot){
 		clickedSlot = slot;
-		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable() || world.getPlayerUsingFurnace()) {
 			if(world.getDraggedItem() == null) { //PICK UP
 				clickedSlot.pickUpItem();
 				world.setDraggedItem(clickedSlot.getSelectedItem());
@@ -67,7 +67,7 @@ public partial class Inventory : Node2D
 	}
 
 	public void changeFocusChestOpened() {
-		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable() || world.getPlayerUsingFurnace()) {
 			foreach (var slot in slots) {
 				slot.FocusMode = Control.FocusModeEnum.None;
 			}
@@ -138,7 +138,7 @@ public partial class Inventory : Node2D
 
 
 	public void changeFocus() {
-		if(!world.getPlayerOpenedChest() && !world.getPlayerUsingTable()) {
+		if(!world.getPlayerOpenedChest() && !world.getPlayerUsingTable() && !world.getPlayerUsingFurnace()) {
 			if (Input.IsActionJustPressed("scroll_up")) {
 				focusIndex++;
 				if (focusIndex >= inventorySize)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bh1518lehis50"]
+[gd_scene load_steps=20 format=3 uid="uid://bh1518lehis50"]
 
 [ext_resource type="Texture2D" uid="uid://0o8f82nedfda" path="res://art/objects/furnace.png" id="1_3t5ju"]
+[ext_resource type="Script" path="res://scripts/Furnace.cs" id="1_hmk58"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74evk"]
 atlas = ExtResource("1_3t5ju")
@@ -75,7 +76,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_3b84n")
 }],
 "loop": true,
-"name": &"burning",
+"name": &"cooking",
 "speed": 5.0
 }, {
 "frames": [{
@@ -140,6 +141,7 @@ radius = 15.0
 
 [node name="furnace" type="Node2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_hmk58")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
@@ -150,3 +152,13 @@ animation = &"notUsing"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wfkq5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.3333
+offset_top = -16.0
+offset_right = 145.667
+offset_bottom = 7.0
+scale = Vector2(0.3, 0.3)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

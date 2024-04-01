@@ -9,6 +9,7 @@ public partial class World : Node
 	private bool playerNearChest;
 	private bool playerOpenedChest;
 	private bool playerUsingCraftingTable;
+	private bool playerUsingFurnace;
 	private bool playerUsingAxe;
 	private Vector2 playerPosition;
 	private bool playerCanUseAxe;
@@ -18,6 +19,7 @@ public partial class World : Node
 		playerOpenedChest = false;
 		playerUsingAxe = false;
 		playerCanUseAxe = false;
+		playerUsingFurnace = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,6 +65,14 @@ public partial class World : Node
 
 	public bool getPlayerUsingTable() {
 		return this.playerUsingCraftingTable;
+	}
+
+	public bool getPlayerUsingFurnace() {
+		return this.playerUsingFurnace;
+	}
+
+	public void setPlayerUsingFurnace(bool b) {
+		this.playerUsingFurnace = b;
 	}
 
 	public bool getPlayerUsingAxe() {

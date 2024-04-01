@@ -25,13 +25,9 @@ public partial class InventoryItem : Node2D
 	//private World world;
 	public override void _Ready()
 	{
-		icon = GetNode<Sprite2D>("Sprite2D").Texture;
-		world = (World)GetNode("/root/World");
+		this.icon = GetNode<Sprite2D>("Sprite2D").Texture;
+		this.world = (World)GetNode("/root/World");
 		this.player = GetTree().CurrentScene.GetNode<Player>("Player");
-		//this.player = world.getPlayer();
-		//player = world.getPlayer();
-		//world = (World)GetNode("/root/World");
-		//GD.Print("icon of inventory item is " + icon);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

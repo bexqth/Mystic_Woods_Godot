@@ -39,7 +39,7 @@ public partial class ChestInventory : Node2D
 	public override void _Ready()
 	{	
 		world = (World)GetNode("/root/World");
-		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot12, slot12};
+		slots = new Slot[12];
 		setSlotsIntoInventory();
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));

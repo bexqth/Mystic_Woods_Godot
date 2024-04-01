@@ -22,7 +22,8 @@ public partial class ResourceNode : Node2D
 		this.defaultSprite = GetNode<Sprite2D>("Sprite2D_default");
 		this.focusedSprite = GetNode<Sprite2D>("Sprite2D_focused");
 		this.hitSprite = GetNode<Sprite2D>("Sprite2D_hit");
-		spriteChangingTimer = GetNode<Timer>("sprite_changing_Timer");
+		this.spriteChangingTimer = GetNode<Timer>("sprite_changing_Timer");
+		this.spriteChangingTimer.WaitTime = 0.1;
 		this.showDefaultSprite();
 		this.mouseEntered = false;
 	}

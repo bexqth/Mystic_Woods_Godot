@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bkdaw4ijjwcsv"]
+[gd_scene load_steps=67 format=3 uid="uid://bkdaw4ijjwcsv"]
 
 [ext_resource type="Texture2D" uid="uid://bovv46jde5cxl" path="res://art/background/Island/grass.png" id="1_6ilq0"]
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_x13f4"]
@@ -32,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="30_qgth6"]
 [ext_resource type="PackedScene" uid="uid://bh1518lehis50" path="res://scenes/furnace.tscn" id="31_v861s"]
 [ext_resource type="PackedScene" uid="uid://f3b0dc0o14yo" path="res://scenes/iron_ore.tscn" id="32_7t2yg"]
+[ext_resource type="PackedScene" uid="uid://bkpnfr2vblw2" path="res://scenes/coal.tscn" id="33_xx3di"]
+[ext_resource type="PackedScene" uid="uid://1db6nq6xoh7w" path="res://scenes/iron_rock.tscn" id="34_ytnn4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28axj"]
 radius = 7.66666
@@ -890,7 +892,7 @@ tileMap = NodePath("../TileMap")
 player = NodePath("../Player")
 
 [node name="chest" parent="." instance=ExtResource("30_qgth6")]
-position = Vector2(-248, -175)
+position = Vector2(-317, -174)
 
 [node name="crafting_table" parent="." instance=ExtResource("27_gavxf")]
 position = Vector2(-19, -191)
@@ -909,6 +911,12 @@ position = Vector2(-159, -174)
 
 [node name="iron_ore" parent="." instance=ExtResource("32_7t2yg")]
 position = Vector2(-507, -4)
+
+[node name="coal" parent="." instance=ExtResource("33_xx3di")]
+position = Vector2(-169, -72)
+
+[node name="iron_rock" parent="." instance=ExtResource("34_ytnn4")]
+position = Vector2(-95, -81)
 
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]

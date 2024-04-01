@@ -102,8 +102,29 @@ public partial class Slot : Button
 		//GD.Print("delete done");
 	}
 
+	public void deleteItemAtAll() {
+		InventoryItem item = items[0];
+		//GD.Print("deleted item " + item.printCollision());
+
+		items.RemoveAt(0);
+		if(items.Count > 0) {
+			textureRect.Texture = items[0].getIcon(); 
+			countLabel.Text = items.Count.ToString();
+		} else {
+			textureRect.Texture = null;
+			countLabel.Text = " ";
+			slotItemName = " ";
+			isFree = true;
+		}
+		item.QueueFree();
+		//GD.Print("delete done");
+	}
+
 	public InventoryItem getItem() {
-		return items[0];
+		if(items.Count > 0) {
+			return items[0];
+		}
+		return null;
 	}
 
 	private void _on_delete_button_pressed() {
@@ -139,7 +160,7 @@ public partial class Slot : Button
  
 	public void pickUpItem() {
 		//GD.Print(world.getPlayerNearChest());
-		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable() || world.getPlayerUsingFurnace()) {
 			//GD.Print(world.getPlayerNearChest());
 			if (items.Count > 0) {
 				selectedItem = items[0];
@@ -168,7 +189,7 @@ public partial class Slot : Button
 	}
 
 	public void storeItem(InventoryItem item) {
-		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable()) {
+		if(world.getPlayerOpenedChest() || world.getPlayerUsingTable() || world.getPlayerUsingFurnace()) {
 			if(getSlotItemName() == item.getItemName() || items.Count == 0) {
 				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
 				setIcon(itemCopy.getIcon());
@@ -186,6 +207,7 @@ public partial class Slot : Button
 			}
 		}
 	}
+
 	
 	private void _on_mouse_entered()
 	{
