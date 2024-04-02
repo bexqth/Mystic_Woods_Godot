@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://sdhofr6tjurd"]
+
+[ext_resource type="Script" path="res://scripts/ResourceItem.cs" id="1_d87e0"]
+[ext_resource type="Texture2D" uid="uid://8unb14ql0r7p" path="res://art/background/Mining/ores.png" id="2_x7kaa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyko4"]
+atlas = ExtResource("2_x7kaa")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1k8o"]
+radius = 5.34374
+
+[node name="stone" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_d87e0")
+itemName = "Stone"
+stackable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_xyko4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_b1k8o")

@@ -57,7 +57,6 @@ public partial class Slot : Button
 		if(newItem.getStackable()) {
 			countLabel.Text = items.Count.ToString();
 		}
-		
 	}
 
 	public void setIcon(Texture2D newIcon)

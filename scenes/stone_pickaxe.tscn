@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://biboltthmw2gv"]
+[gd_scene load_steps=6 format=3 uid="uid://biboltthmw2gv"]
 
 [ext_resource type="Script" path="res://scripts/Pickaxe.cs" id="1_8np5x"]
 [ext_resource type="Texture2D" uid="uid://cscclx7e6blih" path="res://art/objects/Farming Tools spritesheet.png" id="1_ic2ci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l2me"]
+atlas = ExtResource("1_ic2ci")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rji8d"]
 atlas = ExtResource("1_ic2ci")
@@ -10,10 +14,11 @@ region = Rect2(0, 16, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3rtl"]
 size = Vector2(2.82843, 21.2132)
 
-[node name="pickaxe" type="Node2D"]
+[node name="stone_pickaxe" type="Node2D"]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_8np5x")
-itemName = "Pickaxe"
+itemName = "StonePickaxe"
+icon = SubResource("AtlasTexture_8l2me")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_rji8d")

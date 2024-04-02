@@ -63,6 +63,9 @@ public partial class InventoryItem : Node2D
 	}
 
 	public String getItemName() {
+		if(itemName == null) {
+			return "";
+		}
 		return this.itemName;
 	}
 

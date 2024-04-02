@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://8unb14ql0r7p" path="res://art/background/Mining/ores.png" id="1_74382"]
 [ext_resource type="Script" path="res://scripts/InventoryItem.cs" id="1_lmj7p"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nnf7y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oan02"]
 atlas = ExtResource("1_74382")
 region = Rect2(80, 64, 16, 16)
 
@@ -18,7 +18,7 @@ size = Vector2(8.11989, 11)
 scale = Vector2(3, 3)
 script = ExtResource("1_lmj7p")
 itemName = "Iron"
-icon = SubResource("AtlasTexture_nnf7y")
+icon = SubResource("AtlasTexture_oan02")
 stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

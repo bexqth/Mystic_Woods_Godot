@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class CraftingTable : Node2D
 {
@@ -11,7 +13,12 @@ public partial class CraftingTable : Node2D
 	private bool isBeingUsed;
 	private bool craftingUIVisible;
 	private Label text;
-	// Called when the node enters the scene tree for the first time.
+	private String resultRecipe;
+	private String resultItem;
+
+	private PackedScene resultItemPackedScene;
+	private List<Recipe> recipes;
+
 	public override void _Ready()
 	{
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -23,12 +30,15 @@ public partial class CraftingTable : Node2D
 		world = (World)GetNode("/root/World");
 		craftingUIVisible = false;
 		craftingUI.Visible = false;
+		recipes = new List<Recipe>();
+		createRecipes();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+
 	public override void _Process(double delta)
 	{
 		handleTable();
+		createItem();
 	}
 
 	private void _on_area_2d_body_entered(Node2D body)
@@ -54,6 +64,45 @@ public partial class CraftingTable : Node2D
 			}
 			//world.setPlayerNearChest(false);
 		}
+	}
+
+	public void createItem() {
+		if(this.world.getPlayerUsingTable()) {
+			compareSlots();
+			switch(resultItem) {
+				case "IronPickaxe":
+					this.resultItemPackedScene = GD.Load<PackedScene>("res://scenes/stone_pickaxe.tscn");
+				break;
+			}
+			craftingUI.setResultItem(this.resultItemPackedScene);
+			resultItemPackedScene = null;
+		}
+		
+	}
+
+	public void createRecipes() {
+		Recipe ironPickaxe = new Recipe();
+		ironPickaxe.setRecipe(new string[9]{"Stone", "Stone", "Stone", "", "Log", "", "", "Log", ""});
+		ironPickaxe.setResultItemName("IronPickaxe");
+		
+		this.recipes.Add(ironPickaxe);
+	}
+
+	public void compareSlots() {
+		for(int i = 0; i < this.recipes.Count; i++) {
+			for(int j = 0; j < this.craftingUI.getSlots().Length - 1; j++) {
+				if(this.craftingUI.getSlots()[j].getItem() == null && this.recipes[i].getRecipeArray()[j] != "") {
+					break;
+				} else if(this.craftingUI.getSlots()[j].getItem() != null && this.recipes[i].getRecipeArray()[j] != this.craftingUI.getSlots()[j].getItem().getItemName()) {
+					break;
+				}
+				if(j == this.craftingUI.getSlots().Length - 2) {
+					resultItem = recipes[i].getResultItemName();
+					return;
+				}
+			}
+		}
+		resultItem = null;
 	}
 
 	public void handleTable() {

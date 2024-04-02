@@ -5,6 +5,7 @@ public partial class CraftingUI : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 	private Slot[] slots;
+	private Slot[] craftingSlots;
 	[Export]
 	public Slot slot1;
 	[Export]
@@ -31,12 +32,15 @@ public partial class CraftingUI : Node2D
 	public override void _Ready()
 	{
 		world = (World)GetNode("/root/World");
+
 		slots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10};
-		setSlotsIntoInventory();
+		//craftingSlots = new Slot[] { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9};
+		//setSlotsIntoInventory();
 		foreach (var slot in slots) {
 			slot.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 			slot.FocusMode = Control.FocusModeEnum.None;
-		}	
+		}
+		//slot10.Connect(nameof(Slot.SlotCliked), new Callable(this, nameof(onSlotClicked)));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,17 +49,8 @@ public partial class CraftingUI : Node2D
 
 	}
 
-	public void setSlotsIntoInventory() {
-		slots[0] = slot1;
-		slots[1] = slot2;
-		slots[2] = slot3;
-		slots[3] = slot4;
-		slots[4] = slot5;
-		slots[5] = slot6;
-		slots[6] = slot7;
-		slots[7] = slot8;
-		slots[8] = slot9;
-		slots[9] = slot10;
+	public Slot[] getSlots() {
+		return this.slots;
 	}
 
 	public void onSlotClicked(Slot slot){
@@ -70,6 +65,22 @@ public partial class CraftingUI : Node2D
 		}
 	}
 
+	public void setResultItem(PackedScene resultItemScene) {
+		if(resultItemScene != null) {
+			removeStack();
+			InventoryItem resultItem = (InventoryItem)resultItemScene.Instantiate();
+			this.slot10.addItemToArray(resultItem);
+			this.slot10.setIcon(resultItem.getIcon());
+		}
+		
+	}
 
+	public void removeStack() {
+		for(int i = 0; i < this.slots.Length - 1; i++) {
+			if(slots[i].getItem() != null) {
+				slots[i].deleteItemAtAll();
+			}
+		}
+	}		
 	
 }

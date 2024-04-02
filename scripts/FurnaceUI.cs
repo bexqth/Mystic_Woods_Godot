@@ -76,7 +76,7 @@ public partial class FurnaceUI : Node2D
 	}
 
 	public void playCookingAnimation(int time) {
-		this.animator.SpeedScale = this.animator.SpeedScale / time;
+		this.animator.SpeedScale = 1f/time;
 		this.cooking = true;
 		animator.Play("cooking");
 		if(animator.Frame == 10) {
