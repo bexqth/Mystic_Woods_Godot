@@ -923,6 +923,12 @@ position = Vector2(-170, 72)
 [node name="stone3" parent="." instance=ExtResource("37_8jref")]
 position = Vector2(-126, 68)
 
+[node name="stone_pickaxe2" parent="." instance=ExtResource("30_ixbi1")]
+position = Vector2(-236, 3)
+
+[node name="axe_tool2" parent="." instance=ExtResource("19_rqtx2")]
+position = Vector2(-279, 97)
+
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="SlimeEnemy/take_attack_cooldown" to="SlimeEnemy" method="_on_take_attack_cooldown_timeout"]

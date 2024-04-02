@@ -88,13 +88,15 @@ public partial class Inventory : Node2D
 
 	public void addItem(InventoryItem item) {
 		for(int i = 0; i < inventorySize; i++) {
-			if(slots[i].getSlotItemName() == item.getItemName()) {
-				InventoryItem itemCopy = (InventoryItem)item.Duplicate();
-				slots[i].setIcon(itemCopy.getIcon()); 
-				slots[i].addItemToArray(itemCopy); 
-				itemCopy.setInInventory(true);
-				item.QueueFree(); 
-				return;
+			if(item.getStackable()) {
+				if(slots[i].getSlotItemName() == item.getItemName()) {
+					InventoryItem itemCopy = (InventoryItem)item.Duplicate();
+					slots[i].setIcon(itemCopy.getIcon()); 
+					slots[i].addItemToArray(itemCopy); 
+					itemCopy.setInInventory(true);
+					item.QueueFree(); 
+					return;
+				}
 			}
 		}
 
