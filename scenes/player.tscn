@@ -1284,9 +1284,10 @@ size = Vector2(21, 6)
 radius = 19.3333
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inventory")]
+z_index = 1
 position = Vector2(442, 338)
 scale = Vector2(3, 3)
-collision_layer = 3
+collision_mask = 2
 script = ExtResource("1_858ga")
 inventory = NodePath("Camera2D/Inventory")
 

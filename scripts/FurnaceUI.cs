@@ -56,9 +56,12 @@ public partial class FurnaceUI : Node2D
 	}
 
 	public void setResultItem(PackedScene resultItemScene) {
-		InventoryItem resultItem = (InventoryItem)resultItemScene.Instantiate();
-		this.resultItem.addItemToArray(resultItem);
-		this.resultItem.setIcon(resultItem.getIcon());
+		if(resultItemScene != null) {
+			InventoryItem resultItem = (InventoryItem)resultItemScene.Instantiate();
+			this.resultItem.addItemToArray(resultItem);
+			this.resultItem.setIcon(resultItem.getIcon());
+		}
+		
 	}
 
 	public InventoryItem getSourceLightItem() {

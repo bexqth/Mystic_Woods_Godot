@@ -29,9 +29,13 @@ public partial class ResourceNodePickaxble : ResourceNode
 			case "stone_ore":
 				this.resourceItemScene = GD.Load<PackedScene>("res://scenes/stone.tscn");
 			break;
+
+			//case "furnace":
+			//	this.resourceItemScene = GD.Load<PackedScene>("res://scenes/furnace.tscn");
+			//break;
 		}
 
-		this.resourceItem = (ResourceItem)resourceItemScene.Instantiate();
+		this.resourceItem = (InventoryItem)resourceItemScene.Instantiate(); // CHANGE TO RESOURCE ITEM IN EACH CASE ITS ASSIGNED
 		this.setresourceItem(this.resourceItem);
 		this.setresourceItemScene(this.resourceItemScene);
 	}

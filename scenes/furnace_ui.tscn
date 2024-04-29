@@ -70,6 +70,7 @@ animations = [{
 }]
 
 [node name="furnace_UI" type="Node2D" node_paths=PackedStringArray("materialItem", "lightSource", "resultItem")]
+z_index = 2
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_6tpvs")
 materialItem = NodePath("Slot1")

@@ -11,7 +11,7 @@ region = Rect2(0.428, 64, 15.572, 16)
 radius = 4.23892
 height = 18.4279
 
-[node name="hoe_tool" type="Node2D"]
+[node name="stone_hoe" type="Node2D"]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_wdw41")
 itemName = "hoe"

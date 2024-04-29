@@ -70,8 +70,12 @@ public partial class CraftingTable : Node2D
 		if(this.world.getPlayerUsingTable()) {
 			compareSlots();
 			switch(resultItem) {
-				case "IronPickaxe":
+				case "ironPickaxe":
 					this.resultItemPackedScene = GD.Load<PackedScene>("res://scenes/stone_pickaxe.tscn");
+				break;
+
+				case "ironAxe":
+					this.resultItemPackedScene = GD.Load<PackedScene>("res://scenes/stone_axe.tscn");
 				break;
 			}
 			craftingUI.setResultItem(this.resultItemPackedScene);
@@ -83,9 +87,14 @@ public partial class CraftingTable : Node2D
 	public void createRecipes() {
 		Recipe ironPickaxe = new Recipe();
 		ironPickaxe.setRecipe(new string[9]{"Stone", "Stone", "Stone", "", "Log", "", "", "Log", ""});
-		ironPickaxe.setResultItemName("IronPickaxe");
+		ironPickaxe.setResultItemName("ironPickaxe");
 		
+		Recipe ironAxe = new Recipe();
+		ironAxe.setRecipe(new string[9]{"", "Stone", "Stone", "", "Log", "Stone", "", "Log", ""});
+		ironAxe.setResultItemName("ironAxe");
+
 		this.recipes.Add(ironPickaxe);
+		this.recipes.Add(ironAxe);
 	}
 
 	public void compareSlots() {

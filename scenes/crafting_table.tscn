@@ -85,7 +85,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llbpo"]
-radius = 14.3333
+radius = 9.33928
 
 [sub_resource type="FontFile" id="FontFile_2d8on"]
 subpixel_positioning = 0

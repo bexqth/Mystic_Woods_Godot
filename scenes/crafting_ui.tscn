@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Slot.cs" id="3_ae1na"]
 
 [node name="crafting_ui" type="Node2D" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10")]
+z_index = 2
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_bxhs6")
 slot1 = NodePath("TextureRect/Slot1")

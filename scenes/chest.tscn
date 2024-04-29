@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_urfd1"]
-radius = 24.6689
+radius = 8.72417
 
 [sub_resource type="FontFile" id="FontFile_vq8pt"]
 subpixel_positioning = 0
@@ -147,7 +147,7 @@ script = ExtResource("1_f5fdr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7.66667)
 sprite_frames = SubResource("SpriteFrames_3x1xo")
-animation = &"closed"
+animation = &"opening"
 speed_scale = 1.8
 
 [node name="Area2D" type="Area2D" parent="."]

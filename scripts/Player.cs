@@ -52,6 +52,7 @@ public partial class Player : CharacterBody2D
 	private bool canAxe;
 	private bool canPickaxe;
 	private String direction;
+	public bool changingScene;
 
 	[Export]
 	public Inventory inventory;
@@ -107,6 +108,10 @@ public partial class Player : CharacterBody2D
 		manageHealthBar();
 	}
 
+	public void setChangingScene(bool b) {
+		this.changingScene = b;
+	}
+
 	public void setFarmingTool(String s) {
 		farmingTool = s;
 	}
@@ -156,7 +161,7 @@ public partial class Player : CharacterBody2D
 		//GD.Print(direction);
 
 		Position = position;
-		world.setPlayerPosition(this.Position);
+		World.setPlayerPosition(this.Position);
 		//animator.Scale = scale;
 		MoveAndSlide();
 	}
@@ -547,9 +552,12 @@ public partial class Player : CharacterBody2D
 
 	private void _on_player_collision_area_entered(Area2D area)
 	{
-		if(area.GetParent() is InventoryItem newItem) {
-			this.addItemToInventory(newItem);
+		if(area.GetParent() is not ResourceNode) {
+			if(area.GetParent() is InventoryItem newItem) {
+				this.addItemToInventory(newItem);
+			}
 		}
+		
 	}
 
 }

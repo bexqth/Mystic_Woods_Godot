@@ -11,9 +11,8 @@ public partial class World : Node
 	private bool playerUsingCraftingTable;
 	private bool playerUsingFurnace;
 	private bool playerUsingAxe;
-	private Vector2 playerPosition;
+	private static Vector2 playerPosition;
 	private bool playerCanUseAxe;
-	private Player player;
 	public override void _Ready() {
 		playerNearChest = false;
 		playerOpenedChest = false;
@@ -27,12 +26,12 @@ public partial class World : Node
 		//crosshair.followMouse();
 	}
 
-	public void setPlayerPosition(Vector2 vector2) {
-		this.playerPosition = vector2;
+	public static void setPlayerPosition(Vector2 vector2) {
+		playerPosition = vector2;
 	}
 
 	public Vector2 getPlayerPosition() {
-		return this.playerPosition;
+		return playerPosition;
 	}
 
 	public void setDraggedItem(InventoryItem dr) {

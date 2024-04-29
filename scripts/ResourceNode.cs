@@ -1,31 +1,36 @@
 using Godot;
 using System;
 
-public partial class ResourceNode : Node2D
+public partial class ResourceNode : InventoryItem
 {
 	// Called when the node enters the scene tree for the first time.
-	protected ResourceItem resourceItem;
+	protected InventoryItem resourceItem;
 	protected PackedScene resourceItemScene;
 	protected int resourceItemCount;
 	protected int life = 100;
 	protected bool canBeHit;
 	protected bool dealtDamage;
 	protected int recievedDamage;
-	protected Player player;
+	//protected Player player;
 	protected Timer spriteChangingTimer;
 	protected Sprite2D defaultSprite;
 	protected Sprite2D focusedSprite;
 	protected Sprite2D hitSprite;
+	protected AnimatedSprite2D animator;
 	protected bool mouseEntered;
+	protected bool inRange;
 	public override void _Ready()
 	{
 		this.defaultSprite = GetNode<Sprite2D>("Sprite2D_default");
+		//this.animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		
 		this.focusedSprite = GetNode<Sprite2D>("Sprite2D_focused");
 		this.hitSprite = GetNode<Sprite2D>("Sprite2D_hit");
 		this.spriteChangingTimer = GetNode<Timer>("sprite_changing_Timer");
 		this.spriteChangingTimer.WaitTime = 0.1;
 		this.showDefaultSprite();
 		this.mouseEntered = false;
+		this.inRange = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,12 +44,15 @@ public partial class ResourceNode : Node2D
 		if(this.life <= 0) {
 			//GD.Print(resourceItem);
 			resourceItem.Position = this.Position;
+			/*if(resourceItem is Furnace) {
+				resourceItem.Scale = new Vector2(2f, 2f);
+			}*/
 			GetTree().CurrentScene.AddChild(resourceItem);
 			this.QueueFree();
 		}
 	}
 
-	public void setresourceItem(ResourceItem item) {
+	public void setresourceItem(InventoryItem item) {
 		this.resourceItem = item;
 	}
 
@@ -87,20 +95,42 @@ public partial class ResourceNode : Node2D
 
 
 	public void showDefaultSprite() {
-		this.defaultSprite.Show();
-		this.focusedSprite.Hide();
-		this.hitSprite.Hide();
+		if(this.animator == null) {
+			this.defaultSprite.Show();
+			this.focusedSprite.Hide();
+			this.hitSprite.Hide();
+		} else {
+			this.animator.Show();
+			//this.defaultSprite.Show();
+			this.focusedSprite.Hide();
+			this.hitSprite.Hide();
+		}
+		
 	}
 
 	public void showFocusedSprite() {
-		this.defaultSprite.Hide();
-		this.focusedSprite.Show();
-		this.hitSprite.Hide();
+		if(this.animator == null) {
+			this.defaultSprite.Hide();
+			this.focusedSprite.Show();
+			this.hitSprite.Hide();
+		} else {
+			this.animator.Hide();
+			//this.defaultSprite.Hide();
+			this.focusedSprite.Show();
+			this.hitSprite.Hide();
+		}
 	}
 	public void showHitSprite() {
-		this.defaultSprite.Hide();
-		this.focusedSprite.Hide();
-		this.hitSprite.Show();
+		if(this.animator == null) {
+			this.defaultSprite.Hide();
+			this.focusedSprite.Hide();
+			this.hitSprite.Show();
+		} else {
+			//this.defaultSprite.Hide();
+			this.animator.Hide();
+			this.focusedSprite.Hide();
+			this.hitSprite.Show();
+		}
 	}
 
 	private void _on_sprite_changing_timer_timeout()
@@ -114,8 +144,11 @@ public partial class ResourceNode : Node2D
 
 	private void _on_area_2d_mouse_entered()
 	{
-		this.mouseEntered = true;
-		this.showFocusedSprite();
+		if(canBeHit) {
+			this.mouseEntered = true;
+			this.showFocusedSprite();
+		}
+		
 	}
 
 	private void _on_area_2d_mouse_exited()

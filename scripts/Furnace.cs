@@ -25,6 +25,7 @@ public partial class Furnace : Node2D //MORE LIKE MANAGER FOR THE FURNICE
 		furnaceUIVisible = false;
 		furnaceUI.Visible = false;
 		text = GetNode<Label>("Label");
+		base._Ready();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,47 +33,57 @@ public partial class Furnace : Node2D //MORE LIKE MANAGER FOR THE FURNICE
 	{
 		handleFurnace();
 		createItem();
+		base._Process(delta);
 	}
 
 	public void createItem() {
 		if(furnaceUI.getMaterialItem() != null && furnaceUI.getSourceLightItem() != null) {
 			if(this.furnaceUI.getSourceLightItem().getItemName() == "Coal") {
-				animator.Play("cooking");
+				
 				ResourceItem materialItem = (ResourceItem)furnaceUI.getMaterialItem();
 				switch(furnaceUI.getMaterialItem().getItemName()) {
 					case "IronRock":
 						resultItemScene = GD.Load<PackedScene>("res://scenes/iron.tscn");
 					break;
-				}
-				//Texture2D icon = resultItem.GetNode<Sprite2D>("Sprite2D").Texture;
-				furnaceUI.playCookingAnimation(materialItem.getCookingTime());
 
-				if(!furnaceUI.getCooking()) {
-					GD.Print("Done cooking");
-					furnaceUI.removeStack();
-					furnaceUI.setResultItem(resultItemScene);
-					//furnaceUI.getResultSlot().setIcon(icon);
-					animator.Play("fire_dying");
+					default:
+						resultItemScene = null;
+					break;
 				}
+				if(resultItemScene != null) {
+					animator.Play("cooking");
+					furnaceUI.playCookingAnimation(materialItem.getCookingTime());
+
+					if(!furnaceUI.getCooking()) {
+						//GD.Print("Done cooking");
+						furnaceUI.removeStack();
+						furnaceUI.setResultItem(resultItemScene);
+						//furnaceUI.getResultSlot().setIcon(icon);
+						animator.Play("fire_dying");
+					}
+				}
+				
 
 			} else {
-				GD.Print("U need to use coal as the source light");
+				//GD.Print("U need to use coal as the source light");
 			}
 		}
 	}
 
-	private void _on_area_2d_body_entered(Node2D body)
+	private void _on_area_2d_range_body_entered(Node2D body)
 	{
-		if(body.Name == "Player") {
+		if(body is Player player) {
 			text.Text = "Press E to use furnace";
 			animator.Play("using");
 			canUseFurnace = true;
-			//world.setPlayerNearChest(true);
+			GD.Print("Player in the range");
+			//canBeHit = true;
+			//this.player = player;
 		}
 	}
 
 
-	private void _on_area_2d_body_exited(Node2D body)
+	private void _on_area_2d_range_body_exited(Node2D body)
 	{
 		if(body.Name == "Player") {
 			clearText();
