@@ -6,8 +6,7 @@ using System.Runtime.Intrinsics.X86;
 public partial class GardenPotTool : InventoryItem
 {
 	// Called when the node enters the scene tree for the first time.
-	[Export]
-	public TileMap tileMap;
+	private TileMap tileMap;
 	private FarmingManager farmingManager;
 	private int rangeOption = 1;
 
@@ -27,6 +26,9 @@ public partial class GardenPotTool : InventoryItem
 	}
 
 	public override void useItem() {
+		var world = World.Instance;
+		this.tileMap = world.GetTileMap();
+
 		if (player.getCanWater() && !player.getWatering()) {
 			player.setWatering(true);
 			player.setCanWater(false);

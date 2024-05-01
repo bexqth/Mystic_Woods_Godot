@@ -13,6 +13,7 @@ public partial class Plant : Node2D
 	private int posX;
 	private int posY;
 	private Player player;
+	private TileMap tileMap;
 	public override void _Ready() {
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		canBeDigged = false;
@@ -76,15 +77,40 @@ public partial class Plant : Node2D
 
 
 	private void _on_area_2d_input_event(Node viewport, InputEvent @event, long shape_idx) {
+		var world = World.Instance;
+		this.tileMap = world.GetTileMap();
+		int sourceIdGrass = 2;
+		Vector2I grassTile = new Vector2I(1,1);
+		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
+		GD.Print(player.getNameHoldingItem());
 		if (Input.IsActionJustPressed("on_left_click") && player.getNameHoldingItem() == "hoe") {
+			
 			if(getCanBeDigged()) {
+
+				if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
+					tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);
+				} else{
+					GD.Print("out of reach");
+				}
 				GD.Print(plantFood);
 				player.GetParent().GetTree().CurrentScene.AddChild(plantFood);
 				this.QueueFree();
 			} else {
-				GD.Print("dsfdd");
+				GD.Print("The plant didnt grow fully");
+				if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
+					tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);
+				} else{
+					GD.Print("out of reach");
+				}
+				this.QueueFree();
 			}
 			
 		}
 	}
+
+
+	private void _on_area_2d_mouse_entered() {
+		
+	}
 }
+		

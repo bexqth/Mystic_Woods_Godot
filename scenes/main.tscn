@@ -937,8 +937,9 @@ sources/11 = SubResource("TileSetAtlasSource_k3xkl")
 sources/12 = SubResource("TileSetAtlasSource_f50kb")
 sources/13 = SubResource("TileSetAtlasSource_krre8")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("tileMap")]
 script = ExtResource("1_x13f4")
+tileMap = NodePath("TileMap")
 
 [node name="SlimeEnemy" type="CharacterBody2D" parent="."]
 visible = false

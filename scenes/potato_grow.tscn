@@ -52,3 +52,4 @@ speed_scale = 0.1
 shape = SubResource("RectangleShape2D_onus8")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=3 uid="uid://bcbeo5ba8uy10"]
+[gd_scene load_steps=175 format=3 uid="uid://bcbeo5ba8uy10"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_858ga"]
 [ext_resource type="Texture2D" uid="uid://lyestkpierp3" path="res://art/character/axe.png" id="2_757bt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cfe0wfbmw535" path="res://art/character/planting.png" id="4_ghgry"]
 [ext_resource type="Texture2D" uid="uid://keb5tvxfk8px" path="res://art/character/pickaxe.png" id="4_xvutq"]
 [ext_resource type="Texture2D" uid="uid://dymex1qwp057g" path="res://art/character/watering.png" id="6_446ae"]
+[ext_resource type="PackedScene" uid="uid://verefe3licd6" path="res://scenes/day_night_cycle.tscn" id="10_n071h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fw7o"]
 atlas = ExtResource("2_757bt")
@@ -1360,6 +1361,9 @@ wait_time = 0.7
 
 [node name="pickaxe_cooldown" type="Timer" parent="."]
 wait_time = 0.7
+
+[node name="Day_Night_Cycle" parent="." instance=ExtResource("10_n071h")]
+position = Vector2(-175, -100.667)
 
 [connection signal="area_entered" from="player_collision" to="." method="_on_player_collision_area_entered"]
 [connection signal="body_entered" from="player_collision" to="." method="_on_player_collision_body_entered"]

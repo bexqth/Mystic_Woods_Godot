@@ -3,14 +3,13 @@ using System;
 
 public partial class Seed : InventoryItem
 {
-	[Export]
-	public TileMap tileMap;
 	private PackedScene plantScene;
 	private PackedScene plantFoodScene;
 	private Plant newPlant;
 	private Food newPlantFood;
 	//private FarmTile clickedFarmTile;
 	private FarmTile clickedFarmTile;
+	private TileMap tileMap;
 	//private Vector2I plantTile;
 	//private int plantTileIndex;
 	// Called when the node enters the scene tree for the first time.
@@ -57,34 +56,36 @@ public partial class Seed : InventoryItem
 	}
 
 	public override void useItem() {
-			Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-			TileData tileData = tileMap.GetCellTileData(0, tileMousePosition); //returns the tile
-			
-			if(tileData!= null) {
+		var world = World.Instance;
+		this.tileMap = world.GetTileMap();
+		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
+		TileData tileData = tileMap.GetCellTileData(0, tileMousePosition); //returns the tile
+		
+		if(tileData!= null) {
 
-				if (player.getCanPlant() && !player.getPlanting()) {
-					player.setPlanting(true);
-					player.setCanPlant(false);
-					player.getPlantCoolDownTimer().Start();
-					var canPlaceSeeds = tileData.GetCustomData("canPlaceSeeds");
-					if((bool)canPlaceSeeds) {
-						assignPlant();
-						newPlantFood = (Food)plantFoodScene.Instantiate();
-						newPlant.setPlandFood(newPlantFood);
-						newPlant.setPlayer(player);
-						newPlantFood.setPlayer(player);
-						Vector2 plantPixelPosition = new Vector2(tileMousePosition.X * 16 * 3 + 8*3 - 4, tileMousePosition.Y * 16 * 3 + 8*3 -2);
-						//Vector2 plantPosition = new Vector2(clickedFarmTile.Position.X + 8, clickedFarmTile.Position.X + 8);
+			if (player.getCanPlant() && !player.getPlanting()) {
+				player.setPlanting(true);
+				player.setCanPlant(false);
+				player.getPlantCoolDownTimer().Start();
+				var canPlaceSeeds = tileData.GetCustomData("canPlaceSeeds");
+				if((bool)canPlaceSeeds) {
+					assignPlant();
+					newPlantFood = (Food)plantFoodScene.Instantiate();
+					newPlant.setPlandFood(newPlantFood);
+					newPlant.setPlayer(player);
+					newPlantFood.setPlayer(player);
+					Vector2 plantPixelPosition = new Vector2(tileMousePosition.X * 16 * 3 + 8*3 - 4, tileMousePosition.Y * 16 * 3 + 8*3 -2);
+					//Vector2 plantPosition = new Vector2(clickedFarmTile.Position.X + 8, clickedFarmTile.Position.X + 8);
 
-						newPlant.Position = plantPixelPosition;
-						newPlantFood.Position = plantPixelPosition;
-						player.GetParent().GetTree().CurrentScene.AddChild(newPlant);
-						newPlant.grow();
-					}
-					else {
-						GD.Print("cant place seeds here");
-					}
+					newPlant.Position = plantPixelPosition;
+					newPlantFood.Position = plantPixelPosition;
+					player.GetParent().GetTree().CurrentScene.AddChild(newPlant);
+					newPlant.grow();
+				}
+				else {
+					GD.Print("cant place seeds here");
 				}
 			}
+		}
 	}
 }

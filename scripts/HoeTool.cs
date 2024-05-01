@@ -3,8 +3,7 @@ using System;
 
 public partial class HoeTool : InventoryItem
 {
-	[Export]
-	public TileMap tileMap;
+	private TileMap tileMap;
 	private PackedScene foodPlantScene;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -19,19 +18,22 @@ public partial class HoeTool : InventoryItem
 	}
 
 	public override void useItem() {
+		var world = World.Instance;
+		this.tileMap = world.GetTileMap();
+
 		if (player.getCanHoe() && !player.getHoeing()) {
 			player.setHoeing(true);
 			player.setCanHoe(false);
 			player.getHoeCoolDownTimer().Start();
-			int sourceIdGrass = 0;
-			Vector2I grassTile = new Vector2I(1,1);	
+			/*int sourceIdGrass = 2;
+			Vector2I grassTile = new Vector2I(1,1);
 			Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 
 			if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
 				tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);
 			} else{
 				GD.Print("out of reach");
-			}
+			}*/
 				
 		}
 	}

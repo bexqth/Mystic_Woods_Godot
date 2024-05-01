@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class World : Node
+public partial class World : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 
@@ -12,18 +12,26 @@ public partial class World : Node
 	private bool playerUsingFurnace;
 	private bool playerUsingAxe;
 	private static Vector2 playerPosition;
+	public static World Instance { get; private set; }
 	private bool playerCanUseAxe;
+	[Export]
+	public TileMap tileMap;
 	public override void _Ready() {
 		playerNearChest = false;
 		playerOpenedChest = false;
 		playerUsingAxe = false;
 		playerCanUseAxe = false;
 		playerUsingFurnace = false;
+		Instance = this;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		//crosshair.followMouse();
+	}
+
+	public  TileMap GetTileMap() {
+		return tileMap;
 	}
 
 	public static void setPlayerPosition(Vector2 vector2) {

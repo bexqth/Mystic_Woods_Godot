@@ -21,12 +21,12 @@ public partial class InventoryItem : Node2D
 	private int count;
 	private bool isSelected;
 	private bool onFloor;
-	private World world;
+	//protected World world;
 	//private World world;
 	public override void _Ready()
 	{
 		this.icon = GetNode<Sprite2D>("Sprite2D").Texture;
-		this.world = (World)GetNode("/root/World");
+		//this.world = World.Instance;
 		this.player = GetTree().CurrentScene.GetNode<Player>("Player");
 	}
 
@@ -38,9 +38,9 @@ public partial class InventoryItem : Node2D
 		}
 	}
 
-	public World GetWorld() {
-		return this.world;
-	}
+	//public World GetWorld() {
+	//	return this.world;
+	//}
 
 	public void setIsInInventory(bool b) {
 		isInInventory = b;
