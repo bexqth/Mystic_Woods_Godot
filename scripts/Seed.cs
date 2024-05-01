@@ -58,6 +58,8 @@ public partial class Seed : InventoryItem
 	public override void useItem() {
 		var world = World.Instance;
 		this.tileMap = world.GetTileMap();
+		this.player = world.getPlayer();
+
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
 		TileData tileData = tileMap.GetCellTileData(0, tileMousePosition); //returns the tile
 		
@@ -73,7 +75,7 @@ public partial class Seed : InventoryItem
 					newPlantFood = (Food)plantFoodScene.Instantiate();
 					newPlant.setPlandFood(newPlantFood);
 					newPlant.setPlayer(player);
-					newPlantFood.setPlayer(player);
+					//newPlantFood.setPlayer(player);
 					Vector2 plantPixelPosition = new Vector2(tileMousePosition.X * 16 * 3 + 8*3 - 4, tileMousePosition.Y * 16 * 3 + 8*3 -2);
 					//Vector2 plantPosition = new Vector2(clickedFarmTile.Position.X + 8, clickedFarmTile.Position.X + 8);
 
@@ -87,5 +89,6 @@ public partial class Seed : InventoryItem
 				}
 			}
 		}
+		this.QueueFree();
 	}
 }

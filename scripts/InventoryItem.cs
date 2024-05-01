@@ -16,8 +16,7 @@ public partial class InventoryItem : Node2D
 	public int index;
 	[Export] 
 	public bool isInInventory;
-	[Export]
-	public Player player;
+	protected Player player;
 	private int count;
 	private bool isSelected;
 	private bool onFloor;
@@ -27,7 +26,9 @@ public partial class InventoryItem : Node2D
 	{
 		this.icon = GetNode<Sprite2D>("Sprite2D").Texture;
 		//this.world = World.Instance;
-		this.player = GetTree().CurrentScene.GetNode<Player>("Player");
+		//this.player = GetTree().CurrentScene.GetNode<Player>("Player");
+		//var world = World.Instance;
+		//this.player = world.getPlayer();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,9 +92,10 @@ public partial class InventoryItem : Node2D
 	}
 
 	public void setPositionAfterDeletingFromItem() {
+		var world = World.Instance;
+		this.player = world.getPlayer();
+
 		Vector2 position = Position;
-		//position.X = world.getPlayerPosition().X;
-		//position.Y = world.getPlayerPosition().Y - 50;
 		position.X = player.Position.X;
 		position.Y = player.Position.Y - 50;
 		Position = position;

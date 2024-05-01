@@ -937,9 +937,10 @@ sources/11 = SubResource("TileSetAtlasSource_k3xkl")
 sources/12 = SubResource("TileSetAtlasSource_f50kb")
 sources/13 = SubResource("TileSetAtlasSource_krre8")
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("tileMap")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("tileMap", "player")]
 script = ExtResource("1_x13f4")
 tileMap = NodePath("TileMap")
+player = NodePath("Player")
 
 [node name="SlimeEnemy" type="CharacterBody2D" parent="."]
 visible = false
@@ -1085,7 +1086,7 @@ position = Vector2(170, -245)
 newSpawnPlace = NodePath("../house_inside")
 
 [node name="house_inside" parent="." node_paths=PackedStringArray("newSpawnPlace") instance=ExtResource("40_t7sik")]
-position = Vector2(1698, -439)
+position = Vector2(1977, -444)
 newSpawnPlace = NodePath("../house")
 
 [connection signal="body_entered" from="SlimeEnemy/Area2D" to="SlimeEnemy" method="_on_area_2d_body_entered"]

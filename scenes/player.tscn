@@ -1335,13 +1335,23 @@ position = Vector2(-39.6667, 74.6667)
 scale = Vector2(0.333333, 0.333333)
 
 [node name="healthbar" type="ProgressBar" parent="."]
-visible = false
 modulate = Color(0.458824, 0.792157, 0.654902, 1)
-offset_left = -7.0
-offset_top = -18.6667
-offset_right = 136.0
-offset_bottom = 8.33333
+offset_left = -40.0
+offset_top = 66.0
+offset_right = 390.0
+offset_bottom = 93.0
 scale = Vector2(0.1, 0.1)
+rounded = true
+show_percentage = false
+
+[node name="tirednessbar" type="ProgressBar" parent="."]
+modulate = Color(0.45098, 0.74902, 0.94902, 1)
+offset_left = 5.0
+offset_top = 66.0
+offset_right = 438.0
+offset_bottom = 93.0
+scale = Vector2(0.1, 0.1)
+rounded = true
 show_percentage = false
 
 [node name="give_attack_cooldown" type="Timer" parent="."]
@@ -1363,6 +1373,7 @@ wait_time = 0.7
 wait_time = 0.7
 
 [node name="Day_Night_Cycle" parent="." instance=ExtResource("10_n071h")]
+visible = false
 position = Vector2(-175, -100.667)
 
 [connection signal="area_entered" from="player_collision" to="." method="_on_player_collision_area_entered"]

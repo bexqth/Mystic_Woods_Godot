@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class HoeTool : InventoryItem
+public partial class HoeTool : Tool
 {
 	private TileMap tileMap;
 	private PackedScene foodPlantScene;
@@ -20,11 +20,13 @@ public partial class HoeTool : InventoryItem
 	public override void useItem() {
 		var world = World.Instance;
 		this.tileMap = world.GetTileMap();
+		this.player = world.getPlayer();
 
 		if (player.getCanHoe() && !player.getHoeing()) {
 			player.setHoeing(true);
 			player.setCanHoe(false);
 			player.getHoeCoolDownTimer().Start();
+			this.player.redureTiredness(this.reduceTiredness);
 			/*int sourceIdGrass = 2;
 			Vector2I grassTile = new Vector2I(1,1);
 			Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());

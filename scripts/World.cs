@@ -16,6 +16,8 @@ public partial class World : Node2D
 	private bool playerCanUseAxe;
 	[Export]
 	public TileMap tileMap;
+	[Export]
+	public Player player;
 	public override void _Ready() {
 		playerNearChest = false;
 		playerOpenedChest = false;
@@ -32,6 +34,10 @@ public partial class World : Node2D
 
 	public  TileMap GetTileMap() {
 		return tileMap;
+	}
+
+	public  Player getPlayer() {
+		return player;
 	}
 
 	public static void setPlayerPosition(Vector2 vector2) {

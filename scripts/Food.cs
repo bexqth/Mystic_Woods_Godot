@@ -4,7 +4,8 @@ using System;
 public partial class Food : InventoryItem
 {
 	// Called when the node enters the scene tree for the first time.
-	private int giveHealth;
+	[Export]
+	public int giveHealth;
 	public override void _Ready()
 	{
 		base._Ready();
@@ -27,5 +28,12 @@ public partial class Food : InventoryItem
 	public int getGiveHealth() {
 		return giveHealth;
 	}
+
+    public override void useItem()
+    {
+		var world = World.Instance;
+		this.player = world.getPlayer();
+        player.addStats(giveHealth);
+    }
 
 }

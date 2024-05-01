@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Sword : InventoryItem
+public partial class Sword : Tool
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -15,10 +15,13 @@ public partial class Sword : InventoryItem
 
 	public override void useItem()
 	{
+		var world = World.Instance;
+		this.player = world.getPlayer();
 		if (player.getCanAttack() && !player.getAttacking()) {
 			player.setAttacking(true);
 			player.setCanAttack(false);
 			player.getGiveAttackCoolDownTimer().Start();
+			this.player.redureTiredness(this.reduceTiredness);
 		}
 	}
 }

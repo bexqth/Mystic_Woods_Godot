@@ -15,6 +15,7 @@ public partial class Player : CharacterBody2D
 	private bool isAttacking;
 	private bool isDead;
 	private int health;
+	private int tiredness;
 	private int hungerBar;
 	private bool canGetHit;
 	private bool attackCooldownTurnOn;
@@ -27,7 +28,7 @@ public partial class Player : CharacterBody2D
 	private bool canAttack;
 	private int damage;
 	private ProgressBar healthbar;
-	
+	private ProgressBar tirednessbar;
 	private AnimatedSprite2D animator;
 	private InventoryItem holdingItem;
 
@@ -53,6 +54,7 @@ public partial class Player : CharacterBody2D
 	private bool canPickaxe;
 	private String direction;
 	public bool changingScene;
+	private bool tired;
 
 	[Export]
 	public Inventory inventory;
@@ -61,6 +63,7 @@ public partial class Player : CharacterBody2D
 	{
 		base._Ready();
 		health = 100;
+		tiredness = 100;
 		hungerBar = 100;
 		damage = 20;
 		canGetHit = false;
@@ -71,7 +74,10 @@ public partial class Player : CharacterBody2D
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		attackCooldownTimer = GetNode<Timer>("take_attack_cooldown");
 		giveAttackCoolDownTimer = GetNode<Timer>("give_attack_cooldown");
+
 		healthbar = GetNode<ProgressBar>("healthbar");
+		tirednessbar = GetNode<ProgressBar>("tirednessbar");
+
 		world = (World)GetNode("/root/World");
 		waterCoolDownTimer = GetNode<Timer>("water_cooldown");
 		hoeCoolDownTimer = GetNode<Timer>("hoe_cooldown");
@@ -105,7 +111,14 @@ public partial class Player : CharacterBody2D
 		setAnimation();
 		checkForBeingHit();
 		checkHealth();
-		manageHealthBar();
+		manageBar();
+	}
+
+	public int getTiredness() {
+		return this.tiredness;
+	}
+	public void redureTiredness(int t) {
+		this.tiredness -= t;
 	}
 
 	public void setChangingScene(bool b) {
@@ -169,7 +182,18 @@ public partial class Player : CharacterBody2D
 	public void mouseControl() {
 		holdingItem = inventory.getHoldingItem();
 		if(Input.IsActionJustPressed("on_left_click") && holdingItem != null && !world.getPlayerOpenedChest() && !world.getPlayerUsingTable() && !world.getPlayerUsingFurnace()) {
-			holdingItem.useItem();
+			if(holdingItem is Tool){
+				if(!this.tired) {
+					holdingItem.useItem();
+				} else {
+					GD.Print("U ARE TOO TIRED");
+				}
+				
+			} else {
+				holdingItem.useItem();
+				this.inventory.removeItem();
+			}
+			
 		}
 	}
 
@@ -500,18 +524,47 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public void manageHealthBar() {
-		healthbar.Value = health;
+	public void manageBar() {
+		this.healthbar.Value = this.health;
+		this.tirednessbar.Value = this.tiredness;
 
-		if(health >= 100) {
+		if(health > 70) {
 			healthbar.Modulate = new Color("#75caa7");
 		} else if (health <= 70 && health >= 30) {
 			healthbar.Modulate = new Color("#e1aa6a");
 		} else {
 			healthbar.Modulate = new Color("#fe9296");
 		}
+
+		if(tiredness > 70) {
+			tirednessbar.Modulate = new Color("#73bff2");
+			this.tired = false;
+		} else if (tiredness <= 70 && tiredness >= 30) {
+			this.tired = false;
+			tirednessbar.Modulate = new Color("#5ea3e4");
+		} else {
+			this.tired = true;
+			tirednessbar.Modulate = new Color("#28659c");
+		}
 	}
 
+	public void addStats(int d) {
+		if(this.tiredness >= 100) {
+			if(this.health < 100) {
+				this.health += d;
+			}
+		} else {
+			this.tiredness += d;
+		}
+	}
+
+	public bool getTired() {
+		return this.tired;
+	}
+
+	public void setTired(bool b){
+		this.tired = b;
+	} 
 
 	public void die() {
 		canGetHit = false;

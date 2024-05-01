@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class AxeTool : InventoryItem
+public partial class AxeTool : Tool
 {
 
 	//private World world;
@@ -17,10 +17,13 @@ public partial class AxeTool : InventoryItem
 	}
 
 	public override void useItem() {
+		var world = World.Instance;
+		this.player = world.getPlayer();
 		if (player.getCanAxe() && !player.getAxing()) {
 			player.setAxing(true);
 			player.setCanAxe(false);		
 			player.getAxeCoolDownTimer().Start();
+			this.player.redureTiredness(this.reduceTiredness);
 		}
 	}
 

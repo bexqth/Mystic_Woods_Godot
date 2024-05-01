@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Pickaxe : InventoryItem
+public partial class Pickaxe : Tool
 {
 	private int axeDamage = 20;
 	// Called when the node enters the scene tree for the first time.
@@ -18,10 +18,13 @@ public partial class Pickaxe : InventoryItem
 
 	public override void useItem()
 	{
+		var world = World.Instance;
+		this.player = world.getPlayer();
 		if (player.getCanPickaxe() && !player.getPickaxing()) {
 			player.setPickaxing(true);
 			player.setCanPickaxe(false);		
 			player.getPickaxeCoolDownTimer().Start();
+			this.player.redureTiredness(this.reduceTiredness);
 		}
 	}
 

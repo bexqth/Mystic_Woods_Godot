@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://doywplsv7fvc"]
+[gd_scene load_steps=5 format=3 uid="uid://doywplsv7fvc"]
 
 [ext_resource type="Script" path="res://scripts/AxeTool.cs" id="1_nh0e3"]
 [ext_resource type="Texture2D" uid="uid://cscclx7e6blih" path="res://art/objects/Farming Tools spritesheet.png" id="2_1dgbu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjr3u"]
-atlas = ExtResource("2_1dgbu")
-region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iyhy1"]
 atlas = ExtResource("2_1dgbu")
@@ -18,8 +14,7 @@ height = 19.2638
 [node name="stone_axe" type="Node2D"]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_nh0e3")
-itemName = "Axe"
-icon = SubResource("AtlasTexture_bjr3u")
+reduceTiredness = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_iyhy1")

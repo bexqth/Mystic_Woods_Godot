@@ -138,6 +138,10 @@ public partial class Inventory : Node2D
 		slots[focusIndex].deleteItemFromArray();
 	}
 
+	public void removeItem() {
+		slots[focusIndex].deleteItemAtAll();
+	}
+
 
 	public void changeFocus() {
 		if(!world.getPlayerOpenedChest() && !world.getPlayerUsingTable() && !world.getPlayerUsingFurnace()) {

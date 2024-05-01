@@ -60,8 +60,8 @@ _data = {
 script = ExtResource("1_if7tb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 357.0
-offset_bottom = 215.0
+offset_right = 351.0
+offset_bottom = 202.0
 color = Color(0.219608, 0.219608, 0.219608, 0.803922)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

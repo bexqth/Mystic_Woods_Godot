@@ -3,7 +3,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 
-public partial class GardenPotTool : InventoryItem
+public partial class GardenPotTool : Tool
 {
 	// Called when the node enters the scene tree for the first time.
 	private TileMap tileMap;
@@ -28,6 +28,7 @@ public partial class GardenPotTool : InventoryItem
 	public override void useItem() {
 		var world = World.Instance;
 		this.tileMap = world.GetTileMap();
+		this.player = world.getPlayer();
 
 		if (player.getCanWater() && !player.getWatering()) {
 			player.setWatering(true);
@@ -42,6 +43,10 @@ public partial class GardenPotTool : InventoryItem
 			} else {
 				GD.Print("out of reach");
 			}
+
+			this.player.redureTiredness(this.reduceTiredness);
+			GD.Print(this.player.getTiredness());
+			GD.Print(this.reduceTiredness);
 		}
 
 	}		

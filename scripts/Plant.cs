@@ -82,11 +82,10 @@ public partial class Plant : Node2D
 		int sourceIdGrass = 2;
 		Vector2I grassTile = new Vector2I(1,1);
 		Vector2I tileMousePosition = tileMap.LocalToMap(player.globalMousePosition());
-		GD.Print(player.getNameHoldingItem());
-		if (Input.IsActionJustPressed("on_left_click") && player.getNameHoldingItem() == "hoe") {
-			
-			if(getCanBeDigged()) {
 
+		//if (Input.IsActionJustPressed("on_left_click") && player.getNameHoldingItem() == "hoe") {	
+		if (Input.IsActionJustPressed("on_left_click") && player.getHoldingItem() is HoeTool hoeTool) {	
+			if(getCanBeDigged()) {
 				if(Math.Abs((int)player.GlobalPosition.X/48 - tileMousePosition.X) < 2 && Math.Abs((int)player.GlobalPosition.Y/48 - tileMousePosition.Y) < 2) {
 					tileMap.SetCell(0, tileMousePosition, sourceIdGrass, grassTile);
 				} else{
