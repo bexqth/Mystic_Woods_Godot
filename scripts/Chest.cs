@@ -40,7 +40,7 @@ public partial class Chest : Node2D
 	private void _on_area_2d_body_entered(Node2D body)
 	{
 		if(body.Name == "Player") {
-			text.Text = "Press E to show chest inventoy";
+			text.Text = "Press E to open chest";
 			animator.Play("opening");
 			canOpenChest = true;
 			//world.setPlayerNearChest(true);

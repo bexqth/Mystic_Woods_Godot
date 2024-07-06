@@ -111,6 +111,9 @@ public partial class InventoryItem : Node2D
 			isSelected = false;
 		}
 	}
+	//in inventory find items
+	//zapnut zvuk vypnut zvuk
+	// ulozenie nastavenia do json
 
 	public void setInInventory(bool b) {
 		isInInventory = b;

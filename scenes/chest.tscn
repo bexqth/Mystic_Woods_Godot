@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0f7un63vh623"]
+[gd_scene load_steps=20 format=3 uid="uid://b0f7un63vh623"]
 
 [ext_resource type="Script" path="res://scripts/Chest.cs" id="1_f5fdr"]
 [ext_resource type="Texture2D" uid="uid://mwv3i7rrv8a4" path="res://art/objects/chest.png" id="2_nmrl8"]
@@ -129,17 +129,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_urfd1"]
 radius = 8.72417
 
-[sub_resource type="FontFile" id="FontFile_vq8pt"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
 [node name="chest" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_f5fdr")
@@ -157,12 +146,12 @@ position = Vector2(0.333336, -0.333333)
 shape = SubResource("CircleShape2D_urfd1")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -34.0
-offset_top = -15.0
-offset_right = 193.0
-offset_bottom = 5.0
-scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = SubResource("FontFile_vq8pt")
+offset_left = -25.0
+offset_top = -16.6667
+offset_right = 502.0
+offset_bottom = 83.3333
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 50
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

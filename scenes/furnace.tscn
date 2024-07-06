@@ -178,11 +178,12 @@ shape = SubResource("RectangleShape2D_ptilj")
 shape = SubResource("CircleShape2D_wfkq5")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.3333
-offset_top = -16.0
-offset_right = 145.667
-offset_bottom = 7.0
-scale = Vector2(0.3, 0.3)
+offset_left = -17.3333
+offset_top = -13.0
+offset_right = 386.667
+offset_bottom = 70.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 50
 
 [node name="sprite_changing_Timer" type="Timer" parent="."]
 

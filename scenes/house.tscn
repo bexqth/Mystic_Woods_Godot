@@ -26,11 +26,12 @@ position = Vector2(0, -2.66667)
 shape = SubResource("RectangleShape2D_awnf1")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -20.3333
-offset_top = 31.6667
-offset_right = 100.667
-offset_bottom = 54.6667
-scale = Vector2(0.3, 0.3)
+offset_left = -23.6667
+offset_top = 28.0
+offset_right = 432.333
+offset_bottom = 111.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 60
 text = "Press E to enter"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

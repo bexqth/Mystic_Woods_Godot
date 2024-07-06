@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyhb6ba4d8rky"]
+[gd_scene load_steps=14 format=3 uid="uid://cyhb6ba4d8rky"]
 
 [ext_resource type="Texture2D" uid="uid://dcnxqhh4ot1ks" path="res://art/objects/crate.png" id="1_k71vd"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.cs" id="1_uokfr"]
@@ -87,17 +87,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_llbpo"]
 radius = 9.33928
 
-[sub_resource type="FontFile" id="FontFile_2d8on"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
 [node name="crafting_table" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_uokfr")
@@ -117,8 +106,8 @@ offset_left = -28.3333
 offset_top = -17.6667
 offset_right = 177.667
 offset_bottom = 22.3333
-scale = Vector2(0.3, 0.3)
-theme_override_fonts/font = SubResource("FontFile_2d8on")
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 50
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
