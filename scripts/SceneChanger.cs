@@ -35,6 +35,7 @@ public partial class SceneChanger : Node
 			playerEntered = true;
 			this.player = player;
 			this.label.Text = "Press E to enter";
+			player.CanMove = true;
 		}
 	}
 
@@ -45,4 +46,6 @@ public partial class SceneChanger : Node
 			this.label.Text = "";
 		}
 	}
+
 }
+

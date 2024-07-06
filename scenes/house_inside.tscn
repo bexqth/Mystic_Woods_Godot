@@ -374,5 +374,11 @@ position = Vector2(-65, -36)
 [node name="chest" parent="." instance=ExtResource("7_6y5v2")]
 position = Vector2(-10, -34)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-147, 162, -147, 186, 0, 186, 6, 192, 6, 234, 42, 234, 42, 192, 48, 186, 243, 186, 243, -48, -147, -48, -147, 161, -192, 162, -191, -143, 288, -143, 290, 222, 62, 221, 62, 255, -10, 254, -11, 219, -191, 219, -192, 164)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1288,7 +1288,7 @@ radius = 19.3333
 z_index = 1
 position = Vector2(442, 338)
 scale = Vector2(3, 3)
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_858ga")
 inventory = NodePath("Camera2D/Inventory")
 
@@ -1299,6 +1299,7 @@ animation = &"idle_down"
 speed_scale = 1.6
 
 [node name="player_collision" type="Area2D" parent="."]
+collision_layer = 3
 
 [node name="player_collisionShape" type="CollisionShape2D" parent="player_collision"]
 position = Vector2(0.333333, -2.66667)

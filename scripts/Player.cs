@@ -143,7 +143,7 @@ public partial class Player : CharacterBody2D
 
 	public void keyboardControl() {
 		if(!isAttacking) {
-			setRunning(false);
+		setRunning(false);
 		}
 		Godot.Vector2 position = Position;
 		//Godot.Vector2 scale = animator.Scale;
@@ -177,6 +177,7 @@ public partial class Player : CharacterBody2D
 		World.setPlayerPosition(this.Position);
 		//animator.Scale = scale;
 		MoveAndSlide();
+		
 	}
 
 	public void mouseControl() {
