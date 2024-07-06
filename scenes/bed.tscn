@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://kvyou2u0vt1q"]
+
+[ext_resource type="Script" path="res://scripts/Bed.cs" id="1_57e4a"]
+[ext_resource type="Texture2D" uid="uid://b3pbr2ufmquki" path="res://art/character/sleeping.png" id="1_yls4m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shadv"]
+atlas = ExtResource("1_yls4m")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klv42"]
+atlas = ExtResource("1_yls4m")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fd0m"]
+atlas = ExtResource("1_yls4m")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nejy"]
+atlas = ExtResource("1_yls4m")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl3g4"]
+atlas = ExtResource("1_yls4m")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djet4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shadv")
+}],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klv42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fd0m")
+}],
+"loop": false,
+"name": &"falling_asleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nejy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl3g4")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6k63x"]
+size = Vector2(23.3333, 35.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6hqh"]
+size = Vector2(14, 30)
+
+[node name="Bed" type="StaticBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 2
+script = ExtResource("1_57e4a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_djet4")
+animation = &"empty"
+speed_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.76837e-07, 0)
+shape = SubResource("RectangleShape2D_6k63x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y6hqh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -18.3333
+offset_top = -25.3333
+offset_right = 361.667
+offset_bottom = 43.6667
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 50
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

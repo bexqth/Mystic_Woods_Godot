@@ -1347,6 +1347,8 @@ show_percentage = false
 
 [node name="tirednessbar" type="ProgressBar" parent="."]
 modulate = Color(0.45098, 0.74902, 0.94902, 1)
+light_mask = 524289
+visibility_layer = 524289
 offset_left = 5.0
 offset_top = 66.0
 offset_right = 438.0

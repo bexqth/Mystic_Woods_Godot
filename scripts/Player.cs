@@ -55,6 +55,7 @@ public partial class Player : CharacterBody2D
 	private String direction;
 	public bool changingScene;
 	private bool tired;
+	public bool CanMove{get;set;}
 
 	[Export]
 	public Inventory inventory;
@@ -69,6 +70,7 @@ public partial class Player : CharacterBody2D
 		canGetHit = false;
 		isRunning = false;
 		canAttack = true;
+		CanMove = true;
 		attackCooldownTurnOn = false;
 		isAttacking = false;
 		animator = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -142,45 +144,46 @@ public partial class Player : CharacterBody2D
 	}
 
 	public void keyboardControl() {
-		if(!isAttacking) {
-		setRunning(false);
-		}
-		Godot.Vector2 position = Position;
-		//Godot.Vector2 scale = animator.Scale;
+		if(CanMove) {
+			if(!isAttacking) {
+			setRunning(false);
+			}
+			Godot.Vector2 position = Position;
+			//Godot.Vector2 scale = animator.Scale;
 
-		if(Input.IsActionPressed("pressed_a")) {
-			position.X -= speed;
-			//scale.X = -1;
-			setRunning(true);
-			direction = "left";
-		} else if(Input.IsActionPressed("pressed_d")) {
-			position.X += speed;
-			//scale.X = 1;
-			setRunning(true);
-			direction = "right";
-		} else if (Input.IsActionPressed("pressed_w")) {
-			position.Y -= speed;
-			setRunning(true);
-			direction = "up";
-		} else if(Input.IsActionPressed("pressed_s")) {
-			position.Y += speed;	
-			setRunning(true);
-			direction = "down";
-		}
+			if(Input.IsActionPressed("pressed_a")) {
+				position.X -= speed;
+				//scale.X = -1;
+				setRunning(true);
+				direction = "left";
+			} else if(Input.IsActionPressed("pressed_d")) {
+				position.X += speed;
+				//scale.X = 1;
+				setRunning(true);
+				direction = "right";
+			} else if (Input.IsActionPressed("pressed_w")) {
+				position.Y -= speed;
+				setRunning(true);
+				direction = "up";
+			} else if(Input.IsActionPressed("pressed_s")) {
+				position.Y += speed;	
+				setRunning(true);
+				direction = "down";
+			}
 
-		if(Input.IsActionJustPressed("pressed_q")) {
-			inventory.deleteItem();
-		}
-		/*if(Input.IsActionJustPressed("pressed_c")) {
-			eat();
-		}*/
-		//GD.Print(direction);
+			if(Input.IsActionJustPressed("pressed_q")) {
+				inventory.deleteItem();
+			}
+			/*if(Input.IsActionJustPressed("pressed_c")) {
+				eat();
+			}*/
+			//GD.Print(direction);
 
-		Position = position;
-		World.setPlayerPosition(this.Position);
-		//animator.Scale = scale;
-		MoveAndSlide();
-		
+			Position = position;
+			World.setPlayerPosition(this.Position);
+			//animator.Scale = scale;
+			MoveAndSlide();
+		}		
 	}
 
 	public void mouseControl() {
