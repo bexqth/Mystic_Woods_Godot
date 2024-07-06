@@ -14,6 +14,7 @@ height = 13.6333
 [node name="turnip" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_1su5j")
+giveHealth = 5
 itemName = "Turnip"
 stackable = true
 

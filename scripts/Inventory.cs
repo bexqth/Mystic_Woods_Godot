@@ -155,7 +155,8 @@ public partial class Inventory : Node2D
 				if (focusIndex < 0)
 					focusIndex = inventorySize - 1;
 			}
-			slots[focusIndex].GrabFocus();					
+			slots[focusIndex].GrabFocus();
+							
 		}		
 	}
 

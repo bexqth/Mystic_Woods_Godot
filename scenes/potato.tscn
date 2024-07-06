@@ -14,7 +14,7 @@ height = 11.3333
 [node name="potato" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_4g0rq")
-giveHealth = 10
+giveHealth = 8
 itemName = "Potato"
 stackable = true
 

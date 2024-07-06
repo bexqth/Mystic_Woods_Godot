@@ -171,6 +171,9 @@ public partial class Player : CharacterBody2D
 		if(Input.IsActionJustPressed("pressed_q")) {
 			inventory.deleteItem();
 		}
+		/*if(Input.IsActionJustPressed("pressed_c")) {
+			eat();
+		}*/
 		//GD.Print(direction);
 
 		Position = position;
@@ -205,6 +208,15 @@ public partial class Player : CharacterBody2D
 		Godot.Vector2 newMousePosition = new Godot.Vector2(mouseX, mouseY);
 		return newMousePosition;
 	}
+
+	/*public void eat() {
+		if(this.inventory.getHoldingItem() is Food food) {
+			if(this.tired) {
+				this.tiredness += food.giveHealth;
+			}
+			GD.Print("U cant eat more");
+		}
+	}*/
 
 	public InventoryItem getHoldingItem() {
 		return this.holdingItem;
