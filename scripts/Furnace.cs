@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Furnace : Node2D //MORE LIKE MANAGER FOR THE FURNICE
+public partial class Furnace : PlacableItem //MORE LIKE MANAGER FOR THE FURNICE
 {
 
 	private PackedScene furnaceUIScene;
@@ -115,4 +115,10 @@ public partial class Furnace : Node2D //MORE LIKE MANAGER FOR THE FURNICE
 		text.Text = "";
 	}
 
+	/*private void _on_area_2d_collision_input_event(Node viewport, InputEvent @event, long shape_idx)
+	{
+		// Replace with function body.
+	}*/
+
 }
+

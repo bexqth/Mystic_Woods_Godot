@@ -988,6 +988,7 @@ value = 100.0
 show_percentage = false
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -1
 texture_filter = 1
 position = Vector2(-7, -3)
 scale = Vector2(3, 3)

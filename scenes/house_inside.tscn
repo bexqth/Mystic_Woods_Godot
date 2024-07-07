@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://hjxi6gekuojq"]
+[gd_scene load_steps=10 format=3 uid="uid://hjxi6gekuojq"]
 
 [ext_resource type="Script" path="res://scripts/SceneChanger.cs" id="1_ri4wp"]
 [ext_resource type="Texture2D" uid="uid://drjs3m5vuq0jf" path="res://art/background/house.png" id="3_etx2h"]
 [ext_resource type="Texture2D" uid="uid://bu5p5v4p6hxyc" path="res://art/background/house_inside.png" id="3_s8r0y"]
-[ext_resource type="PackedScene" uid="uid://cyhb6ba4d8rky" path="res://scenes/crafting_table.tscn" id="5_vle5o"]
 [ext_resource type="PackedScene" uid="uid://bh1518lehis50" path="res://scenes/furnace.tscn" id="6_4v400"]
-[ext_resource type="PackedScene" uid="uid://b0f7un63vh623" path="res://scenes/chest.tscn" id="7_6y5v2"]
 [ext_resource type="PackedScene" uid="uid://kvyou2u0vt1q" path="res://scenes/bed.tscn" id="7_egk8d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l78g2"]
@@ -342,6 +340,7 @@ size = Vector2(48, 59)
 script = ExtResource("1_ri4wp")
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -1
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_y7xts")
 format = 2
@@ -366,23 +365,19 @@ scale = Vector2(0.1, 0.1)
 theme_override_font_sizes/font_size = 160
 text = "To exit press E"
 
-[node name="crafting_table" parent="." instance=ExtResource("5_vle5o")]
-position = Vector2(-120, -37)
-
-[node name="furnace" parent="." instance=ExtResource("6_4v400")]
-position = Vector2(-65, -36)
-
-[node name="chest" parent="." instance=ExtResource("7_6y5v2")]
-position = Vector2(-10, -34)
-
 [node name="SBRoomBounds" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SBRoomBounds"]
-polygon = PackedVector2Array(-147, 162, -147, 186, 0, 186, 6, 192, 6, 234, 42, 234, 42, 192, 48, 186, 243, 186, 243, -48, -147, -48, -147, 161, -192, 162, -191, -143, 288, -143, 290, 222, 62, 221, 62, 255, -10, 254, -11, 219, -191, 219, -192, 164)
+polygon = PackedVector2Array(-147, 161, -147, 186, 0, 186, 6, 192, 6, 234, 42, 234, 42, 192, 48, 186, 243, 186, 243, -48, -147, -48, -147, 161, -192, 162, -191, -143, 288, -143, 290, 222, 62, 221, 62, 255, -10, 254, -11, 219, -192, 220, -192, 162)
 
 [node name="Bed" parent="." instance=ExtResource("7_egk8d")]
 position = Vector2(216, -2)
+
+[node name="furnace" parent="." instance=ExtResource("6_4v400")]
+position = Vector2(-85, -40)
+XPosition = 1977.0
+YPosition = -444.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class CraftingTable : Node2D
+public partial class CraftingTable : PlacableItem
 {
 	private PackedScene craftingUIScene;
 	private CraftingUI craftingUI;
@@ -32,6 +32,7 @@ public partial class CraftingTable : Node2D
 		craftingUI.Visible = false;
 		recipes = new List<Recipe>();
 		createRecipes();
+		base._Ready();
 	}
 
 
@@ -39,6 +40,7 @@ public partial class CraftingTable : Node2D
 	{
 		handleTable();
 		createItem();
+		base._Process(delta);
 	}
 
 	private void _on_area_2d_body_entered(Node2D body)

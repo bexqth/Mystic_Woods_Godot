@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Chest : Node2D
+public partial class Chest : PlacableItem
 {
 	// Called when the node enters the scene tree for the first time.
 
@@ -27,6 +27,7 @@ public partial class Chest : Node2D
 		chestInventoryIsVisible = false;
 		chestInventory.Visible = false;
 		world = (World)GetNode("/root/World");
+		base._Ready();
 
 	}
 
@@ -34,6 +35,7 @@ public partial class Chest : Node2D
 	public override void _Process(double delta)
 	{
 		handleChest();
+		base._Process(delta);
 	}
 
 

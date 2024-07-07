@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyhb6ba4d8rky"]
+[gd_scene load_steps=15 format=3 uid="uid://cyhb6ba4d8rky"]
 
 [ext_resource type="Texture2D" uid="uid://dcnxqhh4ot1ks" path="res://art/objects/crate.png" id="1_k71vd"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.cs" id="1_uokfr"]
@@ -87,6 +87,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_llbpo"]
 radius = 9.33928
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciyxo"]
+size = Vector2(12, 14)
+
 [node name="crafting_table" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_uokfr")
@@ -109,5 +112,12 @@ offset_bottom = 22.3333
 scale = Vector2(0.1, 0.1)
 theme_override_font_sizes/font_size = 50
 
+[node name="Area2D_Collision" type="Area2D" parent="."]
+
+[node name="CS2D_Collision" type="CollisionShape2D" parent="Area2D_Collision"]
+position = Vector2(0, -0.333333)
+shape = SubResource("RectangleShape2D_ciyxo")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D_Collision" to="." method="_on_area_2d_collision_input_event"]

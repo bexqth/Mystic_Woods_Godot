@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0f7un63vh623"]
+[gd_scene load_steps=21 format=3 uid="uid://b0f7un63vh623"]
 
 [ext_resource type="Script" path="res://scripts/Chest.cs" id="1_f5fdr"]
 [ext_resource type="Texture2D" uid="uid://mwv3i7rrv8a4" path="res://art/objects/chest.png" id="2_nmrl8"]
@@ -129,6 +129,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_urfd1"]
 radius = 8.72417
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8ue8"]
+size = Vector2(12, 12)
+
 [node name="chest" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_f5fdr")
@@ -153,5 +156,12 @@ offset_bottom = 83.3333
 scale = Vector2(0.1, 0.1)
 theme_override_font_sizes/font_size = 50
 
+[node name="Area2D_Collision" type="Area2D" parent="."]
+
+[node name="CS2D_Collision" type="CollisionShape2D" parent="Area2D_Collision"]
+position = Vector2(0, 0.333333)
+shape = SubResource("RectangleShape2D_v8ue8")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D_Collision" to="." method="_on_area_2d_collision_input_event"]

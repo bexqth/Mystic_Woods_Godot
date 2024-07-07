@@ -145,7 +145,7 @@ atlas = ExtResource("1_3t5ju")
 region = Rect2(104, 48, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptilj"]
-size = Vector2(12, 12)
+size = Vector2(12, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wfkq5"]
 radius = 8.33333
@@ -157,7 +157,7 @@ script = ExtResource("1_hmk58")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_lgkve")
-animation = &"unUsing"
+animation = &"notUsing"
 
 [node name="Sprite2D_focused" type="Sprite2D" parent="."]
 visible = false
@@ -167,9 +167,10 @@ texture = SubResource("AtlasTexture_ig732")
 visible = false
 texture = SubResource("AtlasTexture_kghg2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D_Collision" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CS2D_Collision" type="CollisionShape2D" parent="Area2D_Collision"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ptilj")
 
 [node name="Area2D_range" type="Area2D" parent="."]
@@ -189,9 +190,7 @@ theme_override_font_sizes/font_size = 50
 
 [node name="Sprite2D_default" type="Sprite2D" parent="."]
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="input_event" from="Area2D_Collision" to="." method="_on_area_2d_collision_input_event"]
 [connection signal="body_entered" from="Area2D_range" to="." method="_on_area_2d_range_body_entered"]
 [connection signal="body_exited" from="Area2D_range" to="." method="_on_area_2d_range_body_exited"]
 [connection signal="timeout" from="sprite_changing_Timer" to="." method="_on_sprite_changing_timer_timeout"]
