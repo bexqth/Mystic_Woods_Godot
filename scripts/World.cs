@@ -18,6 +18,8 @@ public partial class World : Node2D
 	public TileMap tileMap;
 	[Export]
 	public Player player;
+	public bool PlacableItemPickedUp{get;set;}
+	public PlacableItem PlacableItem{get;set;}
 	public override void _Ready() {
 		playerNearChest = false;
 		playerOpenedChest = false;

@@ -135,4 +135,3 @@ public partial class CraftingTable : PlacableItem
 	}
 
 }
-

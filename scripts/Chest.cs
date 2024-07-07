@@ -84,4 +84,3 @@ public partial class Chest : PlacableItem
 		text.Text = "";
 	}
 }
-
