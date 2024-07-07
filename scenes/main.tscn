@@ -1011,7 +1011,7 @@ layer_6/name = "hill"
 layer_6/tile_data = PackedInt32Array(-327700, 65542, 1, -327699, 65542, 1, -393235, 65542, 1, -393236, 65542, 1, -327701, 65542, 1, -393237, 65542, 1, -393238, 65542, 1, -327702, 65542, 1, -327703, 65542, 1, -393240, 65542, 1, -393239, 65542, 1, -327704, 65542, 1, -458776, 65542, 1, -458775, 65542, 1, -458774, 65542, 1, -458773, 65542, 1, -458772, 65542, 1, -458771, 65542, 1, -262164, 65542, 1, -262163, 65542, 1, -262165, 65542, 1, -262166, 65542, 1, -262167, 65542, 1, -262168, 65542, 1, -458770, 131078, 1, -393234, 131078, 1, -327698, 131078, 1, -262162, 131078, 1)
 
 [node name="crosshair" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("27_bpce6")]
-position = Vector2(-286, 18)
+position = Vector2(-264, 17)
 tileMap = NodePath("../TileMap")
 
 [node name="Player" parent="." instance=ExtResource("28_da38h")]
@@ -1036,10 +1036,10 @@ position = Vector2(343, -23)
 position = Vector2(287, -24)
 
 [node name="chest" parent="." instance=ExtResource("30_qgth6")]
-position = Vector2(-317, -174)
+position = Vector2(-320, -173)
 
 [node name="crafting_table" parent="." instance=ExtResource("27_gavxf")]
-position = Vector2(-19, -191)
+position = Vector2(-35, -174)
 
 [node name="tree" parent="." instance=ExtResource("29_q4jtk")]
 position = Vector2(-444, -180)
@@ -1048,7 +1048,7 @@ position = Vector2(-444, -180)
 position = Vector2(-519, -104)
 
 [node name="furnace" parent="." instance=ExtResource("31_v861s")]
-position = Vector2(-159, -174)
+position = Vector2(-176, -172)
 
 [node name="iron_ore" parent="." instance=ExtResource("32_7t2yg")]
 position = Vector2(-537, 19)

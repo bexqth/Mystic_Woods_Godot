@@ -11,6 +11,7 @@ public partial class PlacableItem : Node2D
 	protected bool isSelected;
 	public bool CanBePlaced{get;set;}
 	private TileMap tileMap;
+	private PlacableItem collidedItem;
 	public override void _Ready()
 	{
 		isSelected = false;
@@ -26,8 +27,11 @@ public partial class PlacableItem : Node2D
 	}
 
 	public void followMouse() {
+		
 		var world = World.Instance;
-		Position = world.getCrossHairPosition();
+		var x = world.getCrossHairPosition().X - this.XPosition;
+		var y = world.getCrossHairPosition().Y - this.YPosition;
+		Position = new Vector2(x,y);
 	}
 
 
@@ -58,11 +62,12 @@ public partial class PlacableItem : Node2D
 	private void _on_area_2d_collision_area_entered(Area2D area)
 	{
 		var world = World.Instance;
-		if(area.GetParent() is PlacableItem pickedUpItem) {
-			if(world.PlacableItemPickedUp && world.PlacableItem != this) {
+		if(area.GetParent() is PlacableItem) {
+			if(world.PlacableItemPickedUp  && world.PlacableItem != this) {
 				world.PlacableItem.Modulate = new Color("fa6269c8");
-				pickedUpItem.CanBePlaced = false;
-				GD.Print(pickedUpItem.Name + " " + pickedUpItem.CanBePlaced);
+				world.PlacableItem.CanBePlaced = false;
+				collidedItem = this;
+				GD.Print(world.PlacableItem.Name + " colliding with " + collidedItem.Name);						
 			}
 		}
 	}
@@ -71,13 +76,20 @@ public partial class PlacableItem : Node2D
 	private void _on_area_2d_collision_area_exited(Area2D area)
 	{
 		var world = World.Instance;
-		if(area.GetParent() is PlacableItem pickedUpItem) {
+		
+		if(area.GetParent() is PlacableItem) {
+			
 			if(world.PlacableItemPickedUp && world.PlacableItem != this) {
 				world.PlacableItem.Modulate = new Color("ffffff");
-				pickedUpItem.CanBePlaced = true;
-				GD.Print(pickedUpItem.Name + " " + pickedUpItem.CanBePlaced);
+			
+				world.PlacableItem.CanBePlaced = true;
+				collidedItem = null;
+				
+				GD.Print(world.PlacableItem.Name + " colliding with null");
 			}
 		}
-	}	
-
+	}
+	
 }
+
+

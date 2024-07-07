@@ -88,20 +88,22 @@ animations = [{
 radius = 9.33928
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ciyxo"]
-size = Vector2(12, 14)
+size = Vector2(10, 12)
 
 [node name="crafting_table" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_uokfr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7.33333)
+position = Vector2(0.333333, -7)
 sprite_frames = SubResource("SpriteFrames_cnud3")
 animation = &"using"
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.333333)
 shape = SubResource("CircleShape2D_llbpo")
 
 [node name="Label" type="Label" parent="."]
@@ -115,7 +117,7 @@ theme_override_font_sizes/font_size = 50
 [node name="Area2D_Collision" type="Area2D" parent="."]
 
 [node name="CS2D_Collision" type="CollisionShape2D" parent="Area2D_Collision"]
-position = Vector2(0, -0.333333)
+position = Vector2(0.333333, 0)
 shape = SubResource("RectangleShape2D_ciyxo")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

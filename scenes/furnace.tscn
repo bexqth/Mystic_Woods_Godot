@@ -145,7 +145,7 @@ atlas = ExtResource("1_3t5ju")
 region = Rect2(104, 48, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptilj"]
-size = Vector2(12, 14)
+size = Vector2(10, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wfkq5"]
 radius = 8.33333
@@ -155,7 +155,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_hmk58")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0.333333, -7)
 sprite_frames = SubResource("SpriteFrames_lgkve")
 animation = &"notUsing"
 
@@ -170,10 +170,11 @@ texture = SubResource("AtlasTexture_kghg2")
 [node name="Area2D_Collision" type="Area2D" parent="."]
 
 [node name="CS2D_Collision" type="CollisionShape2D" parent="Area2D_Collision"]
-position = Vector2(0, -1)
+position = Vector2(0.333333, -2.38419e-07)
 shape = SubResource("RectangleShape2D_ptilj")
 
 [node name="Area2D_range" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_range"]
 shape = SubResource("CircleShape2D_wfkq5")

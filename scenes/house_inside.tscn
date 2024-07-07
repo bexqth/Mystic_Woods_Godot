@@ -375,7 +375,7 @@ polygon = PackedVector2Array(-147, 161, -147, 186, 0, 186, 6, 192, 6, 234, 42, 2
 position = Vector2(216, -2)
 
 [node name="furnace" parent="." instance=ExtResource("6_4v400")]
-position = Vector2(-85, -40)
+position = Vector2(-77, -25)
 XPosition = 1977.0
 YPosition = -444.0
 

@@ -25,6 +25,7 @@ public partial class Crosshair : Node2D
 		Godot.Vector2 newMousePosition = new Godot.Vector2(mouseX, mouseY);
 		Vector2I tileMousePosition = tileMap.LocalToMap(newMousePosition);
 		Godot.Vector2 tilePixelPosition = new Godot.Vector2(tileMousePosition.X * 48 + 16, tileMousePosition.Y * 48 + 16);
+		//Godot.Vector2 tilePixelPosition = new Godot.Vector2(tileMousePosition.X * 48, tileMousePosition.Y * 48);
 		Position = tilePixelPosition;
 	}
 
