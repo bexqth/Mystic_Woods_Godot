@@ -28,4 +28,8 @@ public partial class Crosshair : Node2D
 		Position = tilePixelPosition;
 	}
 
+	public Godot.Vector2 GetCrossHairPosition() {
+		return Position;
+	}
+
 }

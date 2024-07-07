@@ -10,7 +10,7 @@ public partial class PlacableItem : Node2D
 	float YPosition{get;set;}
 	protected bool isSelected;
 	public bool CanBePlaced{get;set;}
-
+	private TileMap tileMap;
 	public override void _Ready()
 	{
 		isSelected = false;
@@ -26,15 +26,15 @@ public partial class PlacableItem : Node2D
 	}
 
 	public void followMouse() {
-		var x = GetGlobalMousePosition().X - this.XPosition;
-		var y = GetGlobalMousePosition().Y - this.YPosition;
-		Position = new Vector2(x, y);
+		var world = World.Instance;
+		Position = world.getCrossHairPosition();
 	}
 
 
 	private void _on_area_2d_collision_input_event(Node viewport, InputEvent @event, long shape_idx)
 	{
 		var world = World.Instance;
+
 		if (Input.IsActionJustPressed("on_right_click")){
 			isSelected = true;
 			this.Modulate = new Color("ffffffbb");
@@ -48,7 +48,7 @@ public partial class PlacableItem : Node2D
 				isSelected = false;
 				this.Modulate = new Color("ffffff");
 				this.ZIndex = 0;
-				world.PlacableItemPickedUp = false;
+				world.PlacableItemPickedUp = false;			
 			} else {
 				GD.Print("the item cant be placed here");
 			}	

@@ -18,6 +18,8 @@ public partial class World : Node2D
 	public TileMap tileMap;
 	[Export]
 	public Player player;
+	[Export]
+	public Crosshair crosshair;
 	public bool PlacableItemPickedUp{get;set;}
 	public PlacableItem PlacableItem{get;set;}
 	public override void _Ready() {
@@ -32,6 +34,18 @@ public partial class World : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		//crosshair.followMouse();
+	}
+
+	public Godot.Vector2 getCrossHairPosition() {
+		return this.crosshair.GetCrossHairPosition();
+	}
+
+	public Godot.Vector2 GlobalMousePosition() {
+		Godot.Vector2 mousePosition = GetGlobalMousePosition();
+		int mouseX = (int)(mousePosition.X / 3);
+		int mouseY = (int)(mousePosition.Y / 3);
+		Godot.Vector2 newMousePosition = new Godot.Vector2(mouseX, mouseY);
+		return newMousePosition;
 	}
 
 	public  TileMap GetTileMap() {
