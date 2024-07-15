@@ -16,6 +16,7 @@ public partial class PlacableItem : Node2D
 	{
 		isSelected = false;
 		CanBePlaced = true;
+		this.ZIndex = 1;
 	}
 
 	public override void _Process(double delta)
@@ -42,7 +43,7 @@ public partial class PlacableItem : Node2D
 		if (Input.IsActionJustPressed("on_right_click")){
 			isSelected = true;
 			this.Modulate = new Color("ffffffbb");
-			this.ZIndex = 5;
+			this.ZIndex = 0;
 			world.PlacableItemPickedUp = true;
 			world.PlacableItem = this;
 
@@ -51,7 +52,7 @@ public partial class PlacableItem : Node2D
 			if(this.CanBePlaced == true) {				
 				isSelected = false;
 				this.Modulate = new Color("ffffff");
-				this.ZIndex = 0;
+				this.ZIndex = 1;
 				world.PlacableItemPickedUp = false;			
 			} else {
 				GD.Print("the item cant be placed here");
@@ -64,7 +65,8 @@ public partial class PlacableItem : Node2D
 		var world = World.Instance;
 		if(area.GetParent() is PlacableItem) {
 			if(world.PlacableItemPickedUp  && world.PlacableItem != this) {
-				world.PlacableItem.Modulate = new Color("fa6269c8");
+				//world.PlacableItem.Modulate = new Color("fa6269c8");
+				this.Modulate  = new Color("fa6269c8");
 				world.PlacableItem.CanBePlaced = false;
 				collidedItem = this;
 				GD.Print(world.PlacableItem.Name + " colliding with " + collidedItem.Name);						
@@ -80,8 +82,8 @@ public partial class PlacableItem : Node2D
 		if(area.GetParent() is PlacableItem) {
 			
 			if(world.PlacableItemPickedUp && world.PlacableItem != this) {
-				world.PlacableItem.Modulate = new Color("ffffff");
-			
+				world.PlacableItem.Modulate = new Color("ffffffbb");
+				this.Modulate = new Color("ffffff");
 				world.PlacableItem.CanBePlaced = true;
 				collidedItem = null;
 				
